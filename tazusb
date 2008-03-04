@@ -1,0 +1,389 @@
+#!/bin/sh
+# Tazusb - SliTaz LiveUSB
+#
+# Tazusb is an utility to generate, configure and manipulate SliTaz LiveUSB
+# bootable media and/or USB /home partition, such as flash keys, SD card or 
+# USB harddisk.
+#
+# Authors : Christophe Lincoln (Pankso) <pankso@slitaz.org>
+#           Andrew Miller (Spode) <spode@spodesabode.com>
+#
+VERSION=20080304
+
+COMMAND=$1
+TARGET_ROOT=/media/flash
+DRIVE_NAME=`cat /proc/sys/dev/cdrom/info | grep "drive name" | cut -f 3`
+CDROM=/dev/$DRIVE_NAME
+
+#
+# Tazusb functions
+#
+
+# Print the usage.
+usage ()
+{
+	echo -e "\nSliTaz Live USB - Version: $VERSION\n
+\033[1mUsage: \033[0m `basename $0` [command] [compression|device]
+\033[1mCommands: \033[0m\n
+  usage     	Print this short usage.
+  writefs 	Write the current filesystem to rootfs.gz.
+  		tazSupported compression: lzma. gzip, none.
+  format	Format and label device with ext3 filesystem (for LiveUSB or /home).
+  gen-liveusb 	Generate a bootable LiveUSB using files from the LiveCD.\n"
+}
+
+# Status function.
+status()
+{
+	local CHECK=$?
+	echo -en "\\033[70G[ "
+	if [ $CHECK = 0 ]; then
+		echo -en "\\033[1;33mOK"
+	else
+		echo -en "\\033[1;31mFailed"
+	fi
+	echo -e "\\033[0;39m ]"
+}
+
+# Exit if user is not root.
+check_root()
+{
+	if test $(id -u) != 0 ; then
+	   echo -e "\nThis program requires being run as root.\n"
+	   exit 0
+	fi
+}
+
+# Verify a device exists before format or install
+check_for_device()
+{
+	DEVID=`fdisk -l | grep -w $DEVICE | cut -d: -f1 | cut -d/ -f3`
+	if [ -z "$DEVID" ]; then
+		echo -e "\nUnable to find device: $DEVICE\n"
+		exit 0
+	fi
+	
+	PARTID=/dev/"$DEVID"1
+}
+
+#gets the UUID and filesystem type
+get_part_info()
+{
+	UUID=`blkid -s UUID -o value $PARTID`
+	FSTYPE=`blkid -s TYPE -o value $PARTID`
+}
+
+# Format target device and label partition.
+mkfs_ext3()
+{
+	echo -n "Please specify a label for the partition (TazUSB): "
+	read label
+	
+	if [ -z $label ]; then
+		label=TazUSB
+	fi
+	
+	echo "Label  : $label"
+	echo "Mkfs   : mkfs.ext3 -L \"$label\" $PARTID"
+	echo "" && sleep 2
+	mkfs.ext3 -L "$label" $PARTID
+	
+}
+
+# Mount an existing USB device.
+unmount_target_usb()
+{
+	# If mount point is in use, unmount
+	if mount | grep $TARGET_ROOT; then
+		umount $TARGET_ROOT
+	fi
+	
+	# Device could be mounted elsewhere, so unmount
+	if mount | grep $PARTID; then
+		echo "Unmounting USB target device..."
+		umount $PARTID
+	fi
+}
+
+# Mount an existing USB device.
+mount_target_usb()
+{
+	# If mount point is in use, unmount
+	if mount | grep $TARGET_ROOT; then
+		umount $TARGET_ROOT
+	fi
+	
+	# Device could be mounted elsewhere, so unmount
+	if mount | grep $PARTID; then
+		umount $PARTID
+	fi
+
+	echo "Mounting USB target device..."	
+	mkdir -p $TARGET_ROOT
+	mount $PARTID $TARGET_ROOT 2>/dev/null
+}
+
+# Mount SliTaz LiveCD to get needed files.
+mount_cdrom()
+{
+	echo "Mounting cdrom device..."
+	
+	if mount | grep /media/cdrom; then
+		umount /media/cdrom
+	fi
+	
+	mkdir -p /media/cdrom
+	mount -t iso9660 $CDROM /media/cdrom
+	
+	if [ ! -f /media/cdrom/boot/rootfs.gz ]; then
+		echo -e "\nUnable to find a filesystem on the cdrom (rootfs.gz).\n"
+		exit 0
+	fi
+}
+
+# All needed files are in the boot direcory of the cdrom.
+copy_cdrom_files()
+{
+	echo -n "Copying needed files from cdrom..."
+	mkdir -p $TARGET_ROOT/boot
+	cp /media/cdrom/boot/bzImage $TARGET_ROOT/boot
+	cp /media/cdrom/boot/rootfs.gz $TARGET_ROOT/boot
+	status
+}
+
+install_mbr()
+{
+	# MBR
+	if [ -f /usr/share/syslinux/mbr.bin ]; then
+		echo -n "Installing a new MBR to: $DEVICE"
+		cat /usr/share/syslinux/mbr.bin > $DEVICE
+		status
+	else
+		# Skip MBR install (tazpkg get-install syslinux-extra ? and then cat)
+		echo "No new MBR installed to: $DEVICE"
+	fi
+}
+
+# ext/syslinux install
+install_boot()
+{
+	#decide if we're installing syslinux or extlinux
+	if [ "$FSTYPE" = "vfat" ]; then
+		ST=syslinux
+		STC="syslinux -d /boot/syslinux/ $PARTID"
+		STE=cfg
+	else
+		ST=extlinux
+		STC="extlinux --install $TARGET_ROOT/boot/$ST"
+		STE=conf
+	fi
+	
+	echo "Installing bootloader: $ST"
+	mkdir -p $TARGET_ROOT/boot/$ST
+	$STC
+	
+	# extlinux.conf / syslinux.cfg
+	cat > $TARGET_ROOT/boot/$ST/$ST.$STE << _EOT_
+display display.txt
+default slitaz
+label slitaz
+    kernel /boot/bzImage
+    append initrd=/boot/rootfs.gz rw root=/dev/null home=$UUID
+
+label previous
+    kernel /boot/bzImage
+    append initrd=/boot/previous.gz rw root=/dev/null home=$UUID
+
+_EOT_
+
+	# display.txt 
+	cat > $TARGET_ROOT/boot/$ST/display.txt << "EOT"
+       _______. __       __  .___________.    ___      ________  
+      /       ||  |     |  | |          |   /   \    |       /  
+     |   (----`|  |     |  | `---|  |---`  /  ^  \   `---/  /   
+      \   \    |  |     |  |     |  |     /  /_\  \     /  /    
+  .----)   |   |  `----.|  |     |  |    /  _____  \   /  /----.
+  |_______/    |_______||__|     |__|   /__/     \__\ /________|
+
+
+                       SliTaz GNU/Linux LiveUSB
+            Simple Light Incredible Temporary Autonomus Zone
+
+
+EOT
+status
+}
+
+# Let user exit or reboot.
+exit_or_reboot()
+{
+	echo ""
+	echo -n "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
+	read anser
+	if [ "$anser" == "reboot" ]; then
+		umount $TARGET_ROOT
+		umount /media/cdrom
+		reboot || reboot -f
+	else
+		umount /media/cdrom
+		echo "==============================================================================="
+		echo ""
+		exit 0
+	fi
+}
+
+set_bootable()
+{
+	# As the boot flag is toggable, need to check it before hand
+	ISSET=`fdisk -l $DEVICE | grep $DEVICE | grep "*"`
+	
+	# If not set, set bootable
+	if [ -z "$ISSET" ]; then
+	umount $DEVICE
+	echo "Setting $PARTID as bootable..."
+	fdisk $DEVICE >/dev/null << EOF
+a
+1
+w
+EOF
+	status
+	fi
+}
+
+#
+# Tazusb sequence
+#
+
+case $COMMAND in
+	writefs)
+		#writefs to rootfs.gz
+		check_root
+		if [ -z $2 ]; then
+			COMPRESSION=none
+		else
+			COMPRESSION=$2
+		fi
+		#start info
+		echo ""
+		echo -e "\033[1mWrite filesystem\033[0m
+===============================================================================
+The command writefs will write all the current filesystem into a suitable cpio 
+archive (rootfs.gz) usable on a bootable LiveUSB media. 
+
+Archive compression: $COMPRESSION"
+		echo ""
+		
+		#clear out tazpkg cache
+		rm /var/cache/tazpkg/* -r -f
+
+		#optionally remove sound card selection
+		echo -n "Do you wish to remove the sound card selection (Yes/no/exit) ? "
+		read answer
+		answer=`echo "$answer:0:1}" | tr A-Z a-z`
+		
+		if [ "$answer" = "e"]; then
+			exit 0
+		fi
+		
+		if [ "$answer" = "y" ]; then
+			echo -n "Removing current sound card selection..."
+			rm -f /var/lib/sound-card-driver
+			rm -f /etc/asound.state
+		else
+			echo -n "Keeping current sound card selection..."
+		fi
+		status
+		
+		#create list of files
+		find /bin /etc /init /sbin /var /dev /lib /mnt /root /usr >/tmp/list
+
+		for dir in /home /proc /sys /tmp /media /media/cdrom /media/flash /media/usbdisk
+		do
+			echo $dir >>/tmp/list
+		done
+
+		#gen initramfs with specified compression
+		if [ "$COMPRESSION" = "lzma" ]; then
+			echo -n "Creating rootfs.gz with lzma compression... "
+			cat /tmp/list | cpio -o -H newc | lzma e -si -so > /rootfs.gz
+
+		elif [ "$COMPRESSION" = "gzip" ]; then
+			echo -n "Creating rootfs.gz with gzip compression... "
+			cat /tmp/list | cpio -o -H newc | gzip -9 > /rootfs.gz
+
+		else
+			echo -n "Creating rootfs.gz without compression... "
+			cat /tmp/list | cpio -o -H newc > /rootfs.gz
+		fi
+
+		#get initramfs size
+		size=`du -sh /rootfs.gz | cut -f 1`
+
+		#if the bootable medium is where it should be, copy across
+
+		if (test -e /home/boot/bzImage); then
+			echo "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
+
+			#move the old filesystem with the unix timestamp for reference
+			if (test -e /home/boot/previous.gz); then
+				mv /home/boot/previous.gz /home/boot/rootfs.gz.$(date +%s)
+			fi
+			
+			mv /home/boot/rootfs.gz /home/boot/previous.gz
+			mv /rootfs.gz /home/boot/.
+		else
+			echo "rootfs.gz is located in /"
+		fi
+
+		echo "==============================================================================="
+		echo "Root filesystem size: $size"
+		echo ""
+		;;
+	format)
+		# Format a partitions in ext3.
+		check_root
+		echo ""
+		echo -e "\033[1mFormat a device\033[0m"
+		echo "==============================================================================="
+		DEVICE=$2
+		if [ -z $DEVICE ]; then
+			echo -e "\nPlease specify a device to format: tazusb $COMMAND /dev/name\n"
+			exit 0
+		fi
+		check_for_device
+		echo "Device : $DEVICE"
+		mkfs_ext3
+		echo "==============================================================================="
+		echo "Device $label ($PARTID) is ready to use as LiveUSB and/or /home partition."
+		echo ""
+		;;
+	gen-liveusb)
+		# Generate a LiveUSB media using files from a LiveCD.
+		check_root
+		echo ""
+		echo -e "\033[1mGen a LiveUSB media\033[0m"
+		echo "==============================================================================="
+		DEVICE=$2
+		if [ -z $DEVICE ]; then
+			echo -e "\No device specified. Usage: tazusb $CAMMAND /dev/name\n"
+			exit 0
+		fi
+		
+		check_for_device
+		get_part_info
+		unmount_target_usb
+		install_mbr
+		set_bootable
+		mount_target_usb
+		mount_cdrom
+		copy_cdrom_files
+		install_boot
+		exit_or_reboot
+		;;
+	usage|*)
+		# Display usage by default.
+		usage
+		;;
+esac
+
+exit 0
