@@ -281,7 +281,7 @@ Archive compression: $COMPRESSION"
 		read answer
 		answer=`echo "$answer:0:1}" | tr A-Z a-z`
 		
-		if [ "$answer" = "e"]; then
+		if [ "$answer" = "e" ]; then
 			exit 0
 		fi
 		
