@@ -28,7 +28,8 @@ usage ()
   usage     	Print this short usage.
   writefs 	Write the current filesystem to rootfs.gz.
   		tazSupported compression: lzma. gzip, none.
-  format	Format and label device with ext3 filesystem (for LiveUSB or /home).
+  format	Format and label device with ext3 filesystem 
+                (for LiveUSB or /home).
   gen-liveusb 	Generate a bootable LiveUSB using files from the LiveCD.\n"
 }
 
@@ -186,6 +187,7 @@ install_boot()
 	cat > $TARGET_ROOT/boot/$ST/$ST.$STE << _EOT_
 display display.txt
 default slitaz
+timeout 20
 label slitaz
     kernel /boot/bzImage
     append initrd=/boot/rootfs.gz rw root=/dev/null home=$UUID
