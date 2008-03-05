@@ -29,43 +29,71 @@
 <!-- Start content -->
 <div id="content">
 
-<h2>NOM</h2>
+<h2>Name</h2>
 <p>
 TazUSB - Slitaz LiveUSB utility
 </p>
 
-<h2>SYNTAXE</h2>
+<h2>SYNTAX</h2>
 <pre>
 tazusb [command] [compression|device]
 </pre>
 
 <h2>DESCRIPTION</h2>
 <p>
-TazUSB...
+TazUSB is a utility designed for installing Slitaz to a USB drive. Unlike a hard drive install, the filesystem is kept in a compressed "rootfs.gz". The filesystem is loaded entirely into memory upon boot. This should increase responsiveness, protect the filesystem against accidental corruption and reduce read/writes to the USB drive. Once setup, this utility can also rewrite the root filesystem with any changes you have made since booting up, giving the effective benefits of a hard drive install.
+</p>
+<p>
+TazUSB supports both FAT32/EXT3 formatted drives using SYSLINUX and EXTLINUX respectively. "/home" is mounted on boot using the UUID of your particular flash drive. Unlike a device name, the UUID has the benefit of never changing from machine to machine.  
 </p>
 
-<h2>COMMANDES</h2>
+<h2>COMMANDS</h2>
 <h3><font color="#6c0023">usage</font></h3>
 <p>
-La commande 'usage' will dispaly a short summary of all avalaible command:
+The command 'usage' will display a short summary of all avalaible commands.
 </p>
 <pre>
  # tazusb usage
 </pre>
+
 <h3><font color="#6c0023">writefs</font></h3>
 <p>
-...
+The command 'writefs' will take the current memory resident filesystem and create a "rootfs.gz". If your flash drive is mounted as /home (as it should be), the new filesystem will be copied to the drive for you, otherwise it is left on the root of the drive. Your previous filesystem will be renamed to "previous.gz" and can be accessed on bootup by typing "previous" at the "boot:" prompt. All previous filesystems are renamed to rootfs.gz.unixtimestamp. These are not removed automaticaly, so you should periodically delete these to keep disk usage down.
+</p>
+<p>
+Filesystem compression is supported in the form of lzma, gzip or none. Using no compression is very quick (under 5 seconds) and useful if you are experimenting with a lot of changes. By comparison, using lzma or gzip takes a few minutes but will dramatically reduce file size. This is recommended when commiting permanent changes to the filesystem.
 </p>
 <pre>
- # tazusb writefs /dev/name
+ # tazusb writefs compression
+</pre>
+Example:
+<pre>
+ # tazusb writefs lzma
 </pre>
 
-
-<h2>MAINTENEUR</h2>
+<h3><font color="#6c0023">format</font></h3>
 <p>
-
+The command 'format' is used for formatting a device for use as a LiveUSB device. Currently, it only supports formatting as EXT3. It will partition the entire device as one single partition.
 </p>
+<pre>
+ # tazusb format /dev/name
+</pre>
+Example:
+<pre>
+ # tazusb format /dev/sda
+</pre>
 
+<h3><font color="#6c0023">gen-liveusb</font></h3>
+<p>
+"gen-liveusb" will install a fresh MBR, set your partition as bootable and install syslinux/extlinux depending on the detected filesystem. It will then copy the kernel and filesystem from the CDROM drive, and place this on the target USB drive. This will leave you with a bootable USB copy of Slitaz. 
+</p>
+<pre>
+ # tazusb gen-liveusb /dev/name
+</pre>
+Example:
+<pre>
+ # tazusb gen-liveusb /dev/sda
+</pre>
 <!-- End content -->
 </div>
 </body>
