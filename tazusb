@@ -58,7 +58,7 @@ check_root()
 # Verify a device exists before format or install
 check_for_device()
 {
-	DEVID=`fdisk -l | grep -w $DEVICE | cut -d: -f1 | cut -d/ -f3`
+	DEVID=`fdisk -l | grep -m 1 -w $DEVICE | cut -d: -f1 | cut -d/ -f3`
 	if [ -z "$DEVID" ]; then
 		echo -e "\nUnable to find device: $DEVICE\n"
 		exit 0
@@ -109,16 +109,6 @@ unmount_target_usb()
 # Mount an existing USB device.
 mount_target_usb()
 {
-	# If mount point is in use, unmount
-	if mount | grep $TARGET_ROOT; then
-		umount $TARGET_ROOT
-	fi
-	
-	# Device could be mounted elsewhere, so unmount
-	if mount | grep $PARTID; then
-		umount $PARTID
-	fi
-
 	echo "Mounting USB target device..."	
 	mkdir -p $TARGET_ROOT
 	mount $PARTID $TARGET_ROOT 2>/dev/null
