@@ -58,20 +58,19 @@ check_root()
 # Verify a device exists before format or install
 check_for_device()
 {
-	DEVID=`fdisk -l | grep -m 1 -w $DEVICE | cut -d: -f1 | cut -d/ -f3`
-	if [ -z "$DEVID" ]; then
+	IFDEV=`fdisk -l | grep $DEVICE`
+	if [ -z "$IFDEV" ]; then
 		echo -e "\nUnable to find device: $DEVICE\n"
 		exit 0
 	fi
-	
-	PARTID=/dev/"$DEVID"1
+	DEVID=${DEVID%?}
 }
 
 #gets the UUID and filesystem type
 get_part_info()
 {
-	UUID=`blkid -s UUID -o value $PARTID`
-	FSTYPE=`blkid -s TYPE -o value $PARTID`
+	UUID=`blkid -s UUID -o value $DEVICE`
+	FSTYPE=`blkid -s TYPE -o value $DEVICE`
 }
 
 # Format target device and label partition.
@@ -85,9 +84,9 @@ mkfs_ext3()
 	fi
 	
 	echo "Label  : $label"
-	echo "Mkfs   : mkfs.ext3 -L \"$label\" $PARTID"
+	echo "Mkfs   : mkfs.ext3 -L \"$label\" $DEVICE"
 	echo "" && sleep 2
-	mkfs.ext3 -L "$label" $PARTID
+	mkfs.ext3 -L "$label" $DEVICE
 	
 }
 
@@ -100,9 +99,9 @@ unmount_target_usb()
 	fi
 	
 	# Device could be mounted elsewhere, so unmount
-	if mount | grep $PARTID; then
+	if mount | grep $DEVICE; then
 		echo "Unmounting USB target device..."
-		umount $PARTID
+		umount $DEVICE
 	fi
 }
 
@@ -111,7 +110,7 @@ mount_target_usb()
 {
 	echo "Mounting USB target device..."	
 	mkdir -p $TARGET_ROOT
-	mount $PARTID $TARGET_ROOT 2>/dev/null
+	mount $DEVICE $TARGET_ROOT 2>/dev/null
 }
 
 # Mount SliTaz LiveCD to get needed files.
@@ -147,11 +146,11 @@ install_mbr()
 	# MBR
 	if [ -f /usr/share/syslinux/mbr.bin ]; then
 		echo -n "Installing a new MBR to: $DEVICE"
-		cat /usr/share/syslinux/mbr.bin > $DEVICE
+		cat /usr/share/syslinux/mbr.bin > $DEVID
 		status
 	else
 		# Skip MBR install (tazpkg get-install syslinux-extra ? and then cat)
-		echo "No new MBR installed to: $DEVICE"
+		echo "No new MBR installed to: $DEVID"
 	fi
 }
 
@@ -161,7 +160,7 @@ install_boot()
 	#decide if we're installing syslinux or extlinux
 	if [ "$FSTYPE" = "vfat" ]; then
 		ST=syslinux
-		STC="syslinux -d /boot/syslinux/ $PARTID"
+		STC="syslinux -d /boot/syslinux/ $DEVICE"
 		STE=cfg
 	else
 		ST=extlinux
@@ -232,7 +231,7 @@ set_bootable()
 	# If not set, set bootable
 	if [ -z "$ISSET" ]; then
 	umount $DEVICE
-	echo "Setting $PARTID as bootable..."
+	echo "Setting $DEVICE as bootable..."
 	fdisk $DEVICE >/dev/null << EOF
 a
 1
@@ -346,7 +345,7 @@ Archive compression: $COMPRESSION"
 		echo "Device : $DEVICE"
 		mkfs_ext3
 		echo "==============================================================================="
-		echo "Device $label ($PARTID) is ready to use as LiveUSB and/or /home partition."
+		echo "Device $label ($DEVICE) is ready to use as LiveUSB and/or /home partition."
 		echo ""
 		;;
 	gen-liveusb)
