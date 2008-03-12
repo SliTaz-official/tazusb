@@ -30,7 +30,8 @@ usage ()
   		tazSupported compression: lzma. gzip, none.
   format	Format and label device with ext3 filesystem 
                 (for LiveUSB or /home).
-  gen-liveusb 	Generate a bootable LiveUSB using files from the LiveCD.\n"
+  gen-liveusb 	Generate a bootable LiveUSB using files from the LiveCD.
+  gen-swap      Creat or recreat and active additionnal swap memory.\n"
 }
 
 # Status function.
@@ -269,6 +270,35 @@ EOF
 	fi
 }
 
+# Generate a virtual swap file in /home/swap. SliTaz boot script 
+# will active it, usefull for low memory system
+gen_swap_file()
+{
+	echo ""
+	echo -en "\033[1mGen swap\033[0m
+===============================================================================
+Generate a swap file in /home/swap that will be activate on each boot to have
+more memory available (Empty value to exit).
+
+Swap file in Mb : "
+	read size
+	if [ -z "$size" ]; then
+		echo -e "\nEmpty value. Exiting...\n"
+		exit 0
+	fi
+	cd /home
+	# Sanity check
+	if [ -f swap ]; then
+		swapoff swap 2>/dev/null
+	fi
+	# DD to gen a virtual disk.
+	dd if=/dev/zero of=swap bs=1M count=$size
+	# Make swap filesystem.
+	mkswap swap
+	swapon swap
+	echo ""
+}
+
 #
 # Tazusb sequence
 #
@@ -397,6 +427,10 @@ Archive compression: $COMPRESSION"
 		copy_cdrom_files
 		install_boot
 		exit_or_reboot
+		;;
+	gen-swap)
+		check_root
+		gen_swap_file
 		;;
 	usage|*)
 		# Display usage by default.
