@@ -8,7 +8,7 @@
 # Authors : Christophe Lincoln (Pankso) <pankso@slitaz.org>
 #           Andrew Miller (Spode) <spode@spodesabode.com>
 #
-VERSION=20080304
+VERSION=20080312
 
 COMMAND=$1
 TARGET_ROOT=/media/flash
@@ -55,6 +55,34 @@ check_root()
 	fi
 }
 
+# Display a list of available partition.
+fdisk_list()
+{
+	echo ""
+	fdisk -l | grep ^/dev/sd*
+	echo ""
+}
+
+# We need a USB media to install.
+ask_for_device()
+{
+	echo -n "\
+Please specify the target USB device to $COMMAND. You can type 'list' to 
+get a list of devices, type 'exit' or give an empty value to exit.
+
+Device to use : "; read anser
+	while [ "$anser" == "list" ]; do
+		fdisk_list
+		echo -n "Device to use : "; read anser
+	done
+	if [ "$anser" = "" -o "$anser" = "exit" ]; then
+		echo -e "\nNo specified device or exit.\n"
+		exit 0
+	else
+		DEVICE=$anser
+	fi
+}
+
 # Verify a device exists before format or install
 check_for_device()
 {
@@ -63,7 +91,6 @@ check_for_device()
 		echo -e "\nUnable to find device: $DEVICE\n"
 		exit 0
 	fi
-	DEVID=${DEVICE%?}
 }
 
 #gets the UUID and filesystem type
@@ -123,10 +150,10 @@ mount_cdrom()
 	fi
 	
 	mkdir -p /media/cdrom
-	mount -t iso9660 $CDROM /media/cdrom
+	mount -r -t iso9660 $CDROM /media/cdrom 2>/dev/null
 	
 	if [ ! -f /media/cdrom/boot/rootfs.gz ]; then
-		echo -e "\nUnable to find a filesystem on the cdrom (rootfs.gz).\n"
+		echo -e "\nUnable to mount cdrom or to find a filesystem on it (rootfs.gz).\n"
 		exit 0
 	fi
 }
@@ -151,7 +178,7 @@ install_mbr()
 		status
 	else
 		# Skip MBR install (tazpkg get-install syslinux-extra ? and then cat)
-		echo "No new MBR installed to: $DEVID"
+		echo "No new MBR installed to: $DISK"
 	fi
 }
 
@@ -339,11 +366,11 @@ Archive compression: $COMPRESSION"
 		echo "==============================================================================="
 		DEVICE=$2
 		if [ -z $DEVICE ]; then
-			echo -e "\nPlease specify a device to format: tazusb $COMMAND /dev/name\n"
-			exit 0
+			ask_for_device
+			check_for_device
+		else
+			echo "Device : $DEVICE"
 		fi
-		check_for_device
-		echo "Device : $DEVICE"
 		mkfs_ext3
 		echo "==============================================================================="
 		echo "Device $label ($DEVICE) is ready to use as LiveUSB and/or /home partition."
@@ -357,8 +384,7 @@ Archive compression: $COMPRESSION"
 		echo "==============================================================================="
 		DEVICE=$2
 		if [ -z $DEVICE ]; then
-			echo -e "\No device specified. Usage: tazusb $CAMMAND /dev/name\n"
-			exit 0
+			ask_for_device
 		fi
 		
 		check_for_device
