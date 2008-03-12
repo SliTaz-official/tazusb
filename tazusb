@@ -63,7 +63,7 @@ check_for_device()
 		echo -e "\nUnable to find device: $DEVICE\n"
 		exit 0
 	fi
-	DEVID=${DEVID%?}
+	DEVID=${DEVICE%?}
 }
 
 #gets the UUID and filesystem type
@@ -144,9 +144,10 @@ copy_cdrom_files()
 install_mbr()
 {
 	# MBR
+	DISK=${DEVICE%[1-99]}
 	if [ -f /usr/share/syslinux/mbr.bin ]; then
-		echo -n "Installing a new MBR to: $DEVICE"
-		cat /usr/share/syslinux/mbr.bin > $DEVID
+		echo -n "Installing a new MBR to: $DISK"
+		cat /usr/share/syslinux/mbr.bin > $DISK
 		status
 	else
 		# Skip MBR install (tazpkg get-install syslinux-extra ? and then cat)
@@ -361,12 +362,12 @@ Archive compression: $COMPRESSION"
 		fi
 		
 		check_for_device
+		mount_cdrom
 		get_part_info
 		unmount_target_usb
 		install_mbr
 		set_bootable
 		mount_target_usb
-		mount_cdrom
 		copy_cdrom_files
 		install_boot
 		exit_or_reboot
