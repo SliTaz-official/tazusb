@@ -59,9 +59,9 @@ check_root()
 # Display a list of available partition.
 fdisk_list()
 {
-	echo ""
+	echo "----"
 	fdisk -l | grep ^/dev/sd*
-	echo ""
+	echo "----"
 }
 
 # We need a USB media to install.
@@ -203,9 +203,11 @@ install_boot()
 	
 	# extlinux.conf / syslinux.cfg
 	cat > $TARGET_ROOT/boot/$ST/$ST.$STE << _EOT_
-display display.txt
+display $ST.msg
 default slitaz
-timeout 20
+timeout 40
+implicit 0	
+prompt 1
 label slitaz
     kernel /boot/bzImage
     append initrd=/boot/rootfs.gz rw root=/dev/null home=$UUID
@@ -216,27 +218,17 @@ label previous
 
 _EOT_
 
-	# display.txt 
-	cat > $TARGET_ROOT/boot/$ST/display.txt << "EOT"
-       _______. __       __  .___________.    ___      ________  
-      /       ||  |     |  | |          |   /   \    |       /  
-     |   (----`|  |     |  | `---|  |---`  /  ^  \   `---/  /   
-      \   \    |  |     |  |     |  |     /  /_\  \     /  /    
-  .----)   |   |  `----.|  |     |  |    /  _____  \   /  /----.
-  |_______/    |_______||__|     |__|   /__/     \__\ /________|
-
-
-                       SliTaz GNU/Linux LiveUSB
-            Simple Light Incredible Temporary Autonomus Zone
-
-
-EOT
-status
+	# Splash screen and help files.
+	cp /media/cdrom/boot/isolinux/isolinux.msg $TARGET_ROOT/boot/$ST/extlinux.msg
+	sed -i s/'SliTaz GNU/Linux'/'SliTaz GNU/Linux LiveUSB'/ $TARGET_ROOT/boot/$ST/extlinux.msg
+	cp /media/cdrom/boot/isolinux/splash.lss $TARGET_ROOT/boot/$ST
+	cp /media/cdrom/boot/isolinux/*.txt $TARGET_ROOT/boot/$ST
 }
 
 # Let user exit or reboot.
 exit_or_reboot()
 {
+	echo "==============================================================================="
 	echo ""
 	echo -n "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
 	read anser
@@ -246,7 +238,6 @@ exit_or_reboot()
 		reboot || reboot -f
 	else
 		umount /media/cdrom
-		echo "==============================================================================="
 		echo ""
 		exit 0
 	fi
@@ -255,18 +246,19 @@ exit_or_reboot()
 set_bootable()
 {
 	# As the boot flag is toggable, need to check it before hand
-	ISSET=`fdisk -l $DEVICE | grep $DEVICE | grep "*"`
+	DISK=${DEVICE%[1-99]}
+	ISSET=`fdisk -l $DISK | grep $DEVICE | grep "\*"`
 	
 	# If not set, set bootable
-	if [ -z "$ISSET" ]; then
-	umount $DEVICE
-	echo "Setting $DEVICE as bootable..."
-	fdisk $DEVICE >/dev/null << EOF
+	if [ "$ISSET" == "" ]; then
+		umount $TARGET_ROOT 2>/dev/null
+		echo -n "Setting $DEVICE as bootable..."
+		fdisk $DISK >/dev/null << EOF
 a
 1
 w
 EOF
-	status
+		status
 	fi
 }
 
