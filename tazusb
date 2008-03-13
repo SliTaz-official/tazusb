@@ -8,7 +8,7 @@
 # Authors : Christophe Lincoln (Pankso) <pankso@slitaz.org>
 #           Andrew Miller (Spode) <spode@spodesabode.com>
 #
-VERSION=1.1
+VERSION=1.2
 
 COMMAND=$1
 TARGET_ROOT=/media/flash
