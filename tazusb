@@ -205,9 +205,6 @@ install_boot()
 	cat > $TARGET_ROOT/boot/$ST/$ST.$STE << _EOT_
 display $ST.msg
 default slitaz
-timeout 40
-implicit 0	
-prompt 1
 label slitaz
     kernel /boot/bzImage
     append initrd=/boot/rootfs.gz rw root=/dev/null home=$UUID
@@ -216,11 +213,18 @@ label previous
     kernel /boot/bzImage
     append initrd=/boot/previous.gz rw root=/dev/null home=$UUID
 
+implicit 0	
+prompt 1
+timeout 40
+F1 help.txt
+F2 options.txt
+F3 $ST.msg
+F4 display.txt
 _EOT_
 
 	# Splash screen and help files.
 	cp /media/cdrom/boot/isolinux/isolinux.msg $TARGET_ROOT/boot/$ST/extlinux.msg
-	sed -i s/'SliTaz GNU/Linux'/'SliTaz GNU/Linux LiveUSB'/ $TARGET_ROOT/boot/$ST/extlinux.msg
+	sed -i s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ $TARGET_ROOT/boot/$ST/extlinux.msg
 	cp /media/cdrom/boot/isolinux/splash.lss $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.txt $TARGET_ROOT/boot/$ST
 }
