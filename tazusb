@@ -31,7 +31,8 @@ usage ()
   format	Format and label device with ext3 filesystem 
                 (for LiveUSB or /home).
   gen-liveusb 	Generate a bootable LiveUSB using files from the LiveCD.
-  gen-swap      Creat or recreat and active additionnal swap memory.\n"
+  gen-swap      Creat or recreat and active additionnal swap memory.
+  gen-iso2usb   Generate a bootable LiveUSB using files from ISO file\n"
 }
 
 # Status function.
@@ -158,6 +159,25 @@ mount_cdrom()
 		exit 0
 	fi
 }
+
+# Mount SliTaz ISO to get needed files.
+mount_iso()
+{
+	if mount | grep /media/cdrom ; then
+		umount /media/cdrom
+	fi
+	
+	test -d /media/cdrom || mkdir -p /media/cdrom
+	
+	echo  "Mounting `basename $ISO`..."
+	mount $ISO /media/cdrom 2>/dev/null
+	
+	if [ ! -f /media/cdrom/boot/rootfs.gz ]; then
+		echo -e "\nUnable to mount iso or to find a filesystem on it (rootfs.gz).\n"
+		exit 0
+	fi
+}
+
 
 # All needed files are in the boot direcory of the cdrom.
 copy_cdrom_files()
@@ -425,6 +445,34 @@ Archive compression: $COMPRESSION"
 		check_root
 		gen_swap_file
 		;;
+	gen-iso2usb)
+		check_root
+
+		# Check if file exists
+		ISO=$2
+		if [ -z $ISO ] || [ ! -f $ISO ]; then
+			echo -e "\nPlease specify a valid filename on the command line.\n"
+			exit 1
+		fi
+		echo ""
+		echo -e "\033[1mCopy ISO file to SliTaz LiveUSB media\033[0m"
+		echo "==============================================================================="
+		echo ""
+		DEVICE=$3
+		if [ -z $DEVICE ]; then
+			ask_for_device
+		fi
+		check_for_device
+		mount_iso
+		get_part_info
+		unmount_target_usb
+		install_mbr
+		set_bootable
+		mount_target_usb
+		copy_cdrom_files
+		install_boot
+		exit_or_reboot
+		;;		
 	usage|*)
 		# Display usage by default.
 		usage
