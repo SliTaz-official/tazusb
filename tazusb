@@ -223,6 +223,7 @@ install_boot()
 	
 	# Use existing isolinux.cfg for extlinux.conf or syslinux.cfg
 	cp /media/cdrom/boot/isolinux/isolinux.cfg $TARGET_ROOT/boot/$ST/$ST.$STE
+	sed -i -e "s/isolinux.msg/$ST.msg/"	 $TARGET_ROOT/boot/$ST/$ST.$STE
 	
 	# Add home= to apppend in extlinux or syslinux.cfg
 	sed -i -e "s/\(append.*\)/\1 home=$UUID/" $TARGET_ROOT/boot/$ST/$ST.$STE
