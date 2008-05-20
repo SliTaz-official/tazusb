@@ -31,8 +31,9 @@ usage ()
   format	Format and label device with ext3 filesystem 
                 (for LiveUSB or /home).
   gen-liveusb 	Generate a bootable LiveUSB using files from the LiveCD.
-  gen-swap      Creat or recreat and active additionnal swap memory.
-  gen-iso2usb   Generate a bootable LiveUSB using files from ISO file\n"
+  gen-swap      Create or recreate and activate additional swap memory.
+  gen-iso2usb   Generate a bootable LiveUSB using files from ISO file.
+  clean         Remove old backup filesystems to free disk space.\n"
 }
 
 # Status function.
@@ -290,7 +291,7 @@ gen_swap_file()
 	echo ""
 	echo -en "\033[1mGen swap\033[0m
 ===============================================================================
-Generate a swap file in /home/swap that will be activate on each boot to have
+Generate a swap file in /home/swap that will be activated on each boot to have
 more memory available (Empty value to exit).
 
 Swap file in Mb : "
@@ -310,6 +311,29 @@ Swap file in Mb : "
 	mkswap swap
 	swapon swap
 	echo ""
+}
+
+# Clean out old backups to save disk space
+clean_usb() 
+{
+	echo ""
+	echo -en "\033[1mClean\033[0m
+===============================================================================
+Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space.\n\n"
+	# locate and interactively remove old filesystems from /home directory
+	for file in `find /home/boot/rootfs.gz.[0-9]*`
+	do
+		echo -n "Do you wish to remove: `basename $file` (Yes/no/exit) ? "
+		read answer
+		case $answer in
+			e|E|"exit"|Exit)
+				exit 0 ;;
+			y|Y|yes|Yes)
+				rm -f $file ;;
+			*)
+			echo -en "No filesystems selected, exiting...\n" ;;
+		esac
+	done
 }
 
 #
@@ -473,7 +497,11 @@ Archive compression: $COMPRESSION"
 		copy_cdrom_files
 		install_boot
 		exit_or_reboot
-		;;		
+		;;	
+	clean)
+	    check_root
+	    clean_usb
+	    ;;	
 	usage|*)
 		# Display usage by default.
 		usage
