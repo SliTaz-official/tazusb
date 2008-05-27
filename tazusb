@@ -381,9 +381,9 @@ Archive compression: $COMPRESSION"
 		status
 		
 		#create list of files
-		find /bin /etc /init /sbin /var /dev /lib /mnt /root /usr >/tmp/list
+		find /bin /etc /init /sbin /var /dev /lib /root /usr >/tmp/list
 
-		for dir in /home /proc /sys /tmp /media /media/cdrom /media/flash /media/usbdisk
+		for dir in /home /proc /sys /tmp /mnt /media /media/cdrom /media/flash /media/usbdisk
 		do
 			echo $dir >>/tmp/list
 		done
