@@ -499,9 +499,9 @@ Archive compression: $COMPRESSION"
 		exit_or_reboot
 		;;	
 	clean)
-	    check_root
-	    clean_usb
-	    ;;	
+		check_root
+		clean_usb
+		;;	
 	usage|*)
 		# Display usage by default.
 		usage
