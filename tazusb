@@ -235,6 +235,7 @@ install_boot()
 	cp /media/cdrom/boot/isolinux/splash.lss $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.txt $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.cfg $TARGET_ROOT/boot/$ST
+	cp /media/cdrom/boot/isolinux/*.inc $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.kbd $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.c32 $TARGET_ROOT/boot/$ST
 	
