@@ -245,6 +245,10 @@ install_boot()
 		sed -i s/isolinux.msg/$ST.msg/ $cfg
 	done
 
+	# Modifing include file if exist.
+	if [ -f $TARGET_ROOT/boot/$ST/common.inc ]; then
+		sed -i -e "s/isolinux.msg/$ST.msg/" $TARGET_ROOT/boot/$ST/common.inc
+	fi
 
 }
 
