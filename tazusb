@@ -207,7 +207,7 @@ install_mbr()
 # ext/syslinux install
 install_boot()
 {
-	#decide if we're installing syslinux or extlinux
+	# Decide if we're installing syslinux or extlinux
 	if [ "$FSTYPE" = "vfat" ]; then
 		ST=syslinux
 		STC="syslinux -d /boot/syslinux/ $DEVICE"
@@ -226,7 +226,7 @@ install_boot()
 	cp /media/cdrom/boot/isolinux/isolinux.cfg $TARGET_ROOT/boot/$ST/$ST.$STE
 	sed -i -e "s/isolinux.msg/$ST.msg/"	 $TARGET_ROOT/boot/$ST/$ST.$STE
 	
-	# Add home= to apppend in extlinux or syslinux.cfg
+	# Add home= to append in extlinux or syslinux.cfg
 	sed -i -e "s/\(append.*\)/\1 home=$UUID/" $TARGET_ROOT/boot/$ST/$ST.$STE
 	
 	# Splash screen and help files.
@@ -245,7 +245,7 @@ install_boot()
 		sed -i s/isolinux.msg/$ST.msg/ $cfg
 	done
 
-	# Modifing include file if exist.
+	# Modifing include file if exists.
 	if [ -f $TARGET_ROOT/boot/$ST/common.inc ]; then
 		sed -i -e "s/isolinux.msg/$ST.msg/" $TARGET_ROOT/boot/$ST/common.inc
 	fi
@@ -290,7 +290,7 @@ EOF
 }
 
 # Generate a virtual swap file in /home/swap. SliTaz boot script 
-# will active it, usefull for low memory system
+# will active it, useful for low memory system
 gen_swap_file()
 {
 	echo ""
@@ -325,7 +325,7 @@ clean_usb()
 	echo -en "\033[1mClean\033[0m
 ===============================================================================
 Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space.\n\n"
-	# locate and interactively remove old filesystems from /home directory
+	# Locate and interactively remove old filesystems from /home directory
 	for file in `find /home/boot/rootfs.gz.[0-9]*`
 	do
 		echo -n "Do you wish to remove: `basename $file` (Yes/no/exit) ? "
@@ -347,14 +347,14 @@ Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space.\n\n
 
 case $COMMAND in
 	writefs)
-		#writefs to rootfs.gz
+		# Writefs to rootfs.gz
 		check_root
 		if [ -z $2 ]; then
 			COMPRESSION=none
 		else
 			COMPRESSION=$2
 		fi
-		#start info
+		# Start info
 		echo ""
 		echo -e "\033[1mWrite filesystem\033[0m
 ===============================================================================
@@ -364,10 +364,10 @@ archive (rootfs.gz) usable on a bootable LiveUSB media.
 Archive compression: $COMPRESSION"
 		echo ""
 		
-		#clear out tazpkg cache
+		# Clear out tazpkg cache
 		rm /var/cache/tazpkg/* -r -f
 
-		#optionally remove sound card selection
+		# Optionally remove sound card selection
 		echo -n "Do you wish to remove the sound card selection (Yes/no/exit) ? "
 		read anser
 		case $anser in
@@ -385,7 +385,7 @@ Archive compression: $COMPRESSION"
 		esac
 		status
 		
-		#create list of files
+		# Create list of files
 		find /bin /etc /init /sbin /var /dev /lib /root /usr >/tmp/list
 
 		for dir in /home /proc /sys /tmp /mnt /media /media/cdrom /media/flash /media/usbdisk
@@ -393,7 +393,7 @@ Archive compression: $COMPRESSION"
 			echo $dir >>/tmp/list
 		done
 
-		#gen initramfs with specified compression
+		# Generate initramfs with specified compression
 		if [ "$COMPRESSION" = "lzma" ]; then
 			echo -n "Creating rootfs.gz with lzma compression... "
 			cat /tmp/list | cpio -o -H newc | lzma e -si -so > /rootfs.gz
@@ -407,15 +407,14 @@ Archive compression: $COMPRESSION"
 			cat /tmp/list | cpio -o -H newc > /rootfs.gz
 		fi
 
-		#get initramfs size
+		# Get initramfs size
 		size=`du -sh /rootfs.gz | cut -f 1`
 
-		#if the bootable medium is where it should be, copy across
-
+		# If the bootable medium is where it should be, copy across
 		if (test -e /home/boot/bzImage); then
 			echo "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
 
-			#move the old filesystem with the unix timestamp for reference
+			# Move the old filesystem with the unix timestamp for reference
 			if (test -e /home/boot/previous.gz); then
 				mv /home/boot/previous.gz /home/boot/rootfs.gz.$(date +%s)
 			fi
