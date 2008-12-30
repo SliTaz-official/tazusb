@@ -170,8 +170,15 @@ mount_iso()
 	
 	test -d /media/cdrom || mkdir -p /media/cdrom
 	
+	# Add support to other distros.
+    if [ ! -f /etc/slitaz-version ]; then
+         OPTIONS="-o loop"
+    else
+         OPTIONS=""
+    fi
+	
 	echo  "Mounting `basename $ISO`..."
-	mount $ISO /media/cdrom 2>/dev/null
+	mount $OPTIONS $ISO /media/cdrom 2>/dev/null
 	
 	if [ ! -f /media/cdrom/boot/rootfs.gz ]; then
 		echo -e "\nUnable to mount iso or to find a filesystem on it (rootfs.gz).\n"
