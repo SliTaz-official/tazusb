@@ -375,20 +375,30 @@ Archive compression: $COMPRESSION"
 		rm /var/cache/tazpkg/* -r -f
 
 		# Optionally remove sound card selection
-		echo -n "Do you wish to remove the sound card selection (Yes/no/exit) ? "
+		echo -n "Do you wish to remove the sound card selection (No/yes/exit) ? "
 		read anser
 		case $anser in
 			e|E|"exit"|Exit)
-				exit 0
-				;;
+				exit 0 ;;
 			y|Y|yes|Yes)
 				echo -n "Removing current sound card selection..."
 				rm -f /var/lib/sound-card-driver
-				rm -f /etc/asound.state
-				;;
+				rm -f /etc/asound.state ;;
 			*)
-				echo -n "Keeping current sound card selection..."
-				;;
+				echo -n "Keeping current sound card selection..." ;;
+		esac
+		status
+		# Optionally remove screen resolution
+		echo -n "Do you wish to remove the screen resolution (No/yes/exit) ? "
+		read anser
+		case $anser in
+			e|E|"exit"|Exit)
+				exit 0 ;;
+			y|Y|yes|Yes)
+				echo -n "Removing current screen resolution..."
+				rm -f /etc/X11/screen.conf ;;
+			*)
+				echo -n "Keeping current screen resolution..." ;;
 		esac
 		status
 		
