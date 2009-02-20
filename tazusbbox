@@ -1,0 +1,122 @@
+#!/bin/sh
+#
+# Tiny GTKdialog interface to SliTaz Live USB tool aka TazUSB.
+#
+# (c) 2009 SliTaz GNU/Linux - GNU gpl v3
+#
+
+# TazUSBbox is only for root.
+if test $(id -u) != 0 ; then
+	exec subox tazusbbox
+	exit 0
+fi
+
+# Languages messages translations
+
+case $LANG in
+	fr*)
+		MAIN_MSG="
+Générer un LiveUSB de SliTaz et démarrer! Insérer un LiveCD dans
+le lecteur de cdrom, séléctionner le media et appuyer sur générer.
+"
+		GENERATE_BUTTON="Générer"
+		EXIT_BUTTON="Quitter" ;;
+	*)
+		MAIN_MSG="
+Generate SliTaz LiveUSB media and boot in RAM! Insert a LiveCD into
+the cdrom driver, select the correct device and press Generate.
+"
+		GENERATE_BUTTON="Generate"
+		EXIT_BUTTON="Exit" ;;
+esac
+
+# Functions
+
+gen_live()
+{
+	[ -z "$DEVICE" ] && exit 0 
+	if [ -n "$ISO_IMAGE" ]; then
+		xterm -T "Tazusb gen-iso2usb" \
+			-geometry 80x16 \
+			-e "tazusb gen-iso2usb $ISO_IMAGE $DEVICE; \
+			echo -e \"----\nPress ENTER to close...\"; read i; exit 0"
+	else
+		xterm -T "Tazusb gen-liveusb" \
+			-geometry 80x16 \
+			-e "tazusb gen-liveusb $DEVICE; \
+			echo -e \"----\nPress ENTER to close...\"; read i; exit 0"
+	fi
+}
+
+box()
+{
+	MAIN_DIALOG="
+<window title=\"TazUSB Box\" icon-name=\"media-flash\">
+<vbox>
+	
+	<text width-chars=\"60\">
+		<label>\"$MAIN_MSG\"</label>
+	</text>
+
+	<frame ISO to USB (Optional default is CDROM)>
+		<hbox>
+			<text use-markup=\"true\">
+				<label>\"<b>ISO image:</b>\"</label>
+			</text>
+			<entry accept=\"filename\">
+				<label>Select an ISO image</label>
+				<variable>ISO_IMAGE</variable>
+			</entry>
+			<button>
+				<input file stock=\"gtk-open\"></input>
+				<action type=\"fileselect\">ISO_IMAGE</action>
+			</button>
+		</hbox>
+	</frame>
+	
+	<hbox>
+		<text use-markup=\"true\">
+			<label>\"<b>USB Media:</b>\"</label>
+		</text>
+		<combobox>
+			<variable>DEVICE</variable>"
+			if [ -d /proc/scsi/usb-storage ]; then
+				MAIN_DIALOG=${MAIN_DIALOG}"
+				<item></item>"
+				for i in `blkid | cut -d ":" -f 1`; do
+					MAIN_DIALOG=${MAIN_DIALOG}"
+					<item>$i</item>"
+				done
+			else
+				MAIN_DIALOG=${MAIN_DIALOG}"
+				<item>Not found</item>"
+			fi
+			export MAIN_DIALOG=${MAIN_DIALOG}"
+		</combobox>
+	</hbox>
+	<hbox>
+		<button>
+			<label>$GENERATE_BUTTON</label>
+			<input file icon=\"forward\"></input>	
+			<action>$0 gen_live</action>
+			<action>clear:ISO_IMAGE</action>
+		</button>
+		<button>
+			<label>$EXIT_BUTTON</label>
+			<input file icon=\"exit\"></input>
+			<action type=\"exit\">exit</action>
+		</button>
+	</hbox>
+	
+</vbox>
+</window>"
+	gtkdialog --center --program=MAIN_DIALOG #>/dev/null
+}
+
+if [ -n "$1" ]; then
+	$1
+else
+	box
+fi
+
+exit 0

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Tazlito LiveUSB Tool
+Name[fr]=Créer un LiveUSB
+Exec=subox tazusbbox
+Icon=media-flash
+Type=Application
+Categories=System;
