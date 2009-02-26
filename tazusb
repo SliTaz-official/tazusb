@@ -271,6 +271,7 @@ exit_or_reboot()
 		umount /media/cdrom
 		reboot || reboot -f
 	else
+		umount $TARGET_ROOT
 		umount /media/cdrom
 		echo ""
 		exit 0
@@ -518,6 +519,7 @@ Archive compression: $COMPRESSION"
 		copy_cdrom_files
 		install_boot
 		exit_or_reboot
+		losetup -d /dev/loop0
 		;;	
 	clean)
 		check_root
