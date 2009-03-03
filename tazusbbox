@@ -38,13 +38,11 @@ gen_live()
 	if [ -n "$ISO_IMAGE" ]; then
 		xterm -T "Tazusb gen-iso2usb" \
 			-geometry 80x16 \
-			-e "tazusb gen-iso2usb $ISO_IMAGE $DEVICE; \
-			echo -e \"----\nPress ENTER to close...\"; read i; exit 0"
+			-e "tazusb gen-iso2usb $ISO_IMAGE $DEVICE; exit 0"
 	else
 		xterm -T "Tazusb gen-liveusb" \
 			-geometry 80x16 \
-			-e "tazusb gen-liveusb $DEVICE; \
-			echo -e \"----\nPress ENTER to close...\"; read i; exit 0"
+			-e "tazusb gen-liveusb $DEVICE; exit 0"
 	fi
 }
 
