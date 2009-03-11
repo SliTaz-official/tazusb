@@ -58,7 +58,7 @@ check_root()
 	fi
 }
 
-# Display a list of available partition.
+# Display a list of available partitions.
 fdisk_list()
 {
 	echo "----"
@@ -96,7 +96,7 @@ check_for_device()
 	fi
 }
 
-#gets the UUID and filesystem type
+# gets the UUID and filesystem type
 get_part_info()
 {
 	UUID=`blkid -s UUID -o value $DEVICE`
@@ -297,8 +297,8 @@ EOF
 	fi
 }
 
-# Generate a virtual swap file in /home/swap. SliTaz boot script 
-# will active it, useful for low memory system
+# Generate a virtual swap file in /home/swap. SliTaz boot scripts 
+# will activate it, useful for low memory systems
 gen_swap_file()
 {
 	echo ""

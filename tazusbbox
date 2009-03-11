@@ -24,7 +24,7 @@ le lecteur de cdrom, séléctionner le media et appuyer sur générer.
 	*)
 		MAIN_MSG="
 Generate SliTaz LiveUSB media and boot in RAM! Insert a LiveCD into
-the cdrom driver, select the correct device and press Generate.
+the cdrom drive, select the correct device and press Generate.
 "
 		GENERATE_BUTTON="Generate"
 		EXIT_BUTTON="Exit" ;;
