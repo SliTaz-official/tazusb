@@ -48,6 +48,7 @@ TazUSB supports both FAT32/EXT3 formatted drives using SYSLINUX and EXTLINUX res
 </p>
 
 <h2>COMMANDS</h2>
+<a name="usage"></a>
 <h3><font color="#6c0023">usage</font></h3>
 <p>
 The command 'usage' will display a short summary of all avalaible commands.
@@ -56,6 +57,7 @@ The command 'usage' will display a short summary of all avalaible commands.
  # tazusb usage
 </pre>
 
+<a name="writefs"></a>
 <h3><font color="#6c0023">writefs</font></h3>
 <p>
 The command 'writefs' will take the current memory resident filesystem and create a "rootfs.gz". If your flash drive is mounted as /home (as it should be), the new filesystem will be copied to the drive for you, otherwise it is left on the root of the drive. Your previous filesystem will be renamed to "previous.gz" and can be accessed on bootup by typing "previous" at the "boot:" prompt. All previous filesystems are renamed to rootfs.gz.unixtimestamp. These are not removed automaticaly, so you should periodically delete these to keep disk usage down.
@@ -71,6 +73,7 @@ Example:
  # tazusb writefs lzma
 </pre>
 
+<a name="format"></a>
 <h3><font color="#6c0023">format</font></h3>
 <p>
 The command 'format' is used for formatting a device for use as a LiveUSB device. Currently, it only supports formatting as EXT3.
@@ -83,6 +86,7 @@ Example:
  # tazusb format /dev/sda1
 </pre>
 
+<a name="gen-liveusb"></a>
 <h3><font color="#6c0023">gen-liveusb</font></h3>
 <p>
 "gen-liveusb" will install a fresh MBR, set your partition as bootable and install syslinux/extlinux depending on the detected filesystem. It will then copy the kernel and filesystem from the CDROM drive, and place this on the target USB drive. This will leave you with a bootable USB copy of Slitaz. 
