@@ -8,12 +8,13 @@
 # Authors : Christophe Lincoln (Pankso) <pankso@slitaz.org>
 #           Andrew Miller (Spode) <spode@spodesabode.com>
 #
-VERSION=2.1
+VERSION=2.1.1
 
 COMMAND=$1
 TARGET_ROOT=/media/flash
 DRIVE_NAME=`cat /proc/sys/dev/cdrom/info | grep "drive name" | cut -f 3`
 CDROM=/dev/$DRIVE_NAME
+LOG=/tmp/$(basename $0).log
 
 #
 # Tazusb functions
@@ -28,8 +29,8 @@ usage ()
   usage     	Print this short usage.
   writefs 	Write the current filesystem to rootfs.gz.
   		tazSupported compression: lzma. gzip, none.
-  format	Format and label device with ext3 filesystem 
-                (for LiveUSB or /home).
+  format	Format and label device with ext3, ext2 or fat32 filesystem 
+                (for LiveUSB or /home). Default is ext3.
   gen-liveusb 	Generate a bootable LiveUSB using files from the LiveCD.
   gen-swap      Create or recreate and activate additional swap memory.
   gen-iso2usb   Generate a bootable LiveUSB using files from ISO file.
@@ -120,16 +121,94 @@ mkfs_ext3()
 	
 }
 
+#Get label for device
+#
+get_label()
+{
+	echo -n "Please specify a label for the partition (TazUSB): "
+	read label
+	
+	if [ -z $label ]; then
+		label=TazUSB
+	fi
+}
+
+#Get fs type
+# supported fs are ext3, ext2, fat32
+get_fs_type()
+{
+	echo -n "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
+	read  fs_type
+	
+	if [ -z $fs_type ]; then
+		fs_type=ext3
+	fi
+}
+
+# We can chose the filesystem type.
+ask_for_fs_type()
+{
+	echo -n "\
+Please specify the filesystem type to $COMMAND. 
+Available format is ext3(default), ext2 or fat32. 
+Press enter to keep the default value.
+
+File system type : "; read anser
+	if [ "$anser" = "" ]; then
+		FS_TYPE=ext3
+	else
+		FS_TYPE=$anser
+	fi
+}
+
+# Format target device in ext3, ext2 or fat32.
+#
+make_fs()
+{
+	local answer
+	
+	FS=$(echo $fs_type | tr [A-Z] [a-z])
+	case "$FS" in
+		ext3|ext2)
+			echo -e "\nProcessiong..."
+			echo "Label  : $label"
+			echo "Mkfs   : mkfs.$FS -L \"$label\" $DEVICE"
+			echo "" && sleep 2
+			mkfs.$@ -L "$label" $DEVICE > $LOG 2>&1
+			;;
+		[Ff]at32)
+			if [ -x /sbin/mkdosfs ];then
+				echo -e "\nProcessiong..."
+				echo "Label  : $label"
+				echo "Mkfs   : mkdosfs -F 32 -n \"$label\" $DEVICE"
+				echo "" && sleep 2
+				mkdosfs -F 32 -n "$label" $DEVICE  
+			else
+				echo -ne "Can't find mkdosfs tool.\nWould you like to  install dosfstools from repository [y/N] ? "; read answer
+				case $answer in
+					y|Y)
+						yes | tazpkg get-install dosfstools  && make_fs fat32;;
+					*)
+						exit 1 ;;
+				esac
+			fi
+			;;
+		*)
+			echo "Sorry. Filesystem $FS not supported."
+			exit 
+	esac
+}
+
 # Mount an existing USB device.
 unmount_target_usb()
 {
 	# If mount point is in use, unmount
-	if mount | grep $TARGET_ROOT; then
+	if mount | grep -q $TARGET_ROOT; then
 		umount $TARGET_ROOT
 	fi
 	
 	# Device could be mounted elsewhere, so unmount
-	if mount | grep $DEVICE; then
+	if mount | grep -q $DEVICE; then
 		echo "Unmounting USB target device..."
 		umount $DEVICE
 	fi
@@ -455,13 +534,18 @@ Archive compression: $COMPRESSION"
 		echo -e "\033[1mFormat a device\033[0m"
 		echo "==============================================================================="
 		DEVICE=$2
+		label=$3
+		fs_type=$4
 		if [ -z $DEVICE ]; then
 			ask_for_device
 			check_for_device
 		else
 			echo "Device : $DEVICE"
 		fi
-		mkfs_ext3
+		test -z $fs_type &&	get_fs_type
+		unmount_target_usb 
+		make_fs "$fs_type"
+		#mkfs_ext3
 		echo "==============================================================================="
 		echo "Device $label ($DEVICE) is ready to use as LiveUSB and/or /home partition."
 		echo ""
@@ -492,7 +576,7 @@ Archive compression: $COMPRESSION"
 		check_root
 		gen_swap_file
 		;;
-	gen-iso2usb)
+	gen-iso2usb|iso2usb)
 		check_root
 
 		# Check if file exists
