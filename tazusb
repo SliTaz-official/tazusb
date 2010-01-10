@@ -150,7 +150,7 @@ ask_for_fs_type()
 {
 	echo -n "\
 Please specify the filesystem type to $COMMAND. 
-Available format is ext3(default), ext2 or fat32. 
+Available formats are ext3(default), ext2 or fat32. 
 Press enter to keep the default value.
 
 File system type : "; read anser
@@ -170,7 +170,7 @@ make_fs()
 	FS=$(echo $fs_type | tr [A-Z] [a-z])
 	case "$FS" in
 		ext3|ext2)
-			echo -e "\nProcessiong..."
+			echo -e "\nProcessing..."
 			echo "Label  : $label"
 			echo "Mkfs   : mkfs.$FS -L \"$label\" $DEVICE"
 			echo "" && sleep 2
@@ -178,13 +178,13 @@ make_fs()
 			;;
 		[Ff]at32)
 			if [ -x /sbin/mkdosfs ];then
-				echo -e "\nProcessiong..."
+				echo -e "\nProcessing..."
 				echo "Label  : $label"
 				echo "Mkfs   : mkdosfs -F 32 -n \"$label\" $DEVICE"
 				echo "" && sleep 2
 				mkdosfs -F 32 -n "$label" $DEVICE  
 			else
-				echo -ne "Can't find mkdosfs tool.\nWould you like to  install dosfstools from repository [y/N] ? "; read answer
+				echo -ne "Can't find mkdosfs tool.\nWould you like to install dosfstools from repository [y/N] ? "; read answer
 				case $answer in
 					y|Y)
 						yes | tazpkg get-install dosfstools  && make_fs fat32;;
@@ -194,7 +194,7 @@ make_fs()
 			fi
 			;;
 		*)
-			echo "Sorry. Filesystem $FS not supported."
+			echo "Sorry. Filesystem $FS is not supported."
 			exit 
 	esac
 }
@@ -266,7 +266,7 @@ mount_iso()
 }
 
 
-# All needed files are in the boot direcory of the cdrom.
+# All needed files are in the boot directory of the cdrom.
 copy_cdrom_files()
 {
 	echo -n "Copying needed files from cdrom..."
