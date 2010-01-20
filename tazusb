@@ -162,7 +162,7 @@ File system type : "; read anser
 }
 
 # Format target device in ext3, ext2 or fat32.
-#
+# Usage: make_fs ext2|fat32|ext3 (default)
 make_fs()
 {
 	local answer
@@ -321,7 +321,8 @@ install_boot()
 	cp /media/cdrom/boot/isolinux/splash.lss $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.txt $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.cfg $TARGET_ROOT/boot/$ST
-	cp /media/cdrom/boot/isolinux/*.inc $TARGET_ROOT/boot/$ST
+	ls /media/cdrom/boot/isolinux/*.inc > /dev/null 2>&1 && \
+	   cp /media/cdrom/boot/isolinux/*.inc $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.kbd $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.c32 $TARGET_ROOT/boot/$ST
 	
