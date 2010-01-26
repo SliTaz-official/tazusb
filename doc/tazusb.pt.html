@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+<head>
+    <title>Manual TazUSB - Ferramenta LiveUSB do SliTaz</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="description" content="slitaz bootable media LiveUSB key hd SD card" />
+    <meta name="expires" content="never" />
+    <meta name="modified" content="2008-07-18 20:00:00" />
+    <style type="text/css"><!--
+    body { font: 90% sans-serif, vernada, arial; margin: 0; }
+    #header { background: #f0ba08; color: black; height: 50px;
+        border-top: 1px solid black; border-bottom: 1px solid black; }
+    #content { margin: 0px 50px 26px 50px; }
+    h1 { margin: 14px 0px 0px 16px; }
+    li { line-height: 1.4em; }
+    pre { padding: 5px; color: black; background: #e1e0b0; }
+    pre.script { padding: 10px; color: black; background: #e8e8e8;
+        border: 1px inset #333333; }
+    code { font-size: 100%; color: #669900; background: transparent; }
+    hr { color: white; background: white; height: 1px; border: 0; }
+    --></style>
+</head>
+<body bgcolor="#ffffff">
+<div id="header">
+<h1><font color="#3e1220">Manual TazUSB</font></h1>
+</div>
+<hr />
+<!-- Start content -->
+<div id="content">
+
+<h2>NOME</h2>
+<p>
+TazUSB - SliTaz LiveUSB utility
+</p>
+
+<h2>SINTAXE</h2>
+<pre>
+tazusb [command] [compression|device]
+</pre>
+
+<h2>DESCRIÇÃO</h2>
+<p>
+TazUSB é um utilitário desenvolvido para instalar o SliTaz em um dispositivo
+USB. Diferente de uma instalação no disco rígido, o sistema de arquivos é 
+mantido no arquivo comprimido "rootfs.gz". O sistema de arquivo é carregado
+totalmente na memória no momento da inicialização. Isto aumenta o tempo de 
+resposta, proteje o arquivo de sistemas de corrupções acidentais e reduz as
+leituras/escritas no dispositivo USB. Uma vez configurado, este utilitário
+também pode reescrever o sistema de arquivos com qualquer mudança que tenha sido
+feita desde o momento da inicialização, oferecendo os mesmos benefícios de uma
+instalação no disco rígido.
+</p>
+<p>
+TazUSB suporta drives formatados tanto em FAT32 como em EXT3, usando SYSLINUX
+e EXTLINUX, respectivamente. O diretório "/home" é montado no momento da
+inicialização usando o UUID do dispositivo. Ao contrário do nome do dispositivo, o
+UUID possui o benefício de nunca mudar de máquina para máquina.
+
+</p>
+
+<h2>COMANDOS</h2>
+<a name="usage"></a>
+<h3><font color="#6c0023">usage</font></h3>
+<p>
+Mostra um resumo de todos os comandos disponíveis:
+</p>
+<pre>
+ # tazusb usage
+</pre>
+
+<a name="writefs"></a>
+<h3><font color="#6c0023">writefs</font></h3>
+<p>
+Este comando cria um arquivo "rootfs.gz" a partir do sistema de arquivos
+carregado atualmente na memória. Se o seu drive USB está montado como /home (o 
+comportamento padrão), o novo sistema de arquivos será copiado para o drive 
+para você, caso contrário será copiado na raíz do drive. O sistema de arquivos
+antigo será renomeado para "previous.gz" e pode ser acessado no momento da 
+inicialização ao se digitar "previous" no prompt "boot: ". Todos os sistemas
+de arquivos anteriores são renomeados para "rootfs.gz.unixtimestamp". Eles não
+são removidos automaticamente, então você deve deletá-los periodicamente para
+manter baixa a utilização da capacidade do drive.
+</p>
+<p>
+A compressão do sistema de arquivos é suportada na forma lzma, gzip ou none.
+Não usar compressão é rápido (em torno de 5 segundos) e útil se você está
+experimentando várias mudanças. Por comparação, usando lzma ou gzip demora-se
+alguns minutos mas reduz drasticamente o tamanho do arquivo. Isto é recomendado
+ao se fazer mudanças permamentes no sistema de arquivos.
+</p>
+<pre>
+ # tazusb writefs compression
+</pre>
+Exemplo:
+<pre>
+ # tazusb writefs lzma
+</pre>
+
+<a name="format"></a>
+<h3><font color="#6c0023">format</font></h3>
+<p>
+Este comando é usado para formatar o dispositivo a ser utilizado como LiveUSB.
+Atualmente só suporta formatação em EXT3.
+</p>
+<pre>
+ # tazusb format /dev/name
+</pre>
+Exemplo:
+<pre>
+ # tazusb format /dev/sda1
+</pre>
+
+<a name="gen-liveusb"></a>
+<h3><font color="#6c0023">gen-liveusb</font></h3>
+<p>
+Instala uma nova MBR, marca sua partição como inicializável e instala 
+syslinux/extlinux dependendo do sistema de arquivos detectado. Copia, então,
+o kernel e o sistema de arquivos do drive de cdrom, e os colocam no drive USB
+especificado, criando uma cópia inicializável do SliTaz no drive USB:
+</p>
+<pre>
+ # tazusb gen-liveusb /dev/name
+</pre>
+Exemplo:
+<pre>
+ # tazusb gen-liveusb /dev/sda1
+</pre>
+<a name="gen-swap"></a>
+<h3><font color="#6c0023">gen-swap</font></h3>
+<p>
+O comando 'gen-swap' cria (ou recria) um arquivo de troca (swap) no
+diretório /home que será ativado a cada boot. Isto é útil para sistemas
+antigos que possuem pouca memória RAM.
+</p>
+<pre> # tazusb gen-swap
+</pre>
+
+<a name="gen-iso2usb"></a>
+<h3><font color="#6c0023">gen-iso2usb</font></h3>
+<p>
+Este comando faz praticamente o mesmo que o comando gen-liveusb, mas copia
+o kernel e o sistema de arquivos de uma imagem iso em vez de copiá-los 
+a partir do CDROM.
+</p>
+<pre> # tazusb gen-iso2usb /caminho/para/a/iso
+</pre>
+Exemplo:
+<pre> # tazusb gen-iso2usb /home/tux/slitaz.iso
+</pre>
+
+<a name="clean"></a>
+<h3><font color="#6c0023">clean</font></h3>
+<p>
+Remove os antigos sistemas de arquivos rootfs.gz.unixtimestamp (veja
+writefs) para manter baixo o uso do disco.
+</p>
+<pre> # tazusb clean
+</pre>
+
+<h2>MAINTAINER</h2>
+<p>
+Eric Joseph-Alexandre &lt;erjo at slitaz.org&gt;
+</p>
+
+<!-- End content -->
+</div>
+</body>
+</html>
