@@ -527,7 +527,7 @@ Archive compression: $COMPRESSION"
 		echo -en "----\nENTER to continue..."; read i
 		;;
 	format)
-		# Format a partitions in ext3.
+		# Format a partition.
 		check_root
 		echo ""
 		echo -e "\033[1mFormat a device\033[0m"
@@ -542,6 +542,7 @@ Archive compression: $COMPRESSION"
 			echo "Device : $DEVICE"
 		fi
 		test -z $fs_type &&	get_fs_type
+		get_label
 		unmount_target_usb 
 		make_fs "$fs_type"
 		#mkfs_ext3
