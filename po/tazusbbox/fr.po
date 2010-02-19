@@ -1,0 +1,55 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Linux User <pankso@slitaz.org>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tazusbbox VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-02-18 00:17+0100\n"
+"PO-Revision-Date: 2010-02-17 22:58+0100\n"
+"Last-Translator: Christophe Lincoln <pankso@slitaz.org>\n"
+"Language-Team: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: tazusbbox:43
+msgid "TazUSB Box"
+msgstr "TazUSB Box"
+
+#: tazusbbox:47
+msgid ""
+"\n"
+"Generate SliTaz LiveUSB media and boot in RAM! Insert a LiveCD into\n"
+"the cdrom drive, select the correct device and press Generate.\n"
+msgstr ""
+"\n"
+"Générer un LiveUSB de SliTaz et démarrer! Insérer un LiveCD dans\n"
+"le lecteur de cdrom, séléctionner le media et appuyer sur générer.\n"
+
+#: tazusbbox:53
+msgid "ISO to USB (Optional default is CDROM)"
+msgstr "ISO vers USB (En option, CDROM utilisé par défaut)"
+
+#: tazusbbox:56
+msgid "<b>ISO image:</b>"
+msgstr "<b>Image ISO:</b>"
+
+#: tazusbbox:70
+msgid "<b>USB Media:</b>"
+msgstr "<b>Media USB:</b>"
+
+#: tazusbbox:83
+msgid "Not found"
+msgstr "Introuvé"
+
+#: tazusbbox:90
+msgid "Generate"
+msgstr "Générer"
+
+#: tazusbbox:96
+msgid "Exit"
+msgstr "Quitter"
