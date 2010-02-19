@@ -2,7 +2,7 @@
 #
 # Tiny GTKdialog interface to SliTaz Live USB tool aka TazUSB.
 #
-# (c) 2009 SliTaz GNU/Linux - GNU gpl v3
+# (c) 2010 SliTaz GNU/Linux - GNU gpl v3
 #
 
 # TazUSBbox is only for root.
@@ -11,24 +11,15 @@ if test $(id -u) != 0 ; then
 	exit 0
 fi
 
-# Languages messages translations
+# Include gettext helper script.
+. /usr/bin/gettext.sh
 
-case $LANG in
-	fr*)
-		MAIN_MSG="
-Générer un LiveUSB de SliTaz et démarrer! Insérer un LiveCD dans
-le lecteur de cdrom, séléctionner le media et appuyer sur générer.
-"
-		GENERATE_BUTTON="Générer"
-		EXIT_BUTTON="Quitter" ;;
-	*)
-		MAIN_MSG="
-Generate SliTaz LiveUSB media and boot in RAM! Insert a LiveCD into
-the cdrom drive, select the correct device and press Generate.
-"
-		GENERATE_BUTTON="Generate"
-		EXIT_BUTTON="Exit" ;;
-esac
+# Export package name for gettext.
+TEXTDOMAIN='tazusbbox'
+export TEXTDOMAIN
+
+# $BIN for functions.
+export BIN=$0
 
 # Functions
 
@@ -48,36 +39,38 @@ gen_live()
 
 box()
 {
-	MAIN_DIALOG="
-<window title=\"TazUSB Box\" icon-name=\"media-flash\">
+	MAIN_DIALOG='
+<window title="'`gettext "TazUSB Box"`'" icon-name="media-flash">
 <vbox>
 	
-	<text width-chars=\"60\">
-		<label>\"$MAIN_MSG\"</label>
+	<text width-chars="60">
+		<label>"'`gettext "
+Generate SliTaz LiveUSB media and boot in RAM! Insert a LiveCD into
+the cdrom drive, select the correct device and press Generate.
+"`'"</label>
 	</text>
 
-	<frame ISO to USB (Optional default is CDROM)>
+	<frame '`gettext "ISO to USB (Optional default is CDROM)"`'>
 		<hbox>
-			<text use-markup=\"true\">
-				<label>\"<b>ISO image:</b>\"</label>
+			<text use-markup="true">
+				<label>"'`gettext "<b>ISO image:</b>"`'"</label>
 			</text>
-			<entry accept=\"filename\">
-				<label>Select an ISO image</label>
+			<entry accept="filename">
 				<variable>ISO_IMAGE</variable>
 			</entry>
 			<button>
-				<input file stock=\"gtk-open\"></input>
-				<action type=\"fileselect\">ISO_IMAGE</action>
+				<input file icon="tazlito"></input>
+				<action type="fileselect">ISO_IMAGE</action>
 			</button>
 		</hbox>
 	</frame>
 	
 	<hbox>
-		<text use-markup=\"true\">
-			<label>\"<b>USB Media:</b>\"</label>
+		<text use-markup="true">
+			<label>"'`gettext "<b>USB Media:</b>"`'"</label>
 		</text>
 		<combobox>
-			<variable>DEVICE</variable>"
+			<variable>DEVICE</variable>'
 			if [ -d /proc/scsi/usb-storage ]; then
 				MAIN_DIALOG=${MAIN_DIALOG}"
 				<item></item>"
@@ -86,28 +79,28 @@ box()
 					<item>$i</item>"
 				done
 			else
-				MAIN_DIALOG=${MAIN_DIALOG}"
-				<item>Not found</item>"
+				MAIN_DIALOG=${MAIN_DIALOG}'
+				<item>'`gettext "Not found"`'</item>'
 			fi
-			export MAIN_DIALOG=${MAIN_DIALOG}"
+			export MAIN_DIALOG=${MAIN_DIALOG}'
 		</combobox>
 	</hbox>
 	<hbox>
 		<button>
-			<label>$GENERATE_BUTTON</label>
-			<input file icon=\"forward\"></input>	
-			<action>$0 gen_live</action>
+			<label>'`gettext "Generate"`'</label>
+			<input file icon="forward"></input>	
+			<action>$BIN gen_live</action>
 			<action>clear:ISO_IMAGE</action>
 		</button>
 		<button>
-			<label>$EXIT_BUTTON</label>
-			<input file icon=\"exit\"></input>
-			<action type=\"exit\">exit</action>
+			<label>'`gettext "Exit"`'</label>
+			<input file icon="exit"></input>
+			<action type="exit">exit</action>
 		</button>
 	</hbox>
 	
 </vbox>
-</window>"
+</window>'
 	gtkdialog --center --program=MAIN_DIALOG #>/dev/null
 }
 
