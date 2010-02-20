@@ -7,17 +7,17 @@ SliTaz LiveUSB utility aka TazUSB. Please read the manual for more information.
 
 Installation
 ------------
-To install all needed file and compile translated message, make and gettext
+To install all needed files and compile translated messages, make and gettext
 must be installed. Running 'make install' will install everything in /usr, but
-an other path and/or destination can be sprcified via PREFIX and DESTDIR.
+another path and/or destination can be specified via PREFIX and DESTDIR.
 Example:
 
 	$ make DESTDIR=$PWD/_pkg install
 
 Translation
 -----------	
-To start a new translation please use msginit from the pot file directory,
-example for French/France locale (fr_FR):
+To start a new translation please use msginit from the pot file directory.
+Example for French/France locale (fr_FR):
 
 	$ msginit -l fr_FR -o fr.po -i tazusb.pot
 
@@ -25,9 +25,9 @@ To update all translations from the pot file:
 
 	$ make msgmerge
 
-To compile po files for testing purpose you can use 'make msgfmt' or compile
-manualy your translation. Example for french locale, note that file must be 
-copied into /usr/share/locale/fr/LC_MESSAGES so gettext can found it:
+To compile po files for testing purposes you can use 'make msgfmt' or manually 
+compile your translation. Example for french locale, note that the file must be 
+copied into /usr/share/locale/fr/LC_MESSAGES so gettext can find it:
 
 	$ msgfmt -o tazusb.mo fr.po
 	

@@ -1,4 +1,4 @@
-# Makefile for Tazlito.
+# Makefile for TazUSB.
 # Check the README for more information.
 #
 PREFIX?=/usr
