@@ -4,6 +4,7 @@
 PREFIX?=/usr
 DOCDIR?=/usr/share/doc
 DESTDIR?=
+LINGUAS?=fr
 
 all:
 
@@ -13,22 +14,28 @@ pot:
 	xgettext -o po/tazusbbox/tazusbbox.pot -L Shell ./tazusbbox
 
 msgmerge:
-	msgmerge -U po/tazusbbox/fr.po po/tazusbbox/tazusbbox.pot
+	@for l in $(LINGUAS); do \
+		echo -n "Updating $$l po file."; \
+		msgmerge -U po/tazusbbox/$$l.po po/tazusbbox/tazusbbox.pot ; \
+	done;
 
 msgfmt:
-	mkdir -p po/mo/fr
-	msgfmt -o po/mo/fr/tazusbbox.mo po/tazusbbox/fr.po
+	@for l in $(LINGUAS); do \
+		echo "Compiling $$l mo file..."; \
+		mkdir -p po/mo/$$l; \
+		msgfmt -o po/mo/$$l/tazusbbox.mo po/tazusbbox/$$l.po ; \
+	done;
 
 # Installation.
 
 install: msgfmt
 	@echo "Installing TazUSB into $(DESTDIR)$(PREFIX)/bin..."
-	install -d -m 0777 $(DESTDIR)$(PREFIX)/bin
-	install -g root -o root -m 0777 tazusb $(DESTDIR)$(PREFIX)/bin
-	install -D -m 0777 tazusbbox $(DESTDIR)$(PREFIX)/bin
+	mkdir -p $(DESTDIR)$(PREFIX)/bin
+	install -m 0777 tazusb $(DESTDIR)$(PREFIX)/bin
+	install -m 0777 tazusbbox $(DESTDIR)$(PREFIX)/bin
 	@echo "Installing Tazusb documentation..."
-	install -g root -o root -m 0755 -d $(DESTDIR)$(DOCDIR)/tazlito
-	install -g root -o root -m 0644 doc/tazusb.en.html $(DESTDIR)$(DOCDIR)/tazlito
+	mkdir -p $(DESTDIR)$(DOCDIR)/tazusb
+	cp -a doc/* $(DESTDIR)$(DOCDIR)/tazusb
 	# i18n
 	mkdir -p $(DESTDIR)$(PREFIX)/share/locale
 	cp -a po/mo/* $(DESTDIR)$(PREFIX)/share/locale
