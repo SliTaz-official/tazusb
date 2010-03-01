@@ -4,7 +4,7 @@
 PREFIX?=/usr
 DOCDIR?=/usr/share/doc
 DESTDIR?=
-LINGUAS?=fr
+LINGUAS?=fr pt
 
 all:
 
