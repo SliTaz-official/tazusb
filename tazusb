@@ -602,8 +602,9 @@ Archive compression: $COMPRESSION"
 		mount_target_usb
 		copy_cdrom_files
 		install_boot
-		exit_or_reboot
+		umount /dev/cdrom
 		losetup -d /dev/loop0
+		exit_or_reboot
 		;;	
 	clean)
 		check_root
