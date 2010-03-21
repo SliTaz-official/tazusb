@@ -6,6 +6,12 @@ DOCDIR?=/usr/share/doc
 DESTDIR?=
 LINGUAS?=fr pt
 
+PACKAGE	=	tazusb
+VERSION	:=	$(shell grep ^VERSION ${PACKAGE} | cut -d '=' -f 2)
+TARBALL	=	$(PACKAGE)-$(VERSION).tar.gz
+DISTDIR	=	/tmp/$(PACKAGE)-$(VERSION)
+
+
 all:
 
 # i18n.
@@ -51,3 +57,17 @@ uninstall:
 clean:
 	rm -rf _pkg
 	rm -rf po/mo
+
+dist-clean:
+	rm -rf $(DISTDIR)
+	rm -f $(DISTDIR).*
+	
+# Build tarball and MD5 file for packagin.
+dist: dist-clean
+	mkdir -p $(DISTDIR)
+	cp -a * $(DISTDIR)
+	cd /tmp ; \
+		tar cvzf $(TARBALL) $(PACKAGE)-$(VERSION); \
+		md5sum $(TARBALL) > $(TARBALL).md5
+	
+
