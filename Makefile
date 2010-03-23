@@ -43,6 +43,10 @@ install: msgfmt
 	# i18n
 	mkdir -p $(DESTDIR)$(PREFIX)/share/locale
 	cp -a po/mo/* $(DESTDIR)$(PREFIX)/share/locale
+	# Desktop integration
+	@echo "Setting up desktop integration..."
+	mkdir -p $(DESTDIR)$(PREFIX)/share/applications
+	cp -a  applications $(DESTDIR)$(PREFIX)/share/
 
 # Uninstallation and tarball clean-up commands.
 
