@@ -26,8 +26,8 @@ msgmerge:
 msgfmt:
 	@for l in $(LINGUAS); do \
 		echo "Compiling $$l mo file..."; \
-		mkdir -p po/mo/$$l; \
-		msgfmt -o po/mo/$$l/tazusbbox.mo po/tazusbbox/$$l.po ; \
+		mkdir -p po/mo/$$l/LC_MESSAGES; \
+		msgfmt -o po/mo/$$l/LC_MESSAGES/tazusbbox.mo po/tazusbbox/$$l.po ; \
 	done;
 
 # Installation.
@@ -45,8 +45,8 @@ install: msgfmt
 	cp -a po/mo/* $(DESTDIR)$(PREFIX)/share/locale
 	# Desktop integration
 	@echo "Setting up desktop integration..."
-	mkdir -p $(DESTDIR)$(PREFIX)/share/applications
-	cp -a  applications $(DESTDIR)$(PREFIX)/share/
+	mkdir -p $(DESTDIR)$(PREFIX)/share
+	cp -a  applications $(DESTDIR)$(PREFIX)/share
 
 # Uninstallation and tarball clean-up commands.
 
