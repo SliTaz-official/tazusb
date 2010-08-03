@@ -2,7 +2,7 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>TazUSB - utilitaire SliTaz Live utility manuel Français</title>
+	<title>TazUSB - utilitaire SliTaz Live manuel Français</title>
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
 	<meta name="description" content="slitaz bootable media LiveUSB key hd SD card" />
 	<meta name="expires" content="never" />
@@ -50,7 +50,7 @@ depuis le démarrage, permettant de profiter des avantages d'une installation
 sur disque dur.
 </p>
 <p>
-TazUSB supporte les lecteurs formattés en FAT32/EXT3 utilisant respectivement
+TazUSB supporte les lecteurs formatés en FAT32/EXT3 utilisant respectivement
 SYSLINUX et EXTLINUX. "/home" est monté au démarrage en utilisant le UUID
 de votre lecteur flash. Contrairement à un nom de périphérique, l'UUID a
 l'avantage de ne jamais changer d'une machine à une autre.
@@ -79,9 +79,9 @@ donc vous devrez les retirer périodiquement pour conserver de l'espace-disque.
 <p>
 Les options de compression du système de fichier sont : lzma, gzip, none (aucune).
 Ne pas utiliser de compression est très rapide (moins de 5 secondes) et utile
-lors d'experimentations avec beaucoup de changements. En comparaison, utiliser
-lzma ou gzip prend quelques minutes mais réduit énormement la taille du fichier.
-Ceci est recommendé lors de la sauvergarde de changements permanents sur le système
+lors d'expérimentations avec beaucoup de changements. En comparaison, utiliser
+lzma ou gzip prend quelques minutes mais réduit énormément la taille du fichier.
+Ceci est recommandé lors de la sauvegarde de changements permanents sur le système
 de fichier.
 </p>
 <pre>
@@ -109,7 +109,7 @@ Exemple:
 <h3><font color="#6c0023">gen-liveusb</font></h3>
 <p>
 'gen-liveusb' installe une nouvelle MBR, rend votre partition bootable (démarrable)
-et installe syslinux/extlinux selon le système de fichier detecté. Ensuite,
+et installe syslinux/extlinux selon le système de fichier détecté. Ensuite,
 il copie le noyau et le système de fichier depuis le lecteur CD-ROM, et les place
 dans le média USB cible. Le résultat est une copie de SliTaz bootable sur média USB.
 </p>
@@ -126,8 +126,7 @@ Exemple:
 La commande 'gen-swap' (re)créé un fichier swap (extension de mémoire
 vive sur un disque) et le place dans le répertoire /home pour être utilisable
 à chaque démarrage. Ceci est utile pour l'utilisation de vielles machine
-avec peu de mémoire. The 'gen-swap' command re/creates a virtual swap file
-and places
+avec peu de mémoire.
 </p>
 <pre> # tazusb gen-swap
 </pre>
