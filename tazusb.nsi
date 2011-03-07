@@ -70,13 +70,13 @@ OutFile "${FROM_DIR}\${FILENAME}.exe"
 
 ; English
 LangString Welcome_Title ${LANG_ENGLISH} "${NAME}"
-LangString Welcome_Text ${LANG_ENGLISH} "Welcome to TazUSB. This tool will help you installing Slitaz on a USB drive."
+LangString Welcome_Text ${LANG_ENGLISH} "Welcome to TazUSB. This tool will help you install Slitaz on a USB drive."
 LangString Finish_Title ${LANG_ENGLISH} "TazUSB has completed Slitaz installation."
 LangString Finish_Text ${LANG_ENGLISH} "Slitaz is now installed on your USB drive and the drive is bootable."
 LangString Finish_Link ${LANG_ENGLISH} "Slitaz website"
 LangString IsoPage_Title ${LANG_ENGLISH} "Select ISO file"
 LangString IsoPage_Title2 ${LANG_ENGLISH} "Choose the ISO image which will be installed on your USB drive."
-LangString IsoPage_Text ${LANG_ENGLISH} "Select Slitaz ISO file to be installed on your USB drive. You can download it on http://www.slitaz.org if needed."
+LangString IsoPage_Text ${LANG_ENGLISH} "Select Slitaz ISO file to be installed on your USB drive. You can download it from http://www.slitaz.org if needed."
 LangString IsoPage_Input ${LANG_ENGLISH} "Slitaz ISO File"
 LangString IsoFile ${LANG_ENGLISH} "ISO file|*.iso"
 LangString DrivePage_Title ${LANG_ENGLISH} "Choose USB drive location"
@@ -89,7 +89,7 @@ LangString WarningPage_Text ${LANG_ENGLISH} "TazUSB is now ready to install Slit
 LangString Iso2USB_Extract ${LANG_ENGLISH} "Extract files from $IsoFile"
 LangString Iso2USB_CreateSyslinux ${LANG_ENGLISH} "Create syslinux configuration files on $DestDrive"
 LangString Iso2USB_ExecuteSyslinux ${LANG_ENGLISH} "Execute syslinux on $R0"
-LangString Iso2USB_WarningSyslinux ${LANG_ENGLISH} "An error ($R8) happened when executing syslinux.$\r$\nYour USB drive won't be bootable..."
+LangString Iso2USB_WarningSyslinux ${LANG_ENGLISH} "An error ($R8) occurred when executing syslinux.$\r$\nYour USB drive won't be bootable..."
 
 ; French
 LangString Welcome_Title ${LANG_FRENCH} "${NAME}"

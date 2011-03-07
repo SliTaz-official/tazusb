@@ -121,8 +121,7 @@ mkfs_ext3()
 	
 }
 
-#Get label for device
-#
+# Get label for device
 get_label()
 {
 	echo -n "Please specify a label for the partition (TazUSB): "
@@ -133,8 +132,7 @@ get_label()
 	fi
 }
 
-#Get fs type
-# supported fs are ext3, ext2, fat32
+# Get fs type. Supported fs are ext3, ext2, fat32
 get_fs_type()
 {
 	echo -n "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
@@ -545,7 +543,7 @@ Archive compression: $COMPRESSION"
 		get_label
 		unmount_target_usb 
 		make_fs "$fs_type"
-		#mkfs_ext3
+		# mkfs_ext3
 		echo "==============================================================================="
 		echo "Device $label ($DEVICE) is ready to use as LiveUSB and/or /home partition."
 		echo ""

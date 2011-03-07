@@ -64,7 +64,7 @@ dist-clean:
 	rm -rf $(DISTDIR)
 	rm -f $(DISTDIR).*
 	
-# Build tarball and MD5 file for packagin.
+# Build tarball and MD5 file for packaging.
 dist: dist-clean
 	hg archive -t tgz $(TARBALL)
 	md5sum $(TARBALL) > $(PACKAGE)-$(VERSION).md5
