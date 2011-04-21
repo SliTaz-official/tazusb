@@ -342,14 +342,17 @@ install_boot()
 	fi
 
 	# Un-meta-ize a multi-in-one flavor
-	sed -i "s/isolinux/$ST/;s/label slitaz/label multi/" 	 $TARGET_ROOT/boot/$ST/common.cfg
-	sed -i 's/\(.*\), flavors.*/                 \1/' \
-		$TARGET_ROOT/boot/$ST/$ST.msg
-	for i in $TARGET_ROOT/boot/$ST/$ST.$STE $TARGET_ROOT/boot/$ST/??.$STE \
-		 $TARGET_ROOT/boot/$ST/??_??.$STE; do
-		sed '/label /!d;/label /{s/label .*/label slitaz/;NN;s/rootfs..gz.*gz /rootfs.gz /;N;q}' \
-			< $i >> $i
-	done
+	if grep -qs "label slitaz" $TARGET_ROOT/boot/$ST/common.cfg ; then
+		sed -i "s/isolinux/$ST/;s/label slitaz/label multi/" 	 $TARGET_ROOT/boot/$ST/common.cfg
+		sed -i 's/\(.*\), flavors.*/                 \1/' \
+			$TARGET_ROOT/boot/$ST/$ST.msg
+		for i in $TARGET_ROOT/boot/$ST/$ST.$STE \
+			 $TARGET_ROOT/boot/$ST/??.$STE \
+			 $TARGET_ROOT/boot/$ST/??_??.$STE; do
+				sed '/label /!d;/label /{s/label .*/\nlabel slitaz/;NN;s/rootfs..gz.*gz /rootfs.gz /;N;q}' \
+					< $i >> $i
+		done
+	fi
 	
 }
 
