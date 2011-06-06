@@ -59,6 +59,7 @@ uninstall:
 clean:
 	rm -rf _pkg
 	rm -rf po/mo
+	rm po/*/*~
 
 dist-clean:
 	rm -rf $(DISTDIR)
