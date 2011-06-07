@@ -38,8 +38,8 @@ msgfmt:
 install: msgfmt
 	@echo "Installing TazUSB into $(DESTDIR)$(PREFIX)/bin..."
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	install -m 0777 tazusb $(DESTDIR)$(PREFIX)/bin
-	install -m 0777 tazusbbox $(DESTDIR)$(PREFIX)/bin
+	install -m 0755 tazusb $(DESTDIR)$(PREFIX)/bin
+	install -m 0755 tazusbbox $(DESTDIR)$(PREFIX)/bin
 	@echo "Installing Tazusb documentation..."
 	mkdir -p $(DESTDIR)$(DOCDIR)/tazusb
 	cp -a doc/* $(DESTDIR)$(DOCDIR)/tazusb
