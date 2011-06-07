@@ -15,7 +15,10 @@ all:
 # i18n.
 
 pot:
-	xgettext -o po/tazusbbox/tazusbbox.pot -L Shell ./tazusbbox
+	xgettext -o po/tazusbbox/tazusbbox.pot -L Shell \
+		--package-name="TazUSB" \
+		--package-version="$(VERSION)" \
+		./tazusbbox
 
 msgmerge:
 	@for l in $(LINGUAS); do \
