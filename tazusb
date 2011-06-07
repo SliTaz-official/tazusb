@@ -3,12 +3,9 @@
 #
 # Tazusb is an utility to generate, configure and manipulate SliTaz LiveUSB
 # bootable media and/or USB /home partition, such as flash keys, SD card or 
-# USB harddisk.
+# USB harddisk. Authors : see AUTHORS
 #
-# Authors : Christophe Lincoln (Pankso) <pankso@slitaz.org>
-#           Andrew Miller (Spode) <spode@spodesabode.com>
-#
-VERSION=2.3
+VERSION=3.0
 
 COMMAND=$1
 TARGET_ROOT=/media/flash
