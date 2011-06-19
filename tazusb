@@ -315,6 +315,9 @@ install_boot()
 	cp /media/cdrom/boot/isolinux/isolinux.cfg $TARGET_ROOT/boot/$ST/$ST.$STE
 	sed -i "s/isolinux.msg/$ST.msg/"	 $TARGET_ROOT/boot/$ST/$ST.$STE
 	
+	# Update DVD autoinstall
+	sed -i "s/LABEL=packages-[^,]*/UUID=$UUID/g" $(grep -l append $TARGET_ROOT/boot/$ST/*)
+	 
 	# Add home= to append in extlinux or syslinux.cfg
 	sed -i -e "s/\(append.*\)/\1 home=$UUID/" $(grep -l append $TARGET_ROOT/boot/$ST/*)
 	
