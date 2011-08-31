@@ -1,0 +1,277 @@
+#
+# Copyright (C) 2011
+# This file is distributed under the same license as the TazUSB package.
+# Eric Joseph-Alexandre <erjo@slitaz.org>, 2011.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 3.0\n"
+"Report-Msgid-Bugs-To: erjo@slitaz.org\n"
+"POT-Creation-Date: 2011-06-07 12:18+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Eric Joseph-Alexandre <erjo@slitaz.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: Franch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tazusbbox:50
+msgid "Ok"
+msgstr ""
+
+#: tazusb:52
+msgid "Failed"
+msgstr ""
+
+#: tazusb:53
+msgid "ISO to USB (Optional default is CDROM)"
+msgstr ""
+
+#: tazusb:61
+msgid "This program requires being run as root."
+msgstr ""
+
+#: tazusb:78
+msgid ""
+"Please specify the target USB device to $COMMAND. You can type 'list' to\n"
+"get a list of devices, type 'exit' or give an empty value to exit.\n"
+"\n"
+"Device to use : "
+msgstr ""
+
+#: tazusb:84
+msgid "Device to use : "
+msgstr ""
+
+#: tazusb:87
+msgid "No specified device or exit."
+msgstr ""
+
+#: tazusb:99
+msgid "Unable to find device: $DEVICE"
+msgstr ""
+
+#: tazusb:114
+msgid "Please specify a label for the partition (TazUSB): "
+msgstr ""
+
+#: tazusb:121
+msgid "Label  : $label"
+msgstr ""
+
+#: tazusb:122
+msgid "Mkfs   : mkfs.ext3 -L \"$label\" $DEVICE"
+msgstr ""
+
+#: tazusb:131
+msgid "Please specify a label for the partition (TazUSB): "
+msgstr ""
+
+#: tazusb:142
+msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
+msgstr ""
+
+#: tazusb:153
+msgid ""
+"Please specify the filesystem type to $COMMAND.\n"
+"Available formats are ext3(default), ext2 or fat32.\n"
+"Press enter to keep the default value.\n"
+"\n"
+"File system type : "
+msgstr ""
+
+#: tazusb:175
+msgid "\nProcessing..."
+msgstr ""
+
+#: tazusb:176
+msgid "Label  : $label"
+msgstr ""
+
+#: tazusb:177
+msgid "Mkfs   : mkfs.$FS -L \"$label\" $DEVICE"
+msgstr ""
+
+#: tazusb:183
+msgid "Processing..."
+msgstr ""
+
+#: tazusb:184
+msgid "Label  : $label"
+msgstr ""
+
+#: tazusb:185
+msgid "Mkfs   : mkdosfs -F 32 -n \"$label\" $DEVICE"
+msgstr ""
+
+#: tazusb:189
+msgid "Can't find mkdosfs tool.\nWould you like to install dosfstools from repository [y/N] ? "
+msgstr ""
+
+#: tazusb:199
+msgid "Sorry. Filesystem $FS is not supported."
+msgstr ""
+
+#: tazusb:214
+msgid "Unmounting USB target device..."
+msgstr ""
+
+#: tazusb:222
+msgid "Mounting USB target device..."
+msgstr ""
+
+#: tazusb:241
+msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
+msgstr ""
+
+#: tazusb:262
+msgid "Mounting `basename $ISO`..."
+msgstr ""
+
+#: tazusb:267
+msgid "Unable to mount iso or to find a filesystem on it (rootfs.gz)."
+msgstr ""
+
+#: tazusb:275
+msgid "Copying needed files from cdrom..."
+msgstr ""
+
+#: tazusb:294
+msgid "Installing a new MBR to: $DISK"
+msgstr ""
+
+#: tazusb:299
+msgid "No new MBR installed to: $DISK"
+msgstr ""
+
+#: tazusb:317
+msgid "Installing bootloader: $ST"
+msgstr ""
+
+#: tazusb:371
+msgid "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
+msgstr ""
+
+#: tazusb:394
+msgid "Setting $DEVICE as bootable..."
+msgstr ""
+
+#: tazusb:409
+msgid "Gen swap"
+msgstr ""
+
+#: tazusb:411
+msgid ""
+"Generate a swap file in /home/swap that will be activated on each boot to have\n"
+"more memory available (Empty value to exit).\n"
+"\n"
+"Swap file in Mb : "
+msgstr ""
+
+#: tazusb:417
+msgid "Empty value. Exiting..."
+msgstr ""
+
+#: tazusb:437
+msgid "Clean"
+msgstr ""
+
+#: tazusb:439
+msgid "Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
+msgstr ""
+
+#: tazusb:443
+msgid "Do you wish to remove: `basename $file` (Yes/no/exit) ? "
+msgstr ""
+
+#: tazusb:451
+msgid "No filesystems selected, exiting..."
+msgstr ""
+
+#: tazusb:471
+msgid "Write filesystem"
+msgstr ""
+
+#: tazusb:473
+msgid ""
+"The command writefs will write all the current filesystem into a suitable cpio\"
+"archive (rootfs.gz) usable on a bootable LiveUSB media.\n" 
+"\n"
+"Archive compression: $COMPRESSION"
+msgstr ""
+
+#: tazusb:483
+msgid "Do you wish to remove the sound card selection (No/yes/exit) ? "
+msgstr ""
+
+#: tazusb:489
+msgid "Removing current sound card selection..."
+msgstr ""
+
+#: tazusb:493
+msgid "Keeping current sound card selection..."
+msgstr ""
+
+#: tazusb:503
+msgid "Removing current screen resolution..."
+msgstr ""
+
+#: tazusb:506
+msgid "Keeping current screen resolution..."
+msgstr ""
+
+#: tazusb:520
+msgid "Creating rootfs.gz with lzma compression... "
+msgstr ""
+
+#: tazusb:524
+msgid "Creating rootfs.gz with gzip compression... "
+msgstr ""
+
+#: tazusb:528
+msgid "Creating rootfs.gz without compression... "
+msgstr ""
+
+#: tazusb:537
+msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
+msgstr ""
+
+#: tazusb:547
+msgid "rootfs.gz is located in /"
+msgstr ""
+
+#: tazusb:551
+msgid "Root filesystem size: $size"
+msgstr ""
+
+#: tazusb:553
+msgid "ENTER to continue..."
+msgstr ""
+
+#: tazusb:559
+msgid "Format a device"
+msgstr ""
+
+#: tazusb:568
+msgid "Device : $DEVICE"
+msgstr ""
+
+#: tazusb:576
+msgid "Device $label ($DEVICE) is ready to use as LiveUSB and/or /home partition."
+msgstr ""
+
+#: tazusb:583
+msgid "Gen a LiveUSB media"
+msgstr ""
+
+#: tazusb:611
+msgid "Please specify a valid filename on the command line."
+msgstr ""
+
+#: tazusb:615
+msgid "Copy ISO file to SliTaz LiveUSB media"
+msgstr ""
+
+
