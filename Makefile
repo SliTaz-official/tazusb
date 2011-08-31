@@ -19,18 +19,35 @@ pot:
 		--package-name="TazUSB" \
 		--package-version="$(VERSION)" \
 		./tazusbbox
+	xgettext -o po/tazusb/tazusb.pot -L Shell \
+		--package-name="TazUSB" \
+		--package-version="$(VERSION)" \
+		./tazusb
 
 msgmerge:
 	@for l in $(LINGUAS); do \
-		echo -n "Updating $$l po file."; \
-		msgmerge -U po/tazusbbox/$$l.po po/tazusbbox/tazusbbox.pot ; \
+		if [ -f "po/tazusbbox/$$l.po" ]; then \
+			echo -n "Updating $$l po file."; \
+			msgmerge -U po/tazusbbox/$$l.po po/tazusbbox/tazusbbox.pot ; \
+		fi;\
+		if [ -f "po/tazusb/$$l.po" ]; then \
+			echo -n "Updating $$l po file."; \
+			msgmerge -U po/tazusb/$$l.po po/tazusb/tazusb.pot ; \
+		fi;\
 	done;
 
 msgfmt:
 	@for l in $(LINGUAS); do \
-		echo "Compiling $$l mo file..."; \
-		mkdir -p po/mo/$$l/LC_MESSAGES; \
-		msgfmt -o po/mo/$$l/LC_MESSAGES/tazusbbox.mo po/tazusbbox/$$l.po ; \
+		if [ -f "po/tazusbbox/$$l.po" ]; then \
+			echo "Compiling tazusbbox $$l mo file..."; \
+			mkdir -p po/mo/$$l/LC_MESSAGES; \
+			msgfmt -o po/mo/$$l/LC_MESSAGES/tazusbbox.mo po/tazusbbox/$$l.po ; \
+		fi;\
+		if [ -f "po/tazusb/$$l.po" ]; then \
+			echo "Compiling tazusb $$l mo file..."; \
+			mkdir -p po/mo/$$l/LC_MESSAGES; \
+			msgfmt -o po/mo/$$l/LC_MESSAGES/tazusb.mo po/tazusb/$$l.po ; \
+		fi;\
 	done;
 
 # Installation.
@@ -62,7 +79,7 @@ uninstall:
 clean:
 	rm -rf _pkg
 	rm -rf po/mo
-	rm po/*/*~
+	rm -f po/*/*~
 
 dist-clean:
 	rm -rf $(DISTDIR)
