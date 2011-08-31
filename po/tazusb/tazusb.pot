@@ -18,7 +18,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tazusbbox:50
+#: tazusb:30
+msgid "SliTaz Live USB - Version:"
+msgstr ""
+
+#: tazusb:32
+msgid "Commands:"
+msgstr ""
+
+#: tazusb:33
+msgid "Print this short usage."
+msgstr ""
+
+#: tazusb:34
+msgid ""
+"Write the current filesystem to rootfs.gz.\n"
+"  		Supported compression: lzma. gzip, none."
+msgstr ""
+
+#: tazusb:36
+msgid ""
+"Format and label device with ext3, ext2 or fat32 filesystem\n"
+"                (for LiveUSB or /home). Default is ext3."
+msgstr ""
+
+#: tazusb:38
+msgid "Generate a bootable LiveUSB using files from the LiveCD."
+msgstr ""
+
+#: tazusb:39
+msgid "Create or recreate and activate additional swap memory."
+msgstr ""
+
+#: tazusb:40
+msgid "Generate a bootable LiveUSB using files from ISO file."
+msgstr ""
+
+#: tazusb:41
+msgid "Remove old backup filesystems to free disk space."
+msgstr ""
+
+#: tazusb:50
 msgid "Ok"
 msgstr ""
 
@@ -92,7 +132,8 @@ msgid "Mkfs   : mkdosfs -F 32 -n \"$label\" $DEVICE"
 msgstr ""
 
 #: tazusb:189
-msgid "Can't find mkdosfs tool.\nWould you like to install dosfstools from repository [y/N] ? "
+msgid "Can't find mkdosfs tool.\n"
+"Would you like to install dosfstools from repository [y/N] ? "
 msgstr ""
 
 #: tazusb:199
@@ -112,7 +153,7 @@ msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
 msgstr ""
 
 #: tazusb:262
-msgid "Mounting `basename $ISO`..."
+msgid "Mounting" 
 msgstr ""
 
 #: tazusb:267

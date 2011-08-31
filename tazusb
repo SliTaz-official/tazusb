@@ -27,12 +27,12 @@ LOG=/tmp/$(basename $0).log
 # Print the usage.
 usage ()
 {
-	echo -e "`gettext \"\nSliTaz Live USB - Version:\"` $VERSION\n
+	echo -e "`gettext \"SliTaz Live USB - Version:\"` $VERSION\n
 \033[1mUsage: \033[0m `basename $0` [command] [compression|device]
 \033[1m`gettext \"Commands: \"`\033[0m\n
   usage     	`gettext \"Print this short usage.\"`
   writefs 	`gettext \"Write the current filesystem to rootfs.gz.
-  		tazSupported compression: lzma. gzip, none.\"`
+  		Supported compression: lzma. gzip, none.\"`
   format	`gettext \"Format and label device with ext3, ext2 or fat32 filesystem 
                 (for LiveUSB or /home). Default is ext3.\"`
   gen-liveusb 	`gettext \"Generate a bootable LiveUSB using files from the LiveCD.\"`
@@ -265,7 +265,8 @@ mount_iso()
          OPTIONS=""
     fi
 	
-	gettext "Mounting `basename $ISO`..."; echo ""
+	gettext "Mounting"
+	echo  "`basename $ISO`..."; echo ""
 	mount $OPTIONS $ISO /media/cdrom 2>/dev/null
 	
 	if [ ! -f /media/cdrom/boot/rootfs.gz -a \

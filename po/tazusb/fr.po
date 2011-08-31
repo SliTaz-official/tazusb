@@ -18,21 +18,65 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: tazusb:30
+msgid "SliTaz Live USB - Version:"
+msgstr "SliTaz Live USB - Version:"
+
+#: tazusb:32
+msgid "Commands:"
+msgstr "Commandes"
+
+#: tazusb:33
+msgid "Print this short usage."
+msgstr "Affiche cette aide."
+
+#: tazusb:34
+msgid ""
+"Write the current filesystem to rootfs.gz.\n"
+"  		Supported compression: lzma. gzip, none."
+msgstr ""
+"Write the current filesystem to rootfs.gz.\n"
+"  		Supported compression: lzma. gzip, none."
+
+#: tazusb:36
+msgid ""
+"Format and label device with ext3, ext2 or fat32 filesystem\n"
+"                (for LiveUSB or /home). Default is ext3."
+msgstr ""
+"Formater et nommer un périphérique en ext3, ext2 ou fat32\n"
+"                (pour LiveUSB ou /home). ext3 Par défault."
+
+#: tazusb:38
+msgid "Generate a bootable LiveUSB using files from the LiveCD."
+msgstr "Générer une clé USB amorçable avec les fichiers du LiveCD."
+
+#: tazusb:39
+msgid "Create or recreate and activate additional swap memory."
+msgstr "Créer ou recréer et activer un fichier d'échange supplémentaire."
+
+#: tazusb:40
+msgid "Generate a bootable LiveUSB using files from ISO file."
+msgstr "Générer un clé USB amrçable à partir d'une image ISO."
+
+#: tazusb:41
+msgid "Remove old backup filesystems to free disk space."
+msgstr "Supprimer les sauvegardes du système de fichier pour liberer de la place."
+
 #: tazusbbox:50
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: tazusb:52
 msgid "Failed"
-msgstr ""
+msgstr "Echec"
 
 #: tazusb:53
 msgid "ISO to USB (Optional default is CDROM)"
-msgstr ""
+msgstr "ISO vers USB (l'option par défaut est CDROM)"
 
 #: tazusb:61
 msgid "This program requires being run as root."
-msgstr ""
+msgstr "Ce programme nécessite d'être exécuté en tant que root."
 
 #: tazusb:78
 msgid ""
@@ -44,31 +88,31 @@ msgstr ""
 
 #: tazusb:84
 msgid "Device to use : "
-msgstr ""
+msgstr "Périphérique  cible :"
 
 #: tazusb:87
 msgid "No specified device or exit."
-msgstr ""
+msgstr "Pas de périphérique spécifié ou quitter"
 
 #: tazusb:99
 msgid "Unable to find device: $DEVICE"
-msgstr ""
+msgstr "Impossible de trouver le périphérique: $DEVICE"
 
 #: tazusb:114
 msgid "Please specify a label for the partition (TazUSB): "
-msgstr ""
+msgstr "Entrez un nom de volume (TazUSB): "
 
 #: tazusb:121
 msgid "Label  : $label"
-msgstr ""
+msgstr "Nom de volume"
 
 #: tazusb:122
 msgid "Mkfs   : mkfs.ext3 -L \"$label\" $DEVICE"
-msgstr ""
+msgstr "Mkfs   : mkfs.ext3 -L \"$label\" $DEVICE"
 
 #: tazusb:142
 msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
-msgstr ""
+msgstr "Donnez le type de système de fichiers ext2, ext3 ou fat32 (ext3): "
 
 #: tazusb:153
 msgid ""
@@ -81,71 +125,73 @@ msgstr ""
 
 #: tazusb:175
 msgid "Processing..."
-msgstr ""
+msgstr "Traitement en cours"
 
 #: tazusb:177
 msgid "Mkfs   : mkfs.$FS -L \"$label\" $DEVICE"
-msgstr ""
+msgstr "Mkfs   : mkfs.$FS -L \"$label\" $DEVICE"
 
 #: tazusb:185
 msgid "Mkfs   : mkdosfs -F 32 -n \"$label\" $DEVICE"
-msgstr ""
+msgstr "Mkfs   : mkdosfs -F 32 -n \"$label\" $DEVICE"
 
 #: tazusb:189
-msgid "Can't find mkdosfs tool.\nWould you like to install dosfstools from repository [y/N] ? "
-msgstr ""
+msgid "Can't find mkdosfs tool.\n"
+"Would you like to install dosfstools from repository [y/N] ? "
+msgstr "Impossible de trouver le programme mkdofs.\n"
+"Voulez-vous installer le paquet dosfstools depuis le dépot [y/N] ? "
 
 #: tazusb:199
 msgid "Sorry. Filesystem $FS is not supported."
-msgstr ""
+msgstr "Désolé. Le système de fichiers $FS n'est pas supporté."
 
 #: tazusb:214
 msgid "Unmounting USB target device..."
-msgstr ""
+msgstr "Démontage du périphérique USB..."
 
 #: tazusb:222
 msgid "Mounting USB target device..."
-msgstr ""
+msgstr "Montage du périphérique USB..."
 
 #: tazusb:241
 msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
-msgstr ""
+msgstr "Impossible de monter le cdrom ou d'y trouver un système de fichier (rootfs.gz)."
 
 #: tazusb:262
-msgid "Mounting `basename $ISO`..."
-msgstr ""
+msgid "Mounting" 
+msgstr "Montage"
 
 #: tazusb:267
 msgid "Unable to mount iso or to find a filesystem on it (rootfs.gz)."
-msgstr ""
+msgstr "Impossible de monter l'image ISO ou d'y trouver un système de fichier (rootfs.gz)."
 
 #: tazusb:275
 msgid "Copying needed files from cdrom..."
-msgstr ""
+msgstr "Copie des fichiers depuis le cdrom"
 
 #: tazusb:294
 msgid "Installing a new MBR to: $DISK"
-msgstr ""
+msgstr "Installation du MBR sur: $DISK"
 
 #: tazusb:299
 msgid "No new MBR installed to: $DISK"
-msgstr ""
+msgstr "Pas de nouveau MBR installé sur: $DISK"
 
 #: tazusb:317
 msgid "Installing bootloader: $ST"
-msgstr ""
+msgstr "Installation du bootloader: $ST"
 
 #: tazusb:371
 msgid "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
-msgstr ""
+msgstr "Voulez-vous quitter Tazusb ou redémarrer le système (Exit/reboot) ? "
 
 #: tazusb:394
 msgid "Setting $DEVICE as bootable..."
-msgstr ""
+msgstr "Paramètre le périphérique comme amorçable..."
 
 #: tazusb:409
 msgid "Gen swap"
-msgstr ""
+msgstr "Création du fichier d'échange"
 
 #: tazusb:411
 msgid ""
@@ -154,30 +200,34 @@ msgid ""
 "\n"
 "Swap file in Mb : "
 msgstr ""
+"Créé un fichier d'échange, dans /home/swap, qui sera activé à chaque démarrage\n"
+"pour avoir plus de mémoire disponible (Pas de valeur pour quitter).\n"
+"\n"
+"Taille du fichier d'échange en Mo: "
 
 #: tazusb:417
 msgid "Empty value. Exiting..."
-msgstr ""
+msgstr "Aucune valeur. Quitter..."
 
 #: tazusb:437
 msgid "Clean"
-msgstr ""
+msgstr "Nettoyage"
 
 #: tazusb:439
 msgid "Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
-msgstr ""
+msgstr "Suppression des anciennes sauvegarde de rootfs.gz.unixtimestamp pour libérer de la place sur le lecteur."
 
 #: tazusb:443
 msgid "Do you wish to remove: `basename $file` (Yes/no/exit) ? "
-msgstr ""
+msgstr "Désirez-vous supprimer: `basename $file` (Yes/no/exit) ? "
 
 #: tazusb:451
 msgid "No filesystems selected, exiting..."
-msgstr ""
+msgstr "Pas de système de fichier choisi, quitter..."
 
 #: tazusb:471
 msgid "Write filesystem"
-msgstr ""
+msgstr "Création du système de fichier"
 
 #: tazusb:473
 msgid ""
@@ -189,74 +239,74 @@ msgstr ""
 
 #: tazusb:483
 msgid "Do you wish to remove the sound card selection (No/yes/exit) ? "
-msgstr ""
+msgstr "Souhaîtez-vous supprimer the sound card selection (No/yes/exit) ?"
 
 #: tazusb:489
 msgid "Removing current sound card selection..."
-msgstr ""
+msgstr "Suppression des informations sur la carte son sélèctionnée..."
 
 #: tazusb:493
 msgid "Keeping current sound card selection..."
-msgstr ""
+msgstr "Garder la sélection courante de la carte son..."
 
 #: tazusb:503
 msgid "Removing current screen resolution..."
-msgstr ""
+msgstr "Supprimer la résolution d'écran actuelle..."
 
 #: tazusb:506
 msgid "Keeping current screen resolution..."
-msgstr ""
+msgstr "Garder la résolution d'écran actuelle..."
 
 #: tazusb:520
 msgid "Creating rootfs.gz with lzma compression... "
-msgstr ""
+msgstr "Création du fichier rootfs.gz avec compression lzma..."
 
 #: tazusb:524
 msgid "Creating rootfs.gz with gzip compression... "
-msgstr ""
+msgstr "Création du fichier rootfs.gz avec compression gzip..."
 
 #: tazusb:528
 msgid "Creating rootfs.gz without compression... "
-msgstr ""
+msgstr "Création de rootfs.gz sans compression..."
 
 #: tazusb:537
 msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
-msgstr ""
+msgstr "Déplacement de rootfs.gz vers le média. N'oubliez de démonter le périphérique pour les écritures différées."
 
 #: tazusb:547
 msgid "rootfs.gz is located in /"
-msgstr ""
+msgstr "Le fichier rootfs.gz est dans /"
 
 #: tazusb:551
 msgid "Root filesystem size: $size"
-msgstr ""
+msgstr "Taille du système de fichier racine: $size"
 
 #: tazusb:553
 msgid "ENTER to continue..."
-msgstr ""
+msgstr "appuyer sur Entrer pour continuer"
 
 #: tazusb:559
 msgid "Format a device"
-msgstr ""
+msgstr "Formatage d'un périphérique"
 
 #: tazusb:568
 msgid "Device : $DEVICE"
-msgstr ""
+msgstr "Lecteur: $DEVICE"
 
 #: tazusb:576
 msgid "Device $label ($DEVICE) is ready to use as LiveUSB and/or /home partition."
-msgstr ""
+msgstr "Device $label ($DEVICE) is ready to use as LiveUSB and/or /home partition."
 
 #: tazusb:583
 msgid "Gen a LiveUSB media"
-msgstr ""
+msgstr "Générer un média LiveUSB"
 
 #: tazusb:611
 msgid "Please specify a valid filename on the command line."
-msgstr ""
+msgstr "Indiquez un nom de fichier valide sur la ligne de commande."
 
 #: tazusb:615
 msgid "Copy ISO file to SliTaz LiveUSB media"
-msgstr ""
+msgstr "Copie du fichier ISO vers SliTaz LiveUSB"
 
 
