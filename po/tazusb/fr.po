@@ -22,9 +22,13 @@ msgstr ""
 msgid "SliTaz Live USB - Version:"
 msgstr "SliTaz Live USB - Version:"
 
+#: tazusb:31
+msgid "Usage: "
+msgstr "Syntaxe: "
+
 #: tazusb:32
 msgid "Commands:"
-msgstr "Commandes"
+msgstr "Commandes: "
 
 #: tazusb:33
 msgid "Print this short usage."
@@ -41,10 +45,10 @@ msgstr ""
 #: tazusb:36
 msgid ""
 "Format and label device with ext3, ext2 or fat32 filesystem\n"
-"                (for LiveUSB or /home). Default is ext3."
+"(for LiveUSB or /home). Default is ext3.\n"
 msgstr ""
 "Formater et nommer un périphérique en ext3, ext2 ou fat32\n"
-"                (pour LiveUSB ou /home). ext3 Par défault."
+"(pour LiveUSB ou /home). ext3 Par défault.\n"
 
 #: tazusb:38
 msgid "Generate a bootable LiveUSB using files from the LiveCD."
@@ -56,11 +60,11 @@ msgstr "Créer ou recréer et activer un fichier d'échange supplémentaire."
 
 #: tazusb:40
 msgid "Generate a bootable LiveUSB using files from ISO file."
-msgstr "Générer un clé USB amrçable à partir d'une image ISO."
+msgstr "Générer un clé USB amorçable à partir d'une image ISO."
 
 #: tazusb:41
 msgid "Remove old backup filesystems to free disk space."
-msgstr "Supprimer les sauvegardes du système de fichier pour liberer de la place."
+msgstr "Supprimer les sauvegardes pour libérer de la place."
 
 #: tazusbbox:50
 msgid "Ok"

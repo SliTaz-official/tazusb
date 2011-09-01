@@ -22,8 +22,12 @@ msgstr ""
 msgid "SliTaz Live USB - Version:"
 msgstr ""
 
+#: tazusb:31
+msgid "Usage: "
+msgstr ""
+
 #: tazusb:32
-msgid "Commands:"
+msgid "Commands: "
 msgstr ""
 
 #: tazusb:33

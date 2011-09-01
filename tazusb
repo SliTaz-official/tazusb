@@ -28,8 +28,8 @@ LOG=/tmp/$(basename $0).log
 usage ()
 {
 	echo -e "`gettext \"SliTaz Live USB - Version:\"` $VERSION\n
-\033[1mUsage: \033[0m `basename $0` [command] [compression|device]
-\033[1m`gettext \"Commands: \"`\033[0m\n
+\033[1m`gettext \"Usage: \"`\033[0m `basename $0` [command] [compression|device]
+\033[1m`gettext \"Commands:\"`\033[0m\n
   usage     	`gettext \"Print this short usage.\"`
   writefs 	`gettext \"Write the current filesystem to rootfs.gz.
   		Supported compression: lzma. gzip, none.\"`
