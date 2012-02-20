@@ -5,7 +5,7 @@
 # bootable media and/or USB /home partition, such as flash keys, SD card or 
 # USB harddisk. Authors : see AUTHORS
 #
-VERSION=3.0.1
+VERSION=3.0.2
 
 # Include gettext helper script.
 . /usr/bin/gettext.sh
@@ -265,9 +265,9 @@ mount_iso()
          OPTIONS=""
     fi
 	
-	gettext "Mounting"
+	gettext "Mounting "
 	echo  "`basename $ISO`..."; echo ""
-	mount $OPTIONS $ISO /media/cdrom 2>/dev/null
+	mount $OPTIONS $ISO /media/cdrom 2>/dev/null 
 	
 	if [ ! -f /media/cdrom/boot/rootfs.gz -a \
 	     ! -f /media/cdrom/boot/rootfs1.gz ]; then
@@ -282,14 +282,15 @@ copy_cdrom_files()
 	gettext "Copying needed files from cdrom..."
 	mkdir -p $TARGET_ROOT/boot
 	cp /media/cdrom/boot/bzImage $TARGET_ROOT/boot
-	rem=0
-	for i in $(ls /media/cdrom/boot/rootfs*.gz | sort -r); do
-		[ $rem -ne 0 ] && 
-			dd if=/dev/zero bs=1 count=$((4 - $rem)) 2> /dev/null
-		cat $i
-		rem=$(stat -c %s $i)
-		rem=$(($rem % 4))
-	done > $TARGET_ROOT/boot/rootfs.gz
+	cp /media/cdrom/boot/rootfs*.gz $TARGET_ROOT/boot
+	#rem=0
+	#~ for i in $(ls /media/cdrom/boot/rootfs*.gz | sort -r); do
+		#~ [ $rem -ne 0 ] && 
+			#~ dd if=/dev/zero bs=1 count=$((4 - $rem)) 2> /dev/null
+		#~ cat $i
+		#~ rem=$(stat -c %s $i)
+		#~ rem=$(($rem % 4))
+	#~ done > $TARGET_ROOT/boot/rootfs.gz
 	status
 }
 
@@ -336,9 +337,13 @@ install_boot()
 	sed -i -e "s/\(append.*\)/\1 home=$UUID/" $(grep -l append $TARGET_ROOT/boot/$ST/*)
 	
 	# Splash screen and help files.
-	cp /media/cdrom/boot/isolinux/isolinux.msg $TARGET_ROOT/boot/$ST/$ST.msg
-	sed -i s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ $TARGET_ROOT/boot/$ST/$ST.msg
-	cp /media/cdrom/boot/isolinux/splash.lss $TARGET_ROOT/boot/$ST
+	if [ -f /media/cdrom/boot/isolinux/isolinux.msg ]; then
+		cp /media/cdrom/boot/isolinux/isolinux.msg $TARGET_ROOT/boot/$ST/$ST.msg
+		sed -i s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ $TARGET_ROOT/boot/$ST/$ST.msg
+	fi
+	if [ -f /media/cdrom/boot/isolinux/splash.lss ]; then
+		cp /media/cdrom/boot/isolinux/splash.lss $TARGET_ROOT/boot/$ST
+	fi
 	cp /media/cdrom/boot/isolinux/*.txt $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.cfg $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.kbd $TARGET_ROOT/boot/$ST
@@ -358,8 +363,10 @@ install_boot()
 	# Un-meta-ize a multi-in-one flavor
 	if grep -qs "label slitaz" $TARGET_ROOT/boot/$ST/common.cfg ; then
 		sed -i "s/isolinux/$ST/;s/label slitaz/label multi/" 	 $TARGET_ROOT/boot/$ST/common.cfg
-		sed -i 's/\(.*\), flavors.*/                 \1/' \
-			$TARGET_ROOT/boot/$ST/$ST.msg
+		if [ -f "$TARGET_ROOT/boot/$ST/$ST.msg" ]; then
+			sed -i 's/\(.*\), flavors.*/                 \1/' \
+				$TARGET_ROOT/boot/$ST/$ST.msg
+		fi
 		for i in $TARGET_ROOT/boot/$ST/$ST.$STE \
 			 $TARGET_ROOT/boot/$ST/??.$STE \
 			 $TARGET_ROOT/boot/$ST/??_??.$STE; do
