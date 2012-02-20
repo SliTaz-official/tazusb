@@ -283,14 +283,6 @@ copy_cdrom_files()
 	mkdir -p $TARGET_ROOT/boot
 	cp /media/cdrom/boot/bzImage $TARGET_ROOT/boot
 	cp /media/cdrom/boot/rootfs*.gz $TARGET_ROOT/boot
-	#rem=0
-	#~ for i in $(ls /media/cdrom/boot/rootfs*.gz | sort -r); do
-		#~ [ $rem -ne 0 ] && 
-			#~ dd if=/dev/zero bs=1 count=$((4 - $rem)) 2> /dev/null
-		#~ cat $i
-		#~ rem=$(stat -c %s $i)
-		#~ rem=$(($rem % 4))
-	#~ done > $TARGET_ROOT/boot/rootfs.gz
 	status
 }
 
@@ -337,44 +329,20 @@ install_boot()
 	sed -i -e "s/\(append.*\)/\1 home=$UUID/" $(grep -l append $TARGET_ROOT/boot/$ST/*)
 	
 	# Splash screen and help files.
-	if [ -f /media/cdrom/boot/isolinux/isolinux.msg ]; then
-		cp /media/cdrom/boot/isolinux/isolinux.msg $TARGET_ROOT/boot/$ST/$ST.msg
-		sed -i s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ $TARGET_ROOT/boot/$ST/$ST.msg
-	fi
-	if [ -f /media/cdrom/boot/isolinux/splash.lss ]; then
-		cp /media/cdrom/boot/isolinux/splash.lss $TARGET_ROOT/boot/$ST
-	fi
+	cp /media/cdrom/boot/isolinux/splash.* $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.txt $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.cfg $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.kbd $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.c32 $TARGET_ROOT/boot/$ST
+	sed -i s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ $TARGET_ROOT/boot/$ST/isolinux.*g
 	
-	# Modifing all cfg files.
-	for cfg in $TARGET_ROOT/boot/$ST/*.cfg
+	[ -f $TARGET_ROOT/boot/$ST/isolinux.msg ] &&
+	mv $TARGET_ROOT/boot/$ST/isolinux.msg $TARGET_ROOT/boot/$ST/$ST.msg
+	# Modifing all cfg files and include file if exists.
+	for cfg in $TARGET_ROOT/boot/$ST/*.cfg $TARGET_ROOT/boot/$ST/common.inc
 	do
-		sed -i s/isolinux.msg/$ST.msg/ $cfg
+		[ -f $cfg ] && sed -i s/isolinux.msg/$ST.msg/ $cfg
 	done
-
-	# Modifing include file if exists.
-	if [ -f $TARGET_ROOT/boot/$ST/common.inc ]; then
-		sed -i -e "s/isolinux.msg/$ST.msg/" $TARGET_ROOT/boot/$ST/common.inc
-	fi
-
-	# Un-meta-ize a multi-in-one flavor
-	if grep -qs "label slitaz" $TARGET_ROOT/boot/$ST/common.cfg ; then
-		sed -i "s/isolinux/$ST/;s/label slitaz/label multi/" 	 $TARGET_ROOT/boot/$ST/common.cfg
-		if [ -f "$TARGET_ROOT/boot/$ST/$ST.msg" ]; then
-			sed -i 's/\(.*\), flavors.*/                 \1/' \
-				$TARGET_ROOT/boot/$ST/$ST.msg
-		fi
-		for i in $TARGET_ROOT/boot/$ST/$ST.$STE \
-			 $TARGET_ROOT/boot/$ST/??.$STE \
-			 $TARGET_ROOT/boot/$ST/??_??.$STE; do
-				sed '/label /!d;/label /{s/label .*/\nlabel slitaz/;NN;s/rootfs..gz.*gz /rootfs.gz /;N;q}' \
-					< $i >> $i
-		done
-	fi
-	
 }
 
 # Let user exit or reboot.
