@@ -3,6 +3,6 @@ Encoding=UTF-8
 Name=Tazusb LiveUSB Tool
 Name[fr]=Créer un LiveUSB
 Exec=subox tazusbbox
-Icon=media-flash
+Icon=usb-creator
 Type=Application
 Categories=System;
