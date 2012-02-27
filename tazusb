@@ -320,7 +320,7 @@ install_boot()
 	
 	# Use existing isolinux.cfg for extlinux.conf or syslinux.cfg
 	cp /media/cdrom/boot/isolinux/isolinux.cfg $TARGET_ROOT/boot/$ST/$ST.$STE
-	sed -i "s/isolinux.msg/$ST.msg/"	 $TARGET_ROOT/boot/$ST/$ST.$STE
+	#sed -i "s/isolinux.msg/$ST.msg/"	 $TARGET_ROOT/boot/$ST/$ST.$STE
 	
 	# Update DVD autoinstall
 	sed -i "s/LABEL=packages-[^,]*/UUID=$UUID/g" $(grep -l append $TARGET_ROOT/boot/$ST/*)
@@ -334,15 +334,16 @@ install_boot()
 	cp /media/cdrom/boot/isolinux/*.cfg $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.kbd $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.c32 $TARGET_ROOT/boot/$ST
-	sed -i s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ $TARGET_ROOT/boot/$ST/isolinux.*g
+	sed -i s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ \
+		$TARGET_ROOT/boot/$ST/isolinux.cfg
 	
-	[ -f $TARGET_ROOT/boot/$ST/isolinux.msg ] &&
-	mv $TARGET_ROOT/boot/$ST/isolinux.msg $TARGET_ROOT/boot/$ST/$ST.msg
+	#[ -f $TARGET_ROOT/boot/$ST/isolinux.msg ] &&
+	#mv $TARGET_ROOT/boot/$ST/isolinux.msg $TARGET_ROOT/boot/$ST/$ST.msg
 	# Modifing all cfg files and include file if exists.
-	for cfg in $TARGET_ROOT/boot/$ST/*.cfg $TARGET_ROOT/boot/$ST/common.inc
-	do
-		[ -f $cfg ] && sed -i s/isolinux.msg/$ST.msg/ $cfg
-	done
+	#for cfg in $TARGET_ROOT/boot/$ST/*.cfg $TARGET_ROOT/boot/$ST/common.inc
+	#do
+		#[ -f $cfg ] && sed -i s/isolinux.msg/$ST.msg/ $cfg
+	#done
 }
 
 # Let user exit or reboot.
