@@ -15,10 +15,10 @@ all:
 # i18n.
 
 pot:
-	xgettext -o po/tazusbbox/tazusbbox.pot -L Shell \
+	xgettext -o po/tazusb-box/tazusb-box.pot -L Shell \
 		--package-name="TazUSB" \
 		--package-version="$(VERSION)" \
-		./tazusbbox
+		./tazusb-box
 	xgettext -o po/tazusb/tazusb.pot -L Shell \
 		--package-name="TazUSB" \
 		--package-version="$(VERSION)" \
@@ -26,9 +26,9 @@ pot:
 
 msgmerge:
 	@for l in $(LINGUAS); do \
-		if [ -f "po/tazusbbox/$$l.po" ]; then \
+		if [ -f "po/tazusb-box/$$l.po" ]; then \
 			echo -n "Updating $$l po file."; \
-			msgmerge -U po/tazusbbox/$$l.po po/tazusbbox/tazusbbox.pot ; \
+			msgmerge -U po/tazusb-box/$$l.po po/tazusb-box/tazusb-box.pot ; \
 		fi;\
 		if [ -f "po/tazusb/$$l.po" ]; then \
 			echo -n "Updating $$l po file."; \
@@ -38,10 +38,10 @@ msgmerge:
 
 msgfmt:
 	@for l in $(LINGUAS); do \
-		if [ -f "po/tazusbbox/$$l.po" ]; then \
-			echo "Compiling tazusbbox $$l mo file..."; \
+		if [ -f "po/tazusb-box/$$l.po" ]; then \
+			echo "Compiling tazusb-box $$l mo file..."; \
 			mkdir -p po/mo/$$l/LC_MESSAGES; \
-			msgfmt -o po/mo/$$l/LC_MESSAGES/tazusbbox.mo po/tazusbbox/$$l.po ; \
+			msgfmt -o po/mo/$$l/LC_MESSAGES/tazusb-box.mo po/tazusb-box/$$l.po ; \
 		fi;\
 		if [ -f "po/tazusb/$$l.po" ]; then \
 			echo "Compiling tazusb $$l mo file..."; \
@@ -56,7 +56,7 @@ install: msgfmt
 	@echo "Installing TazUSB into $(DESTDIR)$(PREFIX)/bin..."
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	install -m 0755 tazusb $(DESTDIR)$(PREFIX)/bin
-	install -m 0755 tazusbbox $(DESTDIR)$(PREFIX)/bin
+	install -m 0755 tazusb-box $(DESTDIR)$(PREFIX)/bin
 	@echo "Installing Tazusb documentation..."
 	mkdir -p $(DESTDIR)$(DOCDIR)/tazusb
 	cp -a doc/* $(DESTDIR)$(DOCDIR)/tazusb
@@ -72,7 +72,7 @@ install: msgfmt
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/tazusb
-	rm -f $(DESTDIR)$(PREFIX)/bin/tazusbbox
+	rm -f $(DESTDIR)$(PREFIX)/bin/tazusb-box
 	rm -rf $(DESTDIR)$(DOCDIR)/tazusb
 	rm -rf $(DESTDIR)$(PREFIX)/share/locale/*/LC_MESSAGES/tazusb*.mo
 
