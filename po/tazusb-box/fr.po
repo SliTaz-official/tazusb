@@ -1,0 +1,35 @@
+# French translations for TazUSB package.
+# Copyright (C) 2012 THE TazUSB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the TazUSB package.
+# Linux User <pankso@slitaz.org>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 3.0.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-02 19:14+0100\n"
+"PO-Revision-Date: 2012-03-02 19:20+0100\n"
+"Last-Translator: Christophe Lincoln <pankso@slitaz.org>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: tazusb-box:21
+msgid "<b>Generate SliTaz LiveUSB media and boot in RAM!</b> Insert a LiveCD into the cdrom drive or use a local ISO image, select the correct device and press OK."
+msgstr "<b>Générer un LiveUSB de SliTaz et démarrer!</b> Insérer un LiveCD dans le lecteur de cdrom ou utilisr une image ISO, séléctionner le media et appuyer sur OK."
+
+#: tazusb-box:49
+msgid "No USB media found"
+msgstr "Pas de média USB trouvé"
+
+#: tazusb-box:59
+msgid "ISO Image:"
+msgstr "Image ISO:"
+
+#: tazusb-box:60
+msgid "USB Media:"
+msgstr "Média USB:"
+
