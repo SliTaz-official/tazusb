@@ -244,7 +244,7 @@ mount_cdrom()
 	
 	if [ ! -f /media/cdrom/boot/rootfs.gz -a \
 	     ! -f /media/cdrom/boot/rootfs1.gz ]; then
-		echo ""; gettext "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."; ehco ""
+		echo ""; gettext "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."; echo ""
 		exit 0
 	fi
 }
