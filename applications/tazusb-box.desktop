@@ -1,8 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Tazusb LiveUSB Tool
+Name=Create a LiveUSB
 Name[fr]=Créer un LiveUSB
-Exec=subox tazusbbox
+Exec=tazbox su tazusb-box
 Icon=usb-creator
 Type=Application
 Categories=System;
