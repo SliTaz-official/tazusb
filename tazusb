@@ -1,11 +1,14 @@
 #!/bin/sh
-# Tazusb - SliTaz LiveUSB
 #
-# Tazusb is an utility to generate, configure and manipulate SliTaz LiveUSB
-# bootable media and/or USB /home partition, such as flash keys, SD card or 
-# USB harddisk. Authors : see AUTHORS
+# Tazusb - SliTaz LiveUSB utility to generate, configure and manipulate
+# SliTaz LiveUSB bootable media and/or USB /home partition, such as
+# flash keys, SD card or USB harddisk.
 #
-VERSION=3.0.2
+# Copyright (C) 2012 SliTaz GNU/Linux - GNU gpl v2
+#
+# Authors: see AUTHORS file
+#
+VERSION=4.0.1
 
 # Include gettext helper script.
 . /usr/bin/gettext.sh
