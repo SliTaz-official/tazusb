@@ -27,6 +27,9 @@ LOG=/tmp/$(basename $0).log
 # Tazusb functions
 #
 
+source /usr/lib/slitaz/libtaz
+source_lib commons
+
 # Print the usage.
 usage ()
 {
@@ -42,30 +45,6 @@ usage ()
   gen-swap      `gettext \"Create or recreate and activate additional swap memory.\"`
   gen-iso2usb   `gettext \"Generate a bootable LiveUSB using files from ISO file.\"`
   clean         `gettext \"Remove old backup filesystems to free disk space.\"`\n"
-}
-
-# Status function.
-status()
-{
-	local CHECK=$?
-	echo -en "\\033[70G[ "
-	if [ $CHECK = 0 ]; then
-		echo -en "\\033[1;33m`gettext \"OK\"`"
-	else
-		echo -en "\\033[1;31m`gettext \"Failed\"`"
-	fi
-	echo -e "\\033[0;39m ]"
-}
-
-# Exit if user is not root.
-check_root()
-{
-	if test $(id -u) != 0 ; then
-	  # echo -e "\nThis program requires being run as root.\n"
-	   gettext "This program requires being run as root."
-	   echo ""
-	   exit 0
-	fi
 }
 
 # Display a list of available partitions.
