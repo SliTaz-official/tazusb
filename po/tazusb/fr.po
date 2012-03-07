@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the TazUSB package.
 # Eric Joseph-Alexandre <erjo@slitaz.org>, 2011.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-07 14:03+0100\n"
-"PO-Revision-Date: 2011-08-31 12:03:53 +0200\n"
-"Last-Translator: Eric Joseph-Alexandre <erjo@slitaz.org>\n"
+"PO-Revision-Date: 2012-03-07 14:07+0100\n"
+"Last-Translator: Christophe Lincoln <pankso@slitaz.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: French\n"
 "MIME-Version: 1.0\n"
@@ -42,13 +41,12 @@ msgstr ""
 "  \t\tSupported compression: lzma. gzip, none."
 
 #: tazusb:42
-#, fuzzy
 msgid ""
 "Format and label device with ext3, ext2 or fat32 filesystem \n"
 "                (for LiveUSB or /home). Default is ext3."
 msgstr ""
 "Formater et nommer un périphérique en ext3, ext2 ou fat32\n"
-"(pour LiveUSB ou /home). ext3 Par défault.\n"
+"                (pour LiveUSB ou /home). ext3 Par défault."
 
 #: tazusb:44
 msgid "Generate a bootable LiveUSB using files from the LiveCD."
@@ -74,7 +72,8 @@ msgstr "Périphérique  cible :"
 msgid "No specified device or exit."
 msgstr "Pas de périphérique spécifié ou quitter"
 
-#: tazusb:102 tazusb:119
+#: tazusb:102
+#: tazusb:119
 msgid "Please specify a label for the partition (TazUSB): "
 msgstr "Entrez un nom de volume (TazUSB): "
 
@@ -82,15 +81,15 @@ msgstr "Entrez un nom de volume (TazUSB): "
 msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
 msgstr "Donnez le type de système de fichiers ext2, ext3 ou fat32 (ext3): "
 
-#: tazusb:163 tazusb:171
+#: tazusb:163
+#: tazusb:171
 msgid "Processing..."
 msgstr "Traitement en cours"
 
 #: tazusb:177
-#, fuzzy
 msgid ""
-"Can't find mkdosfs tool.\\nWould you like to install dosfstools from "
-"repository [y/N] ? "
+"Can't find mkdosfs tool.\\n"
+"Would you like to install dosfstools from repository [y/N] ? "
 msgstr ""
 "Impossible de trouver le programme mkdofs.\n"
 "Voulez-vous installer le paquet dosfstools depuis le dépot [y/N] ? "
@@ -104,26 +103,20 @@ msgid "Mounting USB target device..."
 msgstr "Montage du périphérique USB..."
 
 #: tazusb:218
-#, fuzzy
 msgid "Mounting cdrom device..."
-msgstr "Montage du périphérique USB..."
+msgstr "Montage du cdrom..."
 
 #: tazusb:229
 msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
-msgstr ""
-"Impossible de monter le cdrom ou d'y trouver un système de fichier (rootfs."
-"gz)."
+msgstr "Impossible de monter le cdrom ou d'y trouver un système de fichier (rootfs.gz)."
 
 #: tazusb:250
-#, fuzzy
 msgid "Mounting "
 msgstr "Montage"
 
 #: tazusb:256
 msgid "Unable to mount iso or to find a filesystem on it (rootfs.gz)."
-msgstr ""
-"Impossible de monter l'image ISO ou d'y trouver un système de fichier "
-"(rootfs.gz)."
+msgstr "Impossible de monter l'image ISO ou d'y trouver un système de fichier (rootfs.gz)."
 
 #: tazusb:264
 msgid "Copying needed files from cdrom..."
@@ -139,14 +132,12 @@ msgstr "Création du fichier d'échange"
 
 #: tazusb:367
 msgid ""
-"Generate a swap file in /home/swap that will be activated on each boot to "
-"have\n"
+"Generate a swap file in /home/swap that will be activated on each boot to have\n"
 "more memory available (Empty value to exit).\n"
 "\n"
 "Swap file in Mb : "
 msgstr ""
-"Créé un fichier d'échange, dans /home/swap, qui sera activé à chaque "
-"démarrage\n"
+"Créé un fichier d'échange, dans /home/swap, qui sera activé à chaque démarrage\n"
 "pour avoir plus de mémoire disponible (Pas de valeur pour quitter).\n"
 "\n"
 "Taille du fichier d'échange en Mo: "
@@ -160,11 +151,8 @@ msgid "Clean"
 msgstr "Nettoyage"
 
 #: tazusb:395
-msgid ""
-"Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
-msgstr ""
-"Suppression des anciennes sauvegarde de rootfs.gz.unixtimestamp pour libérer "
-"de la place sur le lecteur."
+msgid "Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
+msgstr "Suppression des anciennes sauvegarde de rootfs.gz.unixtimestamp pour libérer de la place sur le lecteur."
 
 #: tazusb:407
 msgid "No filesystems selected, exiting..."
@@ -187,9 +175,8 @@ msgid "Keeping current sound card selection..."
 msgstr "Garder la sélection courante de la carte son..."
 
 #: tazusb:453
-#, fuzzy
 msgid "Do you wish to remove the screen resolution (No/yes/exit) ? "
-msgstr "Souhaîtez-vous supprimer the sound card selection (No/yes/exit) ?"
+msgstr "Souhaîtez-vous supprimer la résolution d'écran (No/yes/exit) ?"
 
 #: tazusb:459
 msgid "Removing current screen resolution..."
@@ -213,9 +200,7 @@ msgstr "Création de rootfs.gz sans compression..."
 
 #: tazusb:493
 msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
-msgstr ""
-"Déplacement de rootfs.gz vers le média. N'oubliez de démonter le "
-"périphérique pour les écritures différées."
+msgstr "Déplacement de rootfs.gz vers le média. N'oubliez de démonter le périphérique pour les écritures différées."
 
 #: tazusb:503
 msgid "rootfs.gz is located in /"
