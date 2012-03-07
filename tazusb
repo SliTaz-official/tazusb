@@ -424,7 +424,7 @@ case $COMMAND in
 		fi
 		# Start info
 		echo ""
-		echo -e "\033[1m`gettext \nWrite filesystem\"`\033[0m
+		echo -e "\n\033[1m`gettext "Write filesystem"`\033[0m
 ==============================================================================="
 gettext "The command writefs will write all the current filesystem into a suitable cpio 
 archive (rootfs.gz) usable on a bootable LiveUSB media. 
