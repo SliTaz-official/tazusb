@@ -1,0 +1,41 @@
+# TazUSB Box Portuguese Translation.
+# Copyright (C) 2012 www.slitaz.org 
+# This file is distributed under the same license as the TazUSB Box package.
+# Claudinei Pereira <claudinei@slitaz.org>, 2012.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-07 14:04+0100\n"
+"PO-Revision-Date: 2012-03-14 23:50+0100\n"
+"Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
+"Language-Team: Portuguese <i18n@slitaz.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: tazusb-box:21
+msgid ""
+"<b>Generate SliTaz LiveUSB media and boot in RAM!</b> Insert a LiveCD into "
+"the cdrom drive or use a local ISO image, select the correct device and "
+"press OK."
+msgstr ""
+"<b>Gera uma mídia LiveUSB do SliTaz a ser carregada na RAM!</b> Insira um "
+"LiveCD no drive de CDROM ou use uma imagem ISO local, selecione o dispositivo "
+"e clique em OK."
+
+#: tazusb-box:49
+msgid "No USB media found"
+msgstr "Nenhuma mídia USB encontrada"
+
+#: tazusb-box:59
+msgid "ISO Image:"
+msgstr "Imagem ISO:"
+
+#: tazusb-box:60
+msgid "USB Media:"
+msgstr "Mídia USB:"
