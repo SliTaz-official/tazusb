@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-07 14:04+0100\n"
+"POT-Creation-Date: 2012-04-15 19:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tazusb-box:21
+#: tazusb-box:26
 msgid ""
 "<b>Generate SliTaz LiveUSB media and boot in RAM!</b> Insert a LiveCD into "
 "the cdrom drive or use a local ISO image, select the correct device and "
 "press OK."
 msgstr ""
 
-#: tazusb-box:49
+#: tazusb-box:47
 msgid "No USB media found"
 msgstr ""
 
-#: tazusb-box:59
+#: tazusb-box:55
 msgid "ISO Image:"
 msgstr ""
 
-#: tazusb-box:60
+#: tazusb-box:56
 msgid "USB Media:"
 msgstr ""

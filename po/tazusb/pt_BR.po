@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-07 14:04+0100\n"
+"POT-Creation-Date: 2012-04-15 19:08+0200\n"
 "PO-Revision-Date: 2012-03-14 23:25+0100\n"
 "Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
 "Language-Team: Portuguese <i18n@slitaz.org>\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: tazusb:36
+#: tazusb:35
 msgid "SliTaz Live USB - Version:"
 msgstr "SliTaz Live USB - Versão:"
 
-#: tazusb:37
+#: tazusb:36
 msgid "Usage: "
 msgstr "Uso: "
 
-#: tazusb:38
+#: tazusb:37
 msgid "Commands:"
 msgstr "Comandos:"
 
-#: tazusb:39
+#: tazusb:38
 msgid "Print this short usage."
 msgstr "Mostra esta utilização."
 
-#: tazusb:40
+#: tazusb:39
 msgid ""
 "Write the current filesystem to rootfs.gz.\n"
 "  \t\tSupported compression: lzma. gzip, none."
@@ -42,7 +42,7 @@ msgstr ""
 "Escreve o sistema de arquivos atual para rootfs.gz.\n"
 " \t\tCompressões suportadas: lzma, gzip, none (nenhuma)."
 
-#: tazusb:42
+#: tazusb:41
 msgid ""
 "Format and label device with ext3, ext2 or fat32 filesystem \n"
 "                (for LiveUSB or /home). Default is ext3."
@@ -50,87 +50,90 @@ msgstr ""
 "Rotula e formata o dispositivo como ext3, ext2 ou fat32 \n"
 "                (para LiveUSB ou /home). Padrão é ext3."
 
-#: tazusb:44
+#: tazusb:43
 msgid "Generate a bootable LiveUSB using files from the LiveCD."
 msgstr "Gera um LiveUSB bootável usando arquivos do LiveCD."
 
-#: tazusb:45
+#: tazusb:44
 msgid "Create or recreate and activate additional swap memory."
 msgstr "Cria, recria ou ativa uma partição swap."
 
-#: tazusb:46
+#: tazusb:45
 msgid "Generate a bootable LiveUSB using files from ISO file."
 msgstr "Gera um LiveUSB bootável usando arquivos de uma imagem ISO."
 
-#: tazusb:47
+#: tazusb:46
 msgid "Remove old backup filesystems to free disk space."
 msgstr "Remove arquivos de sistema antigo para liberar espaço."
 
-#: tazusb:68
-msgid "Device to use : "
+#: tazusb:67
+#, fuzzy
+msgid "Device to use: "
 msgstr "Dispositivo para user : "
 
-#: tazusb:72
+#: tazusb:71
 msgid "No specified device or exit."
 msgstr "Nenhum dispositivo especificado ou sair."
 
-#: tazusb:102 tazusb:119
+#: tazusb:101 tazusb:117
 msgid "Please specify a label for the partition (TazUSB): "
 msgstr "Por favor especifique um rótulo para a partição (TazUSB): "
 
-#: tazusb:130
+#: tazusb:127
 msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
 msgstr "Por favor escolha ext2, ext3 ou fat32 para formatação (ext3): "
 
-#: tazusb:163 tazusb:171
+#: tazusb:159 tazusb:167
 msgid "Processing..."
 msgstr "Processando..."
 
-#: tazusb:177
+#: tazusb:173
 msgid ""
 "Can't find mkdosfs tool.\\nWould you like to install dosfstools from "
 "repository [y/N] ? "
 msgstr ""
-"Aplicativo mkdosfs não encontrado.\\nInstalar o aplicativo a partir "
-"do repositório [y/N] ? "
+"Aplicativo mkdosfs não encontrado.\\nInstalar o aplicativo a partir do "
+"repositório [y/N] ? "
 
-#: tazusb:202
+#: tazusb:198
 msgid "Unmounting USB target device..."
 msgstr "Desmontando o dispositivo USB escolhido..."
 
-#: tazusb:210
+#: tazusb:206
 msgid "Mounting USB target device..."
 msgstr "Montando o dispositivo USB escolhido..."
 
-#: tazusb:218
+#: tazusb:214
 msgid "Mounting cdrom device..."
 msgstr "Montando o dispositivo CDROM..."
 
-#: tazusb:229
+#: tazusb:225
 msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
-msgstr "Impossível montar o CDROM ou encontrar um sistema de arquivos (rootfs.gz)."
+msgstr ""
+"Impossível montar o CDROM ou encontrar um sistema de arquivos (rootfs.gz)."
 
-#: tazusb:250
+#: tazusb:246
 msgid "Mounting "
 msgstr "Montando "
 
-#: tazusb:256
+#: tazusb:252
 msgid "Unable to mount iso or to find a filesystem on it (rootfs.gz)."
-msgstr "Impossível montar a ISO ou encontrar um sistema de arquivos (rootfs.gz)."
+msgstr ""
+"Impossível montar a ISO ou encontrar um sistema de arquivos (rootfs.gz)."
 
-#: tazusb:264
+#: tazusb:260
 msgid "Copying needed files from cdrom..."
 msgstr "Copiando arquivos requeridos do CDROM..."
 
-#: tazusb:327
+#: tazusb:323
 msgid "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
 msgstr "Sair (Exit) do TazUSB ou reiniciar (reboot) o sistema ? "
 
-#: tazusb:365
+#: tazusb:358
 msgid "Gen swap"
 msgstr "Gerando swap"
 
-#: tazusb:367
+#: tazusb:360
 msgid ""
 "Generate a swap file in /home/swap that will be activated on each boot to "
 "have\n"
@@ -138,94 +141,92 @@ msgid ""
 "\n"
 "Swap file in Mb : "
 msgstr ""
-"Gera arquivo swap em /home/swap a ser ativado durante o boot "
-"para\n"
+"Gera arquivo swap em /home/swap a ser ativado durante o boot para\n"
 "obter mais memória disponível (Enter para ignorar).\n"
 "Tamanho do arquivo swap em Mb : "
 
-#: tazusb:373
+#: tazusb:366
 msgid "Empty value. Exiting..."
 msgstr "Nenhum valor informado. Saindo..."
 
-#: tazusb:393
+#: tazusb:386
 msgid "Clean"
 msgstr "Limpa"
 
-
-#: tazusb:395
+#: tazusb:388
 msgid ""
 "Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
-msgstr ""
-"Remove arquivos rootfs.gz antigos para salvar espaço em disco."
+msgstr "Remove arquivos rootfs.gz antigos para salvar espaço em disco."
 
-#: tazusb:407
+#: tazusb:400
 msgid "No filesystems selected, exiting..."
 msgstr "Nenhum sistema de arquivo selecionado, saindo..."
 
-#: tazusb:427
+#: tazusb:420
 msgid "Write filesystem"
 msgstr "Escrever sistema de arquivo"
 
-#: tazusb:439
+#: tazusb:432
 msgid "Do you wish to remove the sound card selection (No/yes/exit) ? "
 msgstr "Gostaria de remover a seleção de placa de som (No/yes/exit) ? "
 
-#: tazusb:445
+#: tazusb:438
 msgid "Removing current sound card selection..."
 msgstr "Removendo a seleção de placa de som atual..."
 
-#: tazusb:449
+#: tazusb:442
 msgid "Keeping current sound card selection..."
 msgstr "Mantendo o seleção de placa de som atual..."
 
-#: tazusb:453
+#: tazusb:446
 msgid "Do you wish to remove the screen resolution (No/yes/exit) ? "
-msgstr "Gostaria de remover a configuração de resolução de tela (No/yes/exit) ? "
+msgstr ""
+"Gostaria de remover a configuração de resolução de tela (No/yes/exit) ? "
 
-#: tazusb:459
+#: tazusb:452
 msgid "Removing current screen resolution..."
 msgstr "Removendo a configuração de resolução de tela atual..."
 
-#: tazusb:462
+#: tazusb:455
 msgid "Keeping current screen resolution..."
 msgstr "Mantendo a configuração de resolução de tela atual..."
 
-#: tazusb:476
+#: tazusb:469
 msgid "Creating rootfs.gz with lzma compression... "
 msgstr "Criando rootfs.gz com compressão lzma... "
 
-#: tazusb:480
+#: tazusb:473
 msgid "Creating rootfs.gz with gzip compression... "
 msgstr "Criando rootfs.gz com compressão gzip... "
 
-#: tazusb:484
+#: tazusb:477
 msgid "Creating rootfs.gz without compression... "
 msgstr "Criando rootfs.gz sem compressão... "
 
-#: tazusb:493
+#: tazusb:486
 msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
 msgstr "Movendo rootfs.gz para a mídia. Lembre-se de desmontar o dispositivo!"
 
-#: tazusb:503
+#: tazusb:496
 msgid "rootfs.gz is located in /"
 msgstr "rootfs.gz localizado em /"
 
-#: tazusb:510
+#: tazusb:503
 msgid "ENTER to continue..."
 msgstr "ENTER para continuar..."
 
-#: tazusb:516
+#: tazusb:509
 msgid "Format a device"
 msgstr "Formatar o dispositivo"
 
-#: tazusb:540
+#: tazusb:533
 msgid "Gen a LiveUSB media"
 msgstr "Gera uma mídia LiveUSB"
 
-#: tazusb:568
+#: tazusb:559
 msgid "Please specify a valid filename on the command line."
 msgstr "Por favor especifique um nome de arquivo válido na linha de comando."
 
-#: tazusb:572
+#: tazusb:563
 msgid "Copy ISO file to SliTaz LiveUSB media"
 msgstr "Copia uma imagem ISO para a mídia LiveUSB"

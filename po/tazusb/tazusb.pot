@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-07 14:04+0100\n"
+"POT-Creation-Date: 2012-04-15 19:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,113 +17,113 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tazusb:36
+#: tazusb:35
 msgid "SliTaz Live USB - Version:"
 msgstr ""
 
-#: tazusb:37
+#: tazusb:36
 msgid "Usage: "
 msgstr ""
 
-#: tazusb:38
+#: tazusb:37
 msgid "Commands:"
 msgstr ""
 
-#: tazusb:39
+#: tazusb:38
 msgid "Print this short usage."
 msgstr ""
 
-#: tazusb:40
+#: tazusb:39
 msgid ""
 "Write the current filesystem to rootfs.gz.\n"
 "  \t\tSupported compression: lzma. gzip, none."
 msgstr ""
 
-#: tazusb:42
+#: tazusb:41
 msgid ""
 "Format and label device with ext3, ext2 or fat32 filesystem \n"
 "                (for LiveUSB or /home). Default is ext3."
 msgstr ""
 
-#: tazusb:44
+#: tazusb:43
 msgid "Generate a bootable LiveUSB using files from the LiveCD."
 msgstr ""
 
-#: tazusb:45
+#: tazusb:44
 msgid "Create or recreate and activate additional swap memory."
 msgstr ""
 
-#: tazusb:46
+#: tazusb:45
 msgid "Generate a bootable LiveUSB using files from ISO file."
 msgstr ""
 
-#: tazusb:47
+#: tazusb:46
 msgid "Remove old backup filesystems to free disk space."
 msgstr ""
 
-#: tazusb:68
-msgid "Device to use : "
+#: tazusb:67
+msgid "Device to use: "
 msgstr ""
 
-#: tazusb:72
+#: tazusb:71
 msgid "No specified device or exit."
 msgstr ""
 
-#: tazusb:102 tazusb:119
+#: tazusb:101 tazusb:117
 msgid "Please specify a label for the partition (TazUSB): "
 msgstr ""
 
-#: tazusb:130
+#: tazusb:127
 msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
 msgstr ""
 
-#: tazusb:163 tazusb:171
+#: tazusb:159 tazusb:167
 msgid "Processing..."
 msgstr ""
 
-#: tazusb:177
+#: tazusb:173
 msgid ""
 "Can't find mkdosfs tool.\\nWould you like to install dosfstools from "
 "repository [y/N] ? "
 msgstr ""
 
-#: tazusb:202
+#: tazusb:198
 msgid "Unmounting USB target device..."
 msgstr ""
 
-#: tazusb:210
+#: tazusb:206
 msgid "Mounting USB target device..."
 msgstr ""
 
-#: tazusb:218
+#: tazusb:214
 msgid "Mounting cdrom device..."
 msgstr ""
 
-#: tazusb:229
+#: tazusb:225
 msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
 msgstr ""
 
-#: tazusb:250
+#: tazusb:246
 msgid "Mounting "
 msgstr ""
 
-#: tazusb:256
+#: tazusb:252
 msgid "Unable to mount iso or to find a filesystem on it (rootfs.gz)."
 msgstr ""
 
-#: tazusb:264
+#: tazusb:260
 msgid "Copying needed files from cdrom..."
 msgstr ""
 
-#: tazusb:327
+#: tazusb:323
 msgid "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
 msgstr ""
 
-#: tazusb:365
+#: tazusb:358
 msgid "Gen swap"
 msgstr ""
 
-#: tazusb:367
+#: tazusb:360
 msgid ""
 "Generate a swap file in /home/swap that will be activated on each boot to "
 "have\n"
@@ -132,87 +132,87 @@ msgid ""
 "Swap file in Mb : "
 msgstr ""
 
-#: tazusb:373
+#: tazusb:366
 msgid "Empty value. Exiting..."
 msgstr ""
 
-#: tazusb:393
+#: tazusb:386
 msgid "Clean"
 msgstr ""
 
-#: tazusb:395
+#: tazusb:388
 msgid ""
 "Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
 msgstr ""
 
-#: tazusb:407
+#: tazusb:400
 msgid "No filesystems selected, exiting..."
 msgstr ""
 
-#: tazusb:427
+#: tazusb:420
 msgid "Write filesystem"
 msgstr ""
 
-#: tazusb:439
+#: tazusb:432
 msgid "Do you wish to remove the sound card selection (No/yes/exit) ? "
 msgstr ""
 
-#: tazusb:445
+#: tazusb:438
 msgid "Removing current sound card selection..."
 msgstr ""
 
-#: tazusb:449
+#: tazusb:442
 msgid "Keeping current sound card selection..."
 msgstr ""
 
-#: tazusb:453
+#: tazusb:446
 msgid "Do you wish to remove the screen resolution (No/yes/exit) ? "
 msgstr ""
 
-#: tazusb:459
+#: tazusb:452
 msgid "Removing current screen resolution..."
 msgstr ""
 
-#: tazusb:462
+#: tazusb:455
 msgid "Keeping current screen resolution..."
 msgstr ""
 
-#: tazusb:476
+#: tazusb:469
 msgid "Creating rootfs.gz with lzma compression... "
 msgstr ""
 
-#: tazusb:480
+#: tazusb:473
 msgid "Creating rootfs.gz with gzip compression... "
 msgstr ""
 
-#: tazusb:484
+#: tazusb:477
 msgid "Creating rootfs.gz without compression... "
 msgstr ""
 
-#: tazusb:493
+#: tazusb:486
 msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
 msgstr ""
 
-#: tazusb:503
+#: tazusb:496
 msgid "rootfs.gz is located in /"
 msgstr ""
 
-#: tazusb:510
+#: tazusb:503
 msgid "ENTER to continue..."
 msgstr ""
 
-#: tazusb:516
+#: tazusb:509
 msgid "Format a device"
 msgstr ""
 
-#: tazusb:540
+#: tazusb:533
 msgid "Gen a LiveUSB media"
 msgstr ""
 
-#: tazusb:568
+#: tazusb:559
 msgid "Please specify a valid filename on the command line."
 msgstr ""
 
-#: tazusb:572
+#: tazusb:563
 msgid "Copy ISO file to SliTaz LiveUSB media"
 msgstr ""
