@@ -10,6 +10,8 @@
 #
 VERSION=4.0.1
 
+. /lib/libtaz.sh
+
 # Include gettext helper script.
 . /usr/bin/gettext.sh
 
@@ -19,16 +21,13 @@ export TEXTDOMAIN
 
 COMMAND=$1
 TARGET_ROOT=/media/flash
-DRIVE_NAME=`cat /proc/sys/dev/cdrom/info | grep "drive name" | cut -f 3`
+DRIVE_NAME=$(cat /proc/sys/dev/cdrom/info | grep "drive name" | cut -f 3)
 CDROM=/dev/$DRIVE_NAME
 LOG=/tmp/$(basename $0).log
 
 #
 # Tazusb functions
 #
-
-source /usr/lib/slitaz/libtaz
-source_lib commons
 
 # Print the usage.
 usage ()
@@ -62,10 +61,10 @@ ask_for_device()
 Please specify the target USB device to $COMMAND. You can type 'list' to 
 get a list of devices, type 'exit' or give an empty value to exit.
 
-Device to use : "; read anser
+Device to use: "; read anser
 	while [ "$anser" == "list" ]; do
 		fdisk_list
-		gettext "Device to use : "; read anser
+		gettext "Device to use: "; read anser
 	done
 	if [ "$anser" = "" -o "$anser" = "exit" ]; then
 		echo ""
@@ -110,7 +109,6 @@ mkfs_ext3()
 	gettext "Mkfs   : mkfs.ext3 -L \"$label\" $DEVICE" ; echo ""
 	echo "" && sleep 2
 	mkfs.ext3 -L "$label" $DEVICE
-	
 }
 
 # Get label for device
@@ -118,7 +116,6 @@ get_label()
 {
 	gettext "Please specify a label for the partition (TazUSB): "
 	read label
-	
 	if [ -z $label ]; then
 		label=TazUSB
 	fi
@@ -129,7 +126,6 @@ get_fs_type()
 {
 	gettext "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
 	read  fs_type
-	
 	if [ -z $fs_type ]; then
 		fs_type=ext3
 	fi
@@ -143,7 +139,7 @@ Please specify the filesystem type to $COMMAND.
 Available formats are ext3(default), ext2 or fat32. 
 Press enter to keep the default value.
 
-File system type : "; read anser
+File system type: "; read anser
 	if [ "$anser" = "" ]; then
 		FS_TYPE=ext3
 	else
@@ -322,19 +318,16 @@ install_boot()
 # Let user exit or reboot.
 exit_or_reboot()
 {
-	echo "==============================================================================="
+	separator
 	echo ""
 	gettext "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
 	read anser
 	if [ "$anser" == "reboot" ]; then
-		umount $TARGET_ROOT
-		umount /media/cdrom
+		unmount_target_usb
 		reboot || reboot -f
 	else
-		umount $TARGET_ROOT
-		umount /media/cdrom
-		echo ""
-		exit 0
+		unmount_target_usb
+		echo "" && exit 0
 	fi
 }
 
@@ -503,7 +496,7 @@ Archive compression: $COMPRESSION"
 			gettext "rootfs.gz is located in /"; echo ""
 		fi
 
-		echo "==============================================================================="
+		separator
 		gettext "Root filesystem size: $size"; echo ""
 		echo ""
 		echo "----"
@@ -514,7 +507,7 @@ Archive compression: $COMPRESSION"
 		check_root
 		echo ""
 		echo -e "\033[1m`gettext \"Format a device\"`\033[0m"
-		echo "==============================================================================="
+		separator
 		DEVICE=$2
 		label=$3
 		fs_type=$4
@@ -529,7 +522,7 @@ Archive compression: $COMPRESSION"
 		unmount_target_usb 
 		make_fs "$fs_type"
 		# mkfs_ext3
-		echo "==============================================================================="
+		separator
 		gettext "Device $label ($DEVICE) is ready to use as LiveUSB and/or /home partition."
 		echo ""
 		;;
@@ -538,7 +531,7 @@ Archive compression: $COMPRESSION"
 		check_root
 		echo ""
 		echo -e "\033[1m`gettext \"Gen a LiveUSB media\"`\033[0m"
-		echo "==============================================================================="
+		separator
 		DEVICE=$2
 		if [ -z $DEVICE ]; then
 			ask_for_device
@@ -557,11 +550,9 @@ Archive compression: $COMPRESSION"
 		;;
 	gen-swap)
 		check_root
-		gen_swap_file
-		;;
+		gen_swap_file ;;
 	gen-iso2usb|iso2usb)
 		check_root
-
 		# Check if file exists
 		ISO=$2
 		if [ -z $ISO ] || [ ! -f $ISO ]; then
@@ -569,9 +560,8 @@ Archive compression: $COMPRESSION"
 			exit 1
 		fi
 		echo ""
-		echo -e "\033[1m`gettext \"Copy ISO file to SliTaz LiveUSB media\"`\033[0m"
-		echo "==============================================================================="
-		echo ""
+		boldify "$(gettext "Copy ISO file to SliTaz LiveUSB media")"
+		separator
 		DEVICE=$3
 		if [ -z $DEVICE ]; then
 			ask_for_device
