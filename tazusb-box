@@ -9,15 +9,20 @@
 
 # TazUSBbox is only for root.
 if test $(id -u) != 0 ; then
-	exec tazbox su tazusbbox
+	exec tazbox su tazusb-box
 	exit 0
 fi
+
+title="TazUSB Box"
+icon="usb-creator"
+opts="--image=usb-creator --image-on-top --width=520 --center --on-top"
 
 # I18n
 . /usr/bin/gettext.sh
 TEXTDOMAIN='tazusb-box'
 export TEXTDOMAIN
 
+# Main text information
 info="$(gettext "<b>Generate SliTaz LiveUSB media and boot in RAM!</b> \
 Insert a LiveCD into the cdrom drive or use a local ISO image, select \
 the correct device and press OK.")
@@ -27,18 +32,11 @@ the correct device and press OK.")
 # Functions
 #
 
-gen_live()
-{
-	[ -z "$DEVICE" ] && exit 0 
-	if [ -n "$ISO_IMAGE" ]; then
-		xterm -T "Tazusb gen-iso2usb" \
-			-geometry 80x16 \
-			-e "tazusb gen-iso2usb $ISO_IMAGE $DEVICE; exit 0"
-	else
-		xterm -T "Tazusb gen-liveusb" \
-			-geometry 80x16 \
-			-e "tazusb gen-liveusb $DEVICE; exit 0"
-	fi
+# Nice GTK output for commands.
+output() {
+	yad --text-info $opts --text="<b>$title</b>" \
+		--height=260 --title="$title" --window-icon=$icon \
+		--tail --margins=4 --button="Reboot:reboot" --button="gtk-close:0"
 }
 
 list_devices() {
@@ -52,10 +50,8 @@ list_devices() {
 
 # Main GUI box function with pure Yad spec
 tazusb_main() {
-	yad --form --text="$info" --title="TazUSB Box" \
-		--height=200 --width=500 --borders=4 \
-		--image=usb-creator --image-on-top \
-		--window-icon=usb-creator \
+	yad --form $opts --text="$info" \
+		--title="$title" --height=200 \
 		--field="$(gettext "ISO Image:")":FL \
 		--field="$(gettext "USB Media:")":CB \
 		" " "$(list_devices)"
@@ -78,13 +74,10 @@ tazusb() {
 	fi 
 	if echo "$main" | grep -q ".iso|"; then
 		iso=$(echo $main | cut -d "|" -f 1)
-		terminal -T "Tazusb gen-iso2usb" \
-			-geometry 80x16 \
-			-e "tazusb gen-iso2usb $iso $dev; sleep 4; exit 0"
+		yes "" | /usr/bin/tazusb gen-iso2usb $iso $dev --raw-out | output
+		exit 0
 	else
-		terminal -T "Tazusb gen-liveusb" \
-			-geometry 80x16 \
-			-e "tazusb gen-liveusb $dev; sleep 4; exit 0"
+		yes "" | /usr/bin/tazusb gen-liveusb $dev --raw-out | output
 	fi
 }
 
