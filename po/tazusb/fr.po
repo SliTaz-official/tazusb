@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-15 19:08+0200\n"
-"PO-Revision-Date: 2012-03-07 14:07+0100\n"
+"PO-Revision-Date: 2012-04-15 19:10+0100\n"
 "Last-Translator: Christophe Lincoln <pankso@slitaz.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: French\n"
@@ -73,7 +73,8 @@ msgstr "Périphérique  cible :"
 msgid "No specified device or exit."
 msgstr "Pas de périphérique spécifié ou quitter"
 
-#: tazusb:101 tazusb:117
+#: tazusb:101
+#: tazusb:117
 msgid "Please specify a label for the partition (TazUSB): "
 msgstr "Entrez un nom de volume (TazUSB): "
 
@@ -81,14 +82,15 @@ msgstr "Entrez un nom de volume (TazUSB): "
 msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
 msgstr "Donnez le type de système de fichiers ext2, ext3 ou fat32 (ext3): "
 
-#: tazusb:159 tazusb:167
+#: tazusb:159
+#: tazusb:167
 msgid "Processing..."
 msgstr "Traitement en cours"
 
 #: tazusb:173
 msgid ""
-"Can't find mkdosfs tool.\\nWould you like to install dosfstools from "
-"repository [y/N] ? "
+"Can't find mkdosfs tool.\\n"
+"Would you like to install dosfstools from repository [y/N] ? "
 msgstr ""
 "Impossible de trouver le programme mkdofs.\n"
 "Voulez-vous installer le paquet dosfstools depuis le dépot [y/N] ? "
@@ -107,19 +109,15 @@ msgstr "Montage du cdrom..."
 
 #: tazusb:225
 msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
-msgstr ""
-"Impossible de monter le cdrom ou d'y trouver un système de fichier (rootfs."
-"gz)."
+msgstr "Impossible de monter le cdrom ou d'y trouver un système de fichier (rootfs.gz)."
 
 #: tazusb:246
 msgid "Mounting "
-msgstr "Montage"
+msgstr "Montage de "
 
 #: tazusb:252
 msgid "Unable to mount iso or to find a filesystem on it (rootfs.gz)."
-msgstr ""
-"Impossible de monter l'image ISO ou d'y trouver un système de fichier "
-"(rootfs.gz)."
+msgstr "Impossible de monter l'image ISO ou d'y trouver un système de fichier (rootfs.gz)."
 
 #: tazusb:260
 msgid "Copying needed files from cdrom..."
@@ -135,14 +133,12 @@ msgstr "Création du fichier d'échange"
 
 #: tazusb:360
 msgid ""
-"Generate a swap file in /home/swap that will be activated on each boot to "
-"have\n"
+"Generate a swap file in /home/swap that will be activated on each boot to have\n"
 "more memory available (Empty value to exit).\n"
 "\n"
 "Swap file in Mb : "
 msgstr ""
-"Créé un fichier d'échange, dans /home/swap, qui sera activé à chaque "
-"démarrage\n"
+"Créé un fichier d'échange, dans /home/swap, qui sera activé à chaque démarrage\n"
 "pour avoir plus de mémoire disponible (Pas de valeur pour quitter).\n"
 "\n"
 "Taille du fichier d'échange en Mo: "
@@ -156,11 +152,8 @@ msgid "Clean"
 msgstr "Nettoyage"
 
 #: tazusb:388
-msgid ""
-"Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
-msgstr ""
-"Suppression des anciennes sauvegarde de rootfs.gz.unixtimestamp pour libérer "
-"de la place sur le lecteur."
+msgid "Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
+msgstr "Suppression des anciennes sauvegarde de rootfs.gz.unixtimestamp pour libérer de la place sur le lecteur."
 
 #: tazusb:400
 msgid "No filesystems selected, exiting..."
@@ -208,9 +201,7 @@ msgstr "Création de rootfs.gz sans compression..."
 
 #: tazusb:486
 msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
-msgstr ""
-"Déplacement de rootfs.gz vers le média. N'oubliez de démonter le "
-"périphérique pour les écritures différées."
+msgstr "Déplacement de rootfs.gz vers le média. N'oubliez de démonter le périphérique pour les écritures différées."
 
 #: tazusb:496
 msgid "rootfs.gz is located in /"
