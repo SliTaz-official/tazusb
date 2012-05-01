@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-15 19:08+0200\n"
-"PO-Revision-Date: 2012-04-15 19:10+0100\n"
+"PO-Revision-Date: 2012-05-01 12:53+0100\n"
 "Last-Translator: Christophe Lincoln <pankso@slitaz.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: French\n"
@@ -65,9 +65,8 @@ msgid "Remove old backup filesystems to free disk space."
 msgstr "Supprimer les sauvegardes pour libérer de la place."
 
 #: tazusb:67
-#, fuzzy
 msgid "Device to use: "
-msgstr "Périphérique  cible :"
+msgstr "Périphérique  cible:"
 
 #: tazusb:71
 msgid "No specified device or exit."
