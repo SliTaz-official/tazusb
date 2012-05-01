@@ -6,6 +6,7 @@
 #
 # Authors : Christophe Lincoln <pankso@slitaz.org>
 #
+. /lib/libtaz.sh
 
 # TazUSBbox is only for root.
 if test $(id -u) != 0 ; then
@@ -13,9 +14,12 @@ if test $(id -u) != 0 ; then
 	exit 0
 fi
 
+# We can specify an ISO on cmdline: tazusb-box --iso=/path/to/image.iso
+[ "$iso" ] || iso=" "
+
 title="TazUSB Box"
-icon="usb-creator"
-opts="--image=usb-creator --image-on-top --width=520 --center --on-top"
+icon="/usr/share/pixmaps/slitaz-icon.png"
+opts="--window-icon=$icon --height=220 --width=520 --center --on-top"
 
 # I18n
 . /usr/bin/gettext.sh
@@ -34,9 +38,8 @@ the correct device and press OK.")
 
 # Nice GTK output for commands.
 output() {
-	yad --text-info $opts --text="<b>$title</b>" \
-		--height=260 --title="$title" --window-icon=$icon \
-		--tail --margins=4 --button="Reboot:reboot" --button="gtk-close:0"
+	yad --text-info $opts --title="$title" --tail --margins=4 \
+		--button="Reboot:reboot" --button="gtk-close:0"
 }
 
 list_devices() {
@@ -49,35 +52,35 @@ list_devices() {
 }
 
 # Main GUI box function with pure Yad spec
-tazusb_main() {
-	yad --form $opts --text="$info" \
-		--title="$title" --height=200 \
+usbbox_main() {
+	yad --form $opts --title="$title" --text="$info" \
+		--image=usb-creator --image-on-top \
 		--field="$(gettext "ISO Image:")":FL \
 		--field="$(gettext "USB Media:")":CB \
-		" " "$(list_devices)"
+		"$iso" "$(list_devices)"
 }
 
 # Handler
-tazusb() {
+usbbox() {
 	# Store box results
-	main=$(tazusb_main)
-	ret=$?
+	main=$(usbbox_main)
+
 	# Deal with --button values
-	case $ret in
+	case $? in
 		1) exit 0 ;;
 		*) continue ;;
 	esac
+
 	# Deal with $main values. Exit if any device.
 	dev=$(echo $main | cut -d "|" -f 2)
 	if ! echo $dev | grep -q /dev; then
-		exit 0
-	fi 
+		echo "No device: exit" && exit 0
+	fi
 	if echo "$main" | grep -q ".iso|"; then
 		iso=$(echo $main | cut -d "|" -f 1)
-		yes "" | /usr/bin/tazusb gen-iso2usb $iso $dev --raw-out | output
-		exit 0
+		yes "" | tazusb gen-iso2usb $iso $dev --output=raw | output
 	else
-		yes "" | /usr/bin/tazusb gen-liveusb $dev --raw-out | output
+		yes "" | tazusb gen-liveusb $dev --output=raw | output
 	fi
 }
 
@@ -87,9 +90,11 @@ tazusb() {
 
 case "$1" in
 	usage)
-		echo "Usage: $(basename $0) [command]" ;;
-	*) 
-		tazusb ;;
+		echo "Usage: $(basename $0) [list]" ;;
+	list)
+		list_devices ;;
+	*)
+		usbbox ;;
 esac
 
 exit 0
