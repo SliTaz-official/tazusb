@@ -300,10 +300,10 @@ install_boot()
 	cp /media/cdrom/boot/isolinux/isolinux.cfg $TARGET_ROOT/boot/$ST/$ST.$STE
 	
 	# Update DVD autoinstall
-	sed -i "s/LABEL=packages-[^,]*/UUID=$UUID/g" $(grep -l append $TARGET_ROOT/boot/$ST/*)
+	sed -i "s/LABEL=packages-[^,]*/UUID=$UUID/g" $(grep -l APPEND $TARGET_ROOT/boot/$ST/*)
 	 
-	# Add home= to append in extlinux or syslinux.cfg
-	sed -i -e "s/\(root=.*\)/\1 home=$UUID/" $(grep -l append $TARGET_ROOT/boot/$ST/*)
+	# Add home= to APPEND in extlinux or syslinux.cfg
+	sed -i -e "s/\(root=.*\)/\1 home=$UUID/" $(grep -l APPEND $TARGET_ROOT/boot/$ST/*)
 	
 	# Splash screen and help files.
 	cp /media/cdrom/boot/isolinux/splash.* $TARGET_ROOT/boot/$ST
