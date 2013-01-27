@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the TazUSB package.
 # Claudinei Pereira <claudinei@slitaz.org>, 2012.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-15 19:08+0200\n"
-"PO-Revision-Date: 2012-03-14 23:25+0100\n"
+"PO-Revision-Date: 2013-01-27 04:28-0300\n"
 "Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
 "Language-Team: Portuguese <i18n@slitaz.org>\n"
 "Language: pt_BR\n"
@@ -67,9 +66,8 @@ msgid "Remove old backup filesystems to free disk space."
 msgstr "Remove arquivos de sistema antigo para liberar espaço."
 
 #: tazusb:67
-#, fuzzy
 msgid "Device to use: "
-msgstr "Dispositivo para user : "
+msgstr "Dispositivo a ser utilizado: "
 
 #: tazusb:71
 msgid "No specified device or exit."
