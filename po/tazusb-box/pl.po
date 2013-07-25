@@ -1,0 +1,38 @@
+# Polish translation for TazUSB-box package.
+# Copyright (C) 2013 SliTaz
+# This file is distributed under the same license as the TazUSB package.
+# Paweł Pyrczak <support@pyrczak.pl>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-01 12:51+0200\n"
+"PO-Revision-Date: 2013-07-23 12:36+0100\n"
+"Last-Translator: Paweł Pyrczak <tkr.tkr.pl@gmail.com>\n"
+"Language-Team: Paweł Pyrczak <support@pyrczak.pl>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: tazusb-box:30
+msgid "<b>Generate SliTaz LiveUSB media and boot in RAM!</b> Insert a LiveCD into the cdrom drive or use a local ISO image, select the correct device and press OK."
+msgstr "<b>Generuje nośnik SliTaz LiveUSB botowalny w pamięci RAM!</b> Włóż LiveCD do napędu cdrom albo użyj lokalnego obrazu ISO, wybierz właściwy nośnik docelowy USB i naciśnij OK."
+
+#: tazusb-box:50
+msgid "No USB media found"
+msgstr "Nie znaleziono nośników USB"
+
+#: tazusb-box:58
+msgid "ISO Image:"
+msgstr "Obraz ISO:"
+
+#: tazusb-box:59
+msgid "USB Media:"
+msgstr "Nośnik USB:"
+
