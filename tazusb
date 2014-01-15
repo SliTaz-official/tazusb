@@ -441,20 +441,8 @@ Archive compression: $COMPRESSION"
 				gettext "Keeping current sound card selection..." ;;
 		esac
 		status
-		# Optionally remove screen resolution
-		gettext "Do you wish to remove the screen resolution (No/yes/exit) ? "
-		read anser
-		case $anser in
-			e|E|"exit"|Exit)
-				exit 0 ;;
-			y|Y|yes|Yes)
-				gettext "Removing current screen resolution..."
-				rm -f /etc/X11/screen.conf ;;
-			*)
-				gettext "Keeping current screen resolution..." ;;
-		esac
-		status
-		# Optionally remove screen resolution
+		
+		# Optionally remove i18n settings
 		gettext "Do you wish to remove local/keymap settings (No/yes/exit) ? "
 		read anser
 		case $anser in
