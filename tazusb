@@ -415,35 +415,39 @@ case $COMMAND in
 			COMPRESSION=$2
 		fi
 		# Start info
-		echo ""
-		echo -e "\n\033[1m`gettext "Write filesystem"`\033[0m
-==============================================================================="
-gettext "The command writefs will write all the current filesystem into a suitable cpio 
-archive (rootfs.gz) usable on a bootable LiveUSB media. 
+		newline
+		boldify "$(gettext 'Write filesystem')"
+		separator
+		cat << EOT
+$(gettext "The command writefs will write all the current filesystem into a suitable
+cpio archive (rootfs.gz) usable on a bootable LiveUSB media.")
 
-Archive compression: $COMPRESSION"
-		echo ""
-		
+$(boldify "Archive compression:") $(colorize 36 "$COMPRESSION")
+
+EOT
 		# Clear out tazpkg cache
 		rm /var/cache/tazpkg/* -r -f
 
-		# Optionally remove sound card selection
-		gettext "Do you wish to remove the sound card selection (No/yes/exit) ? "
+		# Optionally remove sound card selection and screen resolution.
+		gettext "Do you wish to remove the sound card and screen configs ? "; echo
+		gettext "Press ENTER to keep or answer (No|yes|exit): "
 		read anser
 		case $anser in
 			e|E|"exit"|Exit)
 				exit 0 ;;
 			y|Y|yes|Yes)
-				gettext "Removing current sound card selection..."
+				gettext "Removing current sound card and screen configurations..."
 				rm -f /var/lib/sound-card-driver
-				rm -f /var/lib/alsa/asound.state ;;
+				rm -f /var/lib/alsa/asound.state
+				rm -f /etc/X11/xorg.conf ;;
 			*)
-				gettext "Keeping current sound card selection..." ;;
+				gettext "Keeping current sound card and screen configurations..." ;;
 		esac
-		status
+		status && newline
 		
 		# Optionally remove i18n settings
-		gettext "Do you wish to remove local/keymap settings (No/yes/exit) ? "
+		gettext "Do you wish to remove local/keymap settings ? "; echo
+		gettext "Press ENTER to keep or answer (No|yes|exit): "
 		read anser
 		case $anser in
 			e|E|"exit"|Exit)
