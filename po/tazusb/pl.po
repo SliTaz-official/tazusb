@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-01 12:51+0200\n"
+"POT-Creation-Date: 2014-01-15 08:56+0100\n"
 "PO-Revision-Date: 2013-07-23 12:36+0100\n"
 "Last-Translator: Paweł Pyrczak <tkr.tkr.pl@gmail.com>\n"
 "Language-Team: Paweł Pyrczak <support@pyrczak.pl>\n"
@@ -15,7 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -77,8 +78,7 @@ msgstr "Napęd przeznaczony di użycia: "
 msgid "No specified device or exit."
 msgstr "Nie sprecyzowano napędu, albo kończenie."
 
-#: tazusb:101
-#: tazusb:117
+#: tazusb:101 tazusb:117
 msgid "Please specify a label for the partition (TazUSB): "
 msgstr "Proszę wprowadzić etykietę dla tablicy partycji (TazUSB): "
 
@@ -86,18 +86,17 @@ msgstr "Proszę wprowadzić etykietę dla tablicy partycji (TazUSB): "
 msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
 msgstr "Proszę wprowadzić użyty system plików ext2, ext3 lub fat32 (ext3): "
 
-#: tazusb:159
-#: tazusb:167
+#: tazusb:159 tazusb:167
 msgid "Processing..."
 msgstr "Przetwarzanie..."
 
 #: tazusb:173
 msgid ""
-"Can't find mkdosfs tool.\\n"
-"Would you like to install dosfstools from repository [y/N] ? "
+"Can't find mkdosfs tool.\\nWould you like to install dosfstools from "
+"repository [y/N] ? "
 msgstr ""
-"Nie można znaleźć narzędzia mkdosfs.\\n"
-"Czy chesz zainstalować dosfstools z repozytorium [y/N] ? "
+"Nie można znaleźć narzędzia mkdosfs.\\nCzy chesz zainstalować dosfstools z "
+"repozytorium [y/N] ? "
 
 #: tazusb:198
 msgid "Unmounting USB target device..."
@@ -113,7 +112,9 @@ msgstr "Montowanie napędu cdrom..."
 
 #: tazusb:225
 msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
-msgstr "Nie można zamontować napędu cdrom, albo znaleźć systemu plików na nim (rootfs.gz)."
+msgstr ""
+"Nie można zamontować napędu cdrom, albo znaleźć systemu plików na nim "
+"(rootfs.gz)."
 
 #: tazusb:246
 msgid "Mounting "
@@ -121,23 +122,25 @@ msgstr "Montowanie "
 
 #: tazusb:252
 msgid "Unable to mount iso or to find a filesystem on it (rootfs.gz)."
-msgstr "Nie można zamontować ISO, albo znaleźć systemu plików na nim (rootfs.gz)."
+msgstr ""
+"Nie można zamontować ISO, albo znaleźć systemu plików na nim (rootfs.gz)."
 
 #: tazusb:260
 msgid "Copying needed files from cdrom..."
 msgstr "kopiowanie wymaganych plików z napędu cdrom..."
 
-#: tazusb:323
+#: tazusb:322
 msgid "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
 msgstr "Czy chcesz zakończyć Tazusb czy zrestartować system (Exit/reboot) ? "
 
-#: tazusb:358
+#: tazusb:357
 msgid "Gen swap"
 msgstr "Generuj swap"
 
-#: tazusb:360
+#: tazusb:359
 msgid ""
-"Generate a swap file in /home/swap that will be activated on each boot to have\n"
+"Generate a swap file in /home/swap that will be activated on each boot to "
+"have\n"
 "more memory available (Empty value to exit).\n"
 "\n"
 "Swap file in Mb : "
@@ -147,87 +150,111 @@ msgstr ""
 "\n"
 "Rozmiar pliku swap w Mb: "
 
-#: tazusb:366
+#: tazusb:365
 msgid "Empty value. Exiting..."
 msgstr "Pusta wartość. Kończenie..."
 
-#: tazusb:386
+#: tazusb:385
 msgid "Clean"
 msgstr "Wyczyść"
 
-#: tazusb:388
-msgid "Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
-msgstr "Usuń starą kopię zapasową rootfs.gz.unixtimestamp systemu plików aby zwolnić miejsce na dysku."
+#: tazusb:387
+msgid ""
+"Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
+msgstr ""
+"Usuń starą kopię zapasową rootfs.gz.unixtimestamp systemu plików aby zwolnić "
+"miejsce na dysku."
 
-#: tazusb:400
+#: tazusb:399
 msgid "No filesystems selected, exiting..."
 msgstr "Nie wybrano systemu plików, kończenie..."
 
-#: tazusb:420
+#: tazusb:419
 msgid "Write filesystem"
 msgstr "Zapisz system plików"
 
+#: tazusb:422
+msgid ""
+"The command writefs will write all the current filesystem into a suitable\n"
+"cpio archive (rootfs.gz) usable on a bootable LiveUSB media."
+msgstr ""
+
 #: tazusb:432
-msgid "Do you wish to remove the sound card selection (No/yes/exit) ? "
+#, fuzzy
+msgid "Do you wish to remove the sound card and screen configs ? "
 msgstr "Czy chcesz usunąć ustawienia karty dźwiękowej (No/yes/exit) ? "
 
-#: tazusb:438
-msgid "Removing current sound card selection..."
+#: tazusb:433 tazusb:450
+msgid "Press ENTER to keep or answer (No|yes|exit): "
+msgstr ""
+
+#: tazusb:439
+#, fuzzy
+msgid "Removing current sound card and screen configurations..."
 msgstr "Usuwanie aktualnych ustawień karty dźwiękowej..."
 
-#: tazusb:442
-msgid "Keeping current sound card selection..."
+#: tazusb:444
+#, fuzzy
+msgid "Keeping current sound card and screen configurations..."
 msgstr "Zachowywanie aktualnych ustawień karty dźwiękowej..."
 
-#: tazusb:446
-msgid "Do you wish to remove the screen resolution (No/yes/exit) ? "
-msgstr "Czy chcesz usunąć ustawienia rozdzielczości ekranu (No/yes/exit) ? "
+#: tazusb:449
+#, fuzzy
+msgid "Do you wish to remove local/keymap settings ? "
+msgstr "Czy chcesz usunąć ustawienia karty dźwiękowej (No/yes/exit) ? "
 
-#: tazusb:452
-msgid "Removing current screen resolution..."
+#: tazusb:456
+#, fuzzy
+msgid "Removing current locale/keymap settings..."
 msgstr "Usuwanie aktualnej rozdzielczości ekranu..."
 
-#: tazusb:455
-msgid "Keeping current screen resolution..."
+#: tazusb:460
+#, fuzzy
+msgid "Keeping current locale/keymap settings..."
 msgstr "Zachowywanie aktualnej rozdzielczości ekranu..."
 
-#: tazusb:469
+#: tazusb:478
 msgid "Creating rootfs.gz with lzma compression... "
 msgstr "Tworzenie rootfs.gz z kompresją lzma... "
 
-#: tazusb:473
+#: tazusb:482
 msgid "Creating rootfs.gz with gzip compression... "
 msgstr "Tworzenie rootfs.gz z kompresją gzip... "
 
-#: tazusb:477
+#: tazusb:486
 msgid "Creating rootfs.gz without compression... "
 msgstr "Tworzenie rootfs.gz bez kompresji... "
 
-#: tazusb:486
+#: tazusb:495
 msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
-msgstr "Przenoszenie rootfs.gz na nośnik. Ponieważ mogą wystąpić opóźnienia w zapisie, proszę pamiętać aby odmontować urządzenie przed odłączeniem od komputera !"
+msgstr ""
+"Przenoszenie rootfs.gz na nośnik. Ponieważ mogą wystąpić opóźnienia w "
+"zapisie, proszę pamiętać aby odmontować urządzenie przed odłączeniem od "
+"komputera !"
 
-#: tazusb:496
+#: tazusb:505
 msgid "rootfs.gz is located in /"
 msgstr "rootfs.gz jest zlokalizowany w /"
 
-#: tazusb:503
+#: tazusb:512
 msgid "ENTER to continue..."
 msgstr "ENTER aby kontynuować..."
 
-#: tazusb:509
+#: tazusb:518
 msgid "Format a device"
 msgstr "Formatuj urządzenie"
 
-#: tazusb:533
+#: tazusb:542
 msgid "Gen a LiveUSB media"
 msgstr "Generuj nośnik LiveUSB"
 
-#: tazusb:559
+#: tazusb:568
 msgid "Please specify a valid filename on the command line."
 msgstr "Proszę wprowadzć poprawną nazwę pliku w linii poleceń."
 
-#: tazusb:563
+#: tazusb:572
 msgid "Copy ISO file to SliTaz LiveUSB media"
 msgstr "Kopiuj plik ISO na nośnik SliTaz LiveUSB"
 
+#~ msgid "Do you wish to remove the screen resolution (No/yes/exit) ? "
+#~ msgstr "Czy chcesz usunąć ustawienia rozdzielczości ekranu (No/yes/exit) ? "

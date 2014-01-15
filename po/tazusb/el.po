@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-01 12:51+0200\n"
+"POT-Creation-Date: 2014-01-15 08:56+0100\n"
 "PO-Revision-Date: 2012-11-21 13:17+0200\n"
 "Last-Translator: Constantine Mousafiris <kvisitor@gnugr.org>\n"
 "Language-Team: Kostis Mousafiris\n"
@@ -45,26 +45,32 @@ msgid ""
 "Format and label device with ext3, ext2 or fat32 filesystem \n"
 "                (for LiveUSB or /home). Default is ext3."
 msgstr ""
-"Κάντε διαμόρφωση (format) και επισημάντε την συσκευή με ένα σύστημα αρχείων \n"
+"Κάντε διαμόρφωση (format) και επισημάντε την συσκευή με ένα σύστημα "
+"αρχείων \n"
 "                σε ext3, ext2 ή  fat32 (για το LiveUSB ή το /home). \n"
 "                Η προεπιλογή είναι το ext3."
 
 #: tazusb:43
 msgid "Generate a bootable LiveUSB using files from the LiveCD."
-msgstr "Δημιουργήστε ένα εκκινήσιμο LiveUSB χρησιμοποιώντας αρχεία από το LiveCD."
+msgstr ""
+"Δημιουργήστε ένα εκκινήσιμο LiveUSB χρησιμοποιώντας αρχεία από το LiveCD."
 
 #: tazusb:44
 msgid "Create or recreate and activate additional swap memory."
-msgstr "Δημιουργήστε ή επαναδημιουργήστε και ενεργοποιήστε την πρόσθετη μνήμη swap."
+msgstr ""
+"Δημιουργήστε ή επαναδημιουργήστε και ενεργοποιήστε την πρόσθετη μνήμη swap."
 
 #: tazusb:45
 msgid "Generate a bootable LiveUSB using files from ISO file."
-msgstr "Δημιουργήστε ένα εκκινήσιμο LiveUSB χρησιμοποιώντας αρχεία από την εικόνα ISO."
+msgstr ""
+"Δημιουργήστε ένα εκκινήσιμο LiveUSB χρησιμοποιώντας αρχεία από την εικόνα "
+"ISO."
 
 #: tazusb:46
 msgid "Remove old backup filesystems to free disk space."
 msgstr ""
-"Διαγραφή παλιών αντιγράφων ασφαλείας των αρχείων συστήματος, για απελευθέρωση\n"
+"Διαγραφή παλιών αντιγράφων ασφαλείας των αρχείων συστήματος, για "
+"απελευθέρωση\n"
 "                χώρου στον δίσκο."
 
 #: tazusb:67
@@ -81,7 +87,8 @@ msgstr "Παρακαλώ ορίστε μια ετικέτα/ label για την
 
 #: tazusb:127
 msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
-msgstr "Παρακαλώ ορίστε ένα σύστημα αρχείων του τύπου ext2, ext3 ή fat32 (ext3): "
+msgstr ""
+"Παρακαλώ ορίστε ένα σύστημα αρχείων του τύπου ext2, ext3 ή fat32 (ext3): "
 
 #: tazusb:159 tazusb:167
 msgid "Processing..."
@@ -127,17 +134,18 @@ msgstr ""
 msgid "Copying needed files from cdrom..."
 msgstr "Γίνεται αντιγραφή των απαιτούμενων αρχείων από το CD-ROM..."
 
-#: tazusb:323
+#: tazusb:322
 msgid "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
 msgstr ""
-"Μήπως θέλετε να βγείτε από το Tazusb ή να κάνετε επανεκκίνηση του συστήματος \n"
+"Μήπως θέλετε να βγείτε από το Tazusb ή να κάνετε επανεκκίνηση του "
+"συστήματος \n"
 "(Έξοδος/Eπανεκκίνηση) ?"
 
-#: tazusb:358
+#: tazusb:357
 msgid "Gen swap"
 msgstr "Δημιουργία swap"
 
-#: tazusb:360
+#: tazusb:359
 msgid ""
 "Generate a swap file in /home/swap that will be activated on each boot to "
 "have\n"
@@ -145,98 +153,118 @@ msgid ""
 "\n"
 "Swap file in Mb : "
 msgstr ""
-"Δημιουργήστε ένα αρχείο swap στο in /home/swap που θα ενεργοποιείται με κάθε \n"
+"Δημιουργήστε ένα αρχείο swap στο in /home/swap που θα ενεργοποιείται με "
+"κάθε \n"
 "επανεκκίνηση, για να επιτυγχάνεται περισσότερη διαθέσιμη μνήμη \n"
 "(Empty value to exit).\n"
 "\n"
 "Αρχείο Swap σε Mb : "
 
-#: tazusb:366
+#: tazusb:365
 msgid "Empty value. Exiting..."
 msgstr "Κενή τιμή. Γίνεται έξοδος..."
 
-#: tazusb:386
+#: tazusb:385
 msgid "Clean"
 msgstr "Καθαρισμός"
 
-#: tazusb:388
+#: tazusb:387
 msgid ""
 "Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
 msgstr ""
 "Διαγραφή των παλιών αντιγράφων ασφαλείας των αρχείων συστήματος rootfs.gz.\n"
 "unixtimestamp, για να απελευθερωθεί περισσότερος χώρος δίσκου."
 
-#: tazusb:400
+#: tazusb:399
 msgid "No filesystems selected, exiting..."
 msgstr "Δεν επιλέχθηκαν αρχεία συστήματος, γίνεται έξοδος..."
 
-#: tazusb:420
+#: tazusb:419
 msgid "Write filesystem"
 msgstr "Εγγραφή συστήματος αρχείων"
 
+#: tazusb:422
+msgid ""
+"The command writefs will write all the current filesystem into a suitable\n"
+"cpio archive (rootfs.gz) usable on a bootable LiveUSB media."
+msgstr ""
+
 #: tazusb:432
-msgid "Do you wish to remove the sound card selection (No/yes/exit) ? "
+#, fuzzy
+msgid "Do you wish to remove the sound card and screen configs ? "
 msgstr "Επιθυμείτε να διαγράψετε την επιλογή κάρτας ήχου (No/yes/exit) ?"
 
-#: tazusb:438
-msgid "Removing current sound card selection..."
+#: tazusb:433 tazusb:450
+msgid "Press ENTER to keep or answer (No|yes|exit): "
+msgstr ""
+
+#: tazusb:439
+#, fuzzy
+msgid "Removing current sound card and screen configurations..."
 msgstr "Γίνεται απομάκρυνση της τρέχουσας επιλογής κάρτας ήχου..."
 
-#: tazusb:442
-msgid "Keeping current sound card selection..."
+#: tazusb:444
+#, fuzzy
+msgid "Keeping current sound card and screen configurations..."
 msgstr "Διατήρηση της τρέχουσας επιλογής κάρτας ήχου..."
 
-#: tazusb:446
-msgid "Do you wish to remove the screen resolution (No/yes/exit) ? "
-msgstr ""
-"Επιθυμείτε να διαγράψετε την ανάλυση εικόνας της οθόνης (No/yes/exit) ?"
+#: tazusb:449
+#, fuzzy
+msgid "Do you wish to remove local/keymap settings ? "
+msgstr "Επιθυμείτε να διαγράψετε την επιλογή κάρτας ήχου (No/yes/exit) ?"
 
-#: tazusb:452
-msgid "Removing current screen resolution..."
+#: tazusb:456
+#, fuzzy
+msgid "Removing current locale/keymap settings..."
 msgstr "Γίνεται απομάκρυνση της τρέχουσας ανάλυσης εικόνας της οθόνης..."
 
-#: tazusb:455
-msgid "Keeping current screen resolution..."
+#: tazusb:460
+#, fuzzy
+msgid "Keeping current locale/keymap settings..."
 msgstr "Διατήρηση της τρέχουσας ανάλυσης εικόνας της οθόνης..."
 
-#: tazusb:469
+#: tazusb:478
 msgid "Creating rootfs.gz with lzma compression... "
 msgstr "Δημιουργείται το rootfs.gz με συμπίεση lzma... "
 
-#: tazusb:473
+#: tazusb:482
 msgid "Creating rootfs.gz with gzip compression... "
 msgstr "Δημιουργείται το rootfs.gz με συμπίεση gzip... "
 
-#: tazusb:477
+#: tazusb:486
 msgid "Creating rootfs.gz without compression... "
 msgstr "Δημιουργείται το rootfs.gz χωρίς συμπίεση... "
 
-#: tazusb:486
+#: tazusb:495
 msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
 msgstr ""
 "Μετακίνηση του rootfs.gz σε ένα μέσο αποθήκευσης. \n"
 "Θυμηθείτε να κάνετε αποπροσάρτηση για τις καθυστερημένες εγγραφές!"
 
-#: tazusb:496
+#: tazusb:505
 msgid "rootfs.gz is located in /"
 msgstr "Το rootfs.gz τοποθετήθηκε στο /"
 
-#: tazusb:503
+#: tazusb:512
 msgid "ENTER to continue..."
 msgstr "Πατήστε ENTER για να συνεχίσετε..."
 
-#: tazusb:509
+#: tazusb:518
 msgid "Format a device"
 msgstr "Κάντε διαμόρφωση (format) μιας συσκευής"
 
-#: tazusb:533
+#: tazusb:542
 msgid "Gen a LiveUSB media"
 msgstr "Δημιουργήστε ένα μέσο αποθήκευσης LiveUSB"
 
-#: tazusb:559
+#: tazusb:568
 msgid "Please specify a valid filename on the command line."
 msgstr "Παρακαλώ, ορίστε ένα έγκυρο όνομα αρχείου στη γραμμή εντολών."
 
-#: tazusb:563
+#: tazusb:572
 msgid "Copy ISO file to SliTaz LiveUSB media"
 msgstr "Αντιγράψτε το αρχείο ISO στο μέσο αποθήκευσης LiveUSB με το SliTaz"
+
+#~ msgid "Do you wish to remove the screen resolution (No/yes/exit) ? "
+#~ msgstr ""
+#~ "Επιθυμείτε να διαγράψετε την ανάλυση εικόνας της οθόνης (No/yes/exit) ?"
