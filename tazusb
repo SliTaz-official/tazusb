@@ -454,6 +454,24 @@ Archive compression: $COMPRESSION"
 				gettext "Keeping current screen resolution..." ;;
 		esac
 		status
+		# Optionally remove screen resolution
+		gettext "Do you wish to remove local/keymap settings (No/yes/exit) ? "
+		read anser
+		case $anser in
+			e|E|"exit"|Exit)
+				exit 0 ;;
+			y|Y|yes|Yes)
+				gettext "Removing current locale/keymap settings..."
+				echo "" > /etc/locale.conf
+				echo "" > /etc/keymap.conf ;;
+			*)
+				gettext "Keeping current locale/keymap settings..." ;;
+		esac
+		status
+		
+		# Clean-up files by default
+		echo "" > /etc/udev/rules.d/70-persistent-net.rules
+		echo "" > /etc/udev/rules.d/70-persistant-cd.rules
 		
 		# Create list of files
 		find /bin /etc /init /sbin /var /dev /lib /root /usr >/tmp/list
