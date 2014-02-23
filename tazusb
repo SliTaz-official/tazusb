@@ -355,7 +355,7 @@ gen_swap_file()
 {
 	echo ""
 	echo -en "\033[1m`gettext \"Gen swap\"`\033[0m
-==============================================================================="
+================================================================================"
 gettext "Generate a swap file in /home/swap that will be activated on each boot to have
 more memory available (Empty value to exit).
 
@@ -383,7 +383,7 @@ clean_usb()
 {
 	echo ""
 	echo -en "\033[1m`gettext \"Clean\"`\033[0m
-==============================================================================="
+================================================================================"
 gettext "Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."; echo -e "\n\n"
 	# Locate and interactively remove old filesystems from /home directory
 	for file in `find /home/boot/rootfs.gz.[0-9]*`
