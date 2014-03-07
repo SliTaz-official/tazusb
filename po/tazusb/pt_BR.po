@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-15 08:56+0100\n"
-"PO-Revision-Date: 2013-01-27 04:28-0300\n"
+"PO-Revision-Date: 2014-03-06 22:52-0300\n"
 "Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
 "Language-Team: Portuguese <i18n@slitaz.org>\n"
 "Language: pt_BR\n"
@@ -171,38 +171,32 @@ msgid ""
 msgstr ""
 
 #: tazusb:432
-#, fuzzy
 msgid "Do you wish to remove the sound card and screen configs ? "
-msgstr "Gostaria de remover a seleção de placa de som (No/yes/exit) ? "
+msgstr "Gostaria de remover a seleção de placa de som e tela ? "
 
 #: tazusb:433 tazusb:450
 msgid "Press ENTER to keep or answer (No|yes|exit): "
-msgstr ""
+msgstr "Pressione ENTER para manter ou responder (No|yes|exit):"
 
 #: tazusb:439
-#, fuzzy
 msgid "Removing current sound card and screen configurations..."
-msgstr "Removendo a seleção de placa de som atual..."
+msgstr "Removendo a seleção de placa de som e tela..."
 
 #: tazusb:444
-#, fuzzy
 msgid "Keeping current sound card and screen configurations..."
-msgstr "Mantendo o seleção de placa de som atual..."
+msgstr "Mantendo o seleção de placa de som e tela..."
 
 #: tazusb:449
-#, fuzzy
 msgid "Do you wish to remove local/keymap settings ? "
-msgstr "Gostaria de remover a seleção de placa de som (No/yes/exit) ? "
+msgstr "Gostaria de remover a seleção de locale e keymap ? "
 
 #: tazusb:456
-#, fuzzy
 msgid "Removing current locale/keymap settings..."
-msgstr "Removendo a configuração de resolução de tela atual..."
+msgstr "Removendo a configuração de locale e keymap..."
 
 #: tazusb:460
-#, fuzzy
 msgid "Keeping current locale/keymap settings..."
-msgstr "Mantendo a configuração de resolução de tela atual..."
+msgstr "Mantendo a configuração de locale e keymap..."
 
 #: tazusb:478
 msgid "Creating rootfs.gz with lzma compression... "
@@ -243,7 +237,3 @@ msgstr "Por favor especifique um nome de arquivo válido na linha de comando."
 #: tazusb:572
 msgid "Copy ISO file to SliTaz LiveUSB media"
 msgstr "Copia uma imagem ISO para a mídia LiveUSB"
-
-#~ msgid "Do you wish to remove the screen resolution (No/yes/exit) ? "
-#~ msgstr ""
-#~ "Gostaria de remover a configuração de resolução de tela (No/yes/exit) ? "
