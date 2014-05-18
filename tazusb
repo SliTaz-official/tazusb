@@ -4,11 +4,11 @@
 # SliTaz LiveUSB bootable media and/or USB /home partition, such as
 # flash keys, SD card or USB harddisk.
 #
-# Copyright (C) 2012 SliTaz GNU/Linux - GNU gpl v2
+# Copyright (C) 2014 SliTaz GNU/Linux - GNU gpl v2
 #
 # Authors: see AUTHORS file
 #
-VERSION=4.2.2
+VERSION=4.2.4
 
 . /lib/libtaz.sh
 
@@ -21,7 +21,7 @@ export TEXTDOMAIN
 
 COMMAND=$1
 TARGET_ROOT=/media/flash
-DRIVE_NAME=$(cat /proc/sys/dev/cdrom/info | grep "drive name" | cut -f 3)
+DRIVE_NAME=$(grep "drive name" < /proc/sys/dev/cdrom/info | cut -f 3)
 CDROM=/dev/$DRIVE_NAME
 LOG=/tmp/$(basename $0).log
 
@@ -261,6 +261,8 @@ copy_cdrom_files()
 	mkdir -p $TARGET_ROOT/boot
 	cp /media/cdrom/boot/bzImage $TARGET_ROOT/boot
 	cp /media/cdrom/boot/rootfs*.gz $TARGET_ROOT/boot
+	cp /media/cdrom/boot/memtest $TARGET_ROOT/boot 2> /dev/null
+	cp /media/cdrom/boot/*pxe $TARGET_ROOT/boot 2> /dev/null
 	status
 }
 
@@ -311,7 +313,7 @@ install_boot()
 	cp /media/cdrom/boot/isolinux/*.kbd $TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.c32 $TARGET_ROOT/boot/$ST
 	sed -i -e s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ \
-		-e s/'isolinux'/'extlinux'/ $TARGET_ROOT/boot/$ST/$ST.$STE
+		-e "s/isolinux/$ST/" $TARGET_ROOT/boot/$ST/$ST.$STE
 }
 
 # Let user exit or reboot.
@@ -466,6 +468,12 @@ EOT
 		echo "" > /etc/udev/rules.d/70-persistant-cd.rules
 		
 		# Create list of files
+		# find / -xdev | sed '/^\/home\//d;/^\/tmp\//d' >/tmp/list
+		# for dev in console null tty tty1
+		# do
+		#	echo /dev/$dev >>/tmp/list
+		# done
+
 		find /bin /etc /init /sbin /var /dev /lib /root /usr >/tmp/list
 
 		for dir in /home /proc /run /sys /tmp /mnt /media /media/cdrom /media/flash /media/usbdisk
@@ -476,16 +484,16 @@ EOT
 		# Generate initramfs with specified compression
 		if [ "$COMPRESSION" = "lzma" ]; then
 			gettext "Creating rootfs.gz with lzma compression... "
-			cat /tmp/list | cpio -o -H newc | lzma e -si -so > /rootfs.gz
+			cpio -o -H newc | lzma e -si -so > /rootfs.gz
 
 		elif [ "$COMPRESSION" = "gzip" ]; then
 			gettext "Creating rootfs.gz with gzip compression... "
-			cat /tmp/list | cpio -o -H newc | gzip -9 > /rootfs.gz
+			cpio -o -H newc | gzip -9 > /rootfs.gz
 
 		else
 			gettext "Creating rootfs.gz without compression... "
-			cat /tmp/list | cpio -o -H newc > /rootfs.gz
-		fi
+			cpio -o -H newc > /rootfs.gz
+		fi < /tmp/list
 
 		# Get initramfs size
 		size=`du -sh /rootfs.gz | cut -f 1`
