@@ -459,7 +459,9 @@ EOT
 				echo "" > /etc/locale.conf
 				echo "" > /etc/keymap.conf ;;
 			*)
-				gettext "Keeping current locale/keymap settings..." ;;
+				gettext "Keeping current locale/keymap settings..."
+				grep -qs '^INCLUDE i18n.cfg' /home/boot/*linux/*linux.c* &&
+				sed -i 's/^INCLUDE i18n.cfg/# &/' /home/boot/*linux/*linux.c* ;;
 		esac
 		status
 		
