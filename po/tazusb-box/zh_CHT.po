@@ -1,0 +1,38 @@
+# Traditional Chinese translations for SliTaz tazusb-box package.
+# Copyright (C) 2014 Slitaz Association
+# This file is distributed under the same license as the Slitaz tazusb-box package.
+# lunglungyu <lunglungyu2004@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.2.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-05 15:07+0800\n"
+"PO-Revision-Date: 2014-06-05 15:07+0800\n"
+"Last-Translator: lunglungyu <lunglungyu2004@gmail.com>\n"
+"Language-Team: Traditional Chinese\n"
+"Language: zh_CHT \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tazusb-box:30
+msgid ""
+"<b>Generate SliTaz LiveUSB media and boot in RAM!</b> Insert a LiveCD into "
+"the cdrom drive or use a local ISO image, select the correct device and "
+"press OK."
+msgstr ""
+"<b>生成SliTaz LiveUSB 媒介,在記憶體啟動slitaz!</b> 插入LiveCD 到"
+"光碟機或使用本地ISO映像,選擇正確設備,再輸入 OK ."
+
+#: tazusb-box:50
+msgid "No USB media found"
+msgstr "找不到USB媒介"
+
+#: tazusb-box:58
+msgid "ISO Image:"
+msgstr "ISO 映像:"
+
+#: tazusb-box:59
+msgid "USB Media:"
+msgstr "USB 媒介"
