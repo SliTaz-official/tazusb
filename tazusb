@@ -8,7 +8,7 @@
 #
 # Authors: see AUTHORS file
 #
-VERSION=4.2.4
+VERSION=4.2.5
 
 . /lib/libtaz.sh
 
