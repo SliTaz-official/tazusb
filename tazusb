@@ -259,8 +259,8 @@ copy_cdrom_files()
 {
 	gettext "Copying needed files from cdrom..."
 	mkdir -p $TARGET_ROOT/boot
-	cp /media/cdrom/boot/bzImage $TARGET_ROOT/boot
-	cp /media/cdrom/boot/rootfs*.gz $TARGET_ROOT/boot
+	cp /media/cdrom/boot/bzImage* $TARGET_ROOT/boot/
+	cp /media/cdrom/boot/rootfs*.gz* $TARGET_ROOT/boot
 	cp /media/cdrom/boot/memtest $TARGET_ROOT/boot 2> /dev/null
 	cp /media/cdrom/boot/*pxe $TARGET_ROOT/boot 2> /dev/null
 	status
