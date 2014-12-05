@@ -56,6 +56,7 @@ install: msgfmt
 	@echo "Installing TazUSB into $(DESTDIR)$(PREFIX)/bin..."
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	install -m 0755 tazusb $(DESTDIR)$(PREFIX)/bin
+	-[ "$(VERSION)" ] && sed -i 's/^VERSION=[0-9].*/VERSION=$(VERSION)/' $(DESTDIR)$(PREFIX)/bin/tazusb
 	install -m 0755 tazusb-box $(DESTDIR)$(PREFIX)/bin
 	@echo "Installing Tazusb documentation..."
 	mkdir -p $(DESTDIR)$(DOCDIR)/tazusb
