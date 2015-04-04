@@ -484,6 +484,10 @@ EOT
 		done
 		sed -i '/^\/var\/run\/.*pid$/d' /tmp/list
 
+		for removelog in boot messages dmesg; do
+			sed -i "\/var\/log\/$removelog/d" /tmp/list
+		done
+
 		# Generate initramfs with specified compression
 		if [ "$COMPRESSION" = "lzma" ]; then
 			gettext "Creating rootfs.gz with lzma compression... "
