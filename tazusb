@@ -466,6 +466,8 @@ EOT
 		status
 		
 		# Clean-up files by default
+		mv -f /var/log/wtmp /var/log/.wtmp
+		echo "" > /var/log/wtmp
 		echo "" > /etc/udev/rules.d/70-persistent-net.rules
 		echo "" > /etc/udev/rules.d/70-persistant-cd.rules
 		
@@ -484,7 +486,7 @@ EOT
 		done
 		sed -i '/^\/var\/run\/.*pid$/d' /tmp/list
 
-		for removelog in boot messages dmesg; do
+		for removelog in auth boot messages dmesg daemon utmp slim; do
 			sed -i "\/var\/log\/$removelog/d" /tmp/list
 		done
 
@@ -524,6 +526,7 @@ EOT
 		gettext "Root filesystem size: $size"; echo ""
 		echo ""
 		echo "----"
+		mv -f /var/log/.wtmp /var/log/wtmp
 		gettext "ENTER to continue..."; read i
 		;;
 	format)
