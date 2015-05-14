@@ -478,7 +478,7 @@ EOT
 		#	echo /dev/$dev >>/tmp/list
 		# done
 
-		find /bin /etc /init /sbin /var /dev /lib /root /usr >/tmp/list
+		find /bin /etc /init /sbin /var /dev /lib /root /usr /opt >/tmp/list
 
 		for dir in /home /proc /run /sys /tmp /mnt /media /media/cdrom /media/flash /media/usbdisk
 		do
@@ -486,7 +486,7 @@ EOT
 		done
 		sed -i '/^\/var\/run\/.*pid$/d' /tmp/list
 
-		for removelog in auth boot messages dmesg daemon utmp slim; do
+		for removelog in auth boot messages dmesg daemon utmp slim Xorg ; do
 			sed -i "\/var\/log\/$removelog/d" /tmp/list
 		done
 
