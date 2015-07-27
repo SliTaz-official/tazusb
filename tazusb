@@ -428,7 +428,7 @@ $(boldify "Archive compression:") $(colorize 36 "$COMPRESSION")
 
 EOT
 		# Clear out tazpkg cache
-		rm /var/cache/tazpkg/* -r -f
+		rm /var/lib/tazpkg/*.bak /var/cache/tazpkg/* -r -f
 
 		# Optionally remove sound card selection and screen resolution.
 		gettext "Do you wish to remove the sound card and screen configs ? "; echo
@@ -466,8 +466,8 @@ EOT
 		status
 		
 		# Clean-up files by default
-		mv -f /var/log/wtmp /var/log/.wtmp
-		echo "" > /var/log/wtmp
+		mv -f /var/log/wtmp /tmp/tazusb-wtmp
+		touch /var/log/wtmp
 		echo "" > /etc/udev/rules.d/70-persistent-net.rules
 		echo "" > /etc/udev/rules.d/70-persistant-cd.rules
 		
@@ -504,6 +504,8 @@ EOT
 			cpio -o -H newc > /rootfs.gz
 		fi < /tmp/list
 
+		mv -f /tmp/tazusb-wtmp /var/log/wtmp
+
 		# Get initramfs size
 		size=`du -sh /rootfs.gz | cut -f 1`
 
@@ -526,7 +528,6 @@ EOT
 		gettext "Root filesystem size: $size"; echo ""
 		echo ""
 		echo "----"
-		mv -f /var/log/.wtmp /var/log/wtmp
 		gettext "ENTER to continue..."; read i
 		;;
 	format)
