@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-15 08:56+0100\n"
+"POT-Creation-Date: 2015-08-01 16:41+0300\n"
 "PO-Revision-Date: 2014-07-02 13:23+0800\n"
 "Last-Translator: 张文宇 <jame987165702@gmail.com>\n"
 "Language-Team: \n"
@@ -18,36 +18,38 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: tazusb:35
-msgid "SliTaz Live USB - Version:"
-msgstr "SliTaz Live USB - Version:"
+#: tazusb:34
+msgid "SliTaz Live USB - Version: %s"
+msgstr "SliTaz Live USB - Version: %s"
 
 #: tazusb:36
-msgid "Usage: "
+msgid "Usage:"
 msgstr "用法:"
 
 #: tazusb:37
+msgid "%s [command] [compression|device]"
+msgstr ""
+
+#: tazusb:38
 msgid "Commands:"
 msgstr "命令:"
 
-#: tazusb:38
+#: tazusb:40
 msgid "Print this short usage."
 msgstr "打印简短的使用方法。"
 
-#: tazusb:39
-msgid ""
-"Write the current filesystem to rootfs.gz.\n"
-"  \t\tSupported compression: lzma. gzip, none."
-msgstr ""
-"目前文件系统写入到rootfs.gz。\n"
-"  \t\t支持LZMA压缩、GZIP压缩和不压缩。"
-
 #: tazusb:41
 msgid ""
-"Format and label device with ext3, ext2 or fat32 filesystem \n"
-"                (for LiveUSB or /home). Default is ext3."
+"Write the current filesystem to rootfs.gz. Supported compression: lzma, "
+"gzip, none."
+msgstr "目前文件系统写入到rootfs.gz。支持LZMA压缩、GZIP压缩和不压缩。"
+
+#: tazusb:42
+msgid ""
+"Format and label device with ext3, ext2 or fat32 filesystem (for LiveUSB or /"
+"home). Default is ext3."
 msgstr ""
-"格式化成ext3文件系统，或FAT32文件系统、Ext2文件系统（为LiveUSB或 / home）。默"
+"格式化成ext3文件系统，或FAT32文件系统、Ext2文件系统（为LiveUSB或 /home）。默"
 "认为ext3。"
 
 #: tazusb:43
@@ -66,174 +68,245 @@ msgstr "产生使用的ISO文件的文件启动LiveUSB。"
 msgid "Remove old backup filesystems to free disk space."
 msgstr "删除旧的备份文件以释放磁盘空间。"
 
-#: tazusb:67
+#: tazusb:64
+msgid ""
+"Please specify the target USB device to %s. You can type 'list' to get a "
+"list of devices, type 'exit' or give an empty value to exit."
+msgstr ""
+
+#: tazusb:68 tazusb:72
 msgid "Device to use: "
 msgstr "设备的使用："
 
-#: tazusb:71
+#: tazusb:77
 msgid "No specified device or exit."
 msgstr "没有指定的设备或退出。"
 
-#: tazusb:101 tazusb:117
+#: tazusb:91
+msgid "Unable to find device %s"
+msgstr ""
+
+#: tazusb:108 tazusb:123
 msgid "Please specify a label for the partition (TazUSB): "
 msgstr "请指定标签为这个分区（tazusb）："
 
-#: tazusb:127
+#: tazusb:113 tazusb:164 tazusb:172
+msgid "Label: %s"
+msgstr ""
+
+#: tazusb:132
 msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
 msgstr "请指定一个文件系统类型的ext2，ext3或FAT32（ext3）："
 
-#: tazusb:159 tazusb:167
+#: tazusb:141
+msgid "Please specify the filesystem type to %s."
+msgstr ""
+
+#: tazusb:142
+msgid "Available formats are ext3(default), ext2 or fat32."
+msgstr ""
+
+#: tazusb:143
+msgid "Press enter to keep the default value."
+msgstr ""
+
+#: tazusb:145
+msgid "File system type: "
+msgstr ""
+
+#: tazusb:163 tazusb:171
 msgid "Processing..."
 msgstr "处理中…"
 
-#: tazusb:173
-msgid ""
-"Can't find mkdosfs tool.\\nWould you like to install dosfstools from "
-"repository [y/N] ? "
-msgstr "找不到MKDOSFS工具。\\n要安装DOSFS工具库[ Y/N ]？"
+#: tazusb:177
+msgid "Can't find %s tool."
+msgstr "找不到%s工具。"
 
-#: tazusb:198
+#: tazusb:178
+msgid "Would you like to install %s from repository [y/N]? "
+msgstr "要安装%s工具库[y/N]？"
+
+#: tazusb:189
+msgid "Sorry. Filesystem %s is not supported."
+msgstr ""
+
+#: tazusb:206
 msgid "Unmounting USB target device..."
 msgstr "取消连接USB目标设备…"
 
-#: tazusb:206
+#: tazusb:215
 msgid "Mounting USB target device..."
 msgstr "安装USB目标设备…"
 
-#: tazusb:214
-msgid "Mounting cdrom device..."
+#: tazusb:224
+msgid "Mounting CD-ROM device..."
 msgstr "安装光盘装置…"
 
-#: tazusb:225
-msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
-msgstr "无法安装光盘或者对它找到一个文件系统(rootfs.gz)。"
+#: tazusb:236
+msgid "Unable to mount CD-ROM or to find a filesystem on it (%s)."
+msgstr "无法安装光盘或者对它找到一个文件系统(%s)。"
 
-#: tazusb:246
-msgid "Mounting "
-msgstr "挂载"
+#: tazusb:258
+msgid "Mounting %s..."
+msgstr "挂载%s…"
 
-#: tazusb:252
-msgid "Unable to mount iso or to find a filesystem on it (rootfs.gz)."
-msgstr "无法挂载ISO或者对它找到一个文件系统（rootfs.gz）。"
+#: tazusb:263
+msgid "Unable to mount ISO or to find a filesystem on it (%s)."
+msgstr "无法挂载ISO或者对它找到一个文件系统（%s）。"
 
-#: tazusb:260
-msgid "Copying needed files from cdrom..."
+#: tazusb:272
+msgid "Copying needed files from CD-ROM..."
 msgstr "从光盘复制所需的文件…"
 
-#: tazusb:322
-msgid "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
+#: tazusb:286
+msgid "Installing a new MBR to %s"
+msgstr ""
+
+#: tazusb:291
+msgid "No new MBR installed to %s"
+msgstr ""
+
+#: tazusb:310
+msgid "Installing bootloader: %s"
+msgstr ""
+
+#: tazusb:338
+msgid "Do you want to exit Tazusb or reboot system (Exit/reboot)? "
 msgstr "你要退出或重新启动系统（Exit/reboot）？"
 
-#: tazusb:357
+#: tazusb:358
+msgid "Setting %s as bootable..."
+msgstr ""
+
+#: tazusb:374
 msgid "Gen swap"
 msgstr "创建交换文件"
 
-#: tazusb:359
+#: tazusb:376
 msgid ""
-"Generate a swap file in /home/swap that will be activated on each boot to "
-"have\n"
-"more memory available (Empty value to exit).\n"
-"\n"
-"Swap file in Mb : "
-msgstr ""
-"生成/home/swap交换文件将被激活，在每次开机有\n"
-"更多的内存（退出空值）。\n"
-"\n"
-"交换文件大小（MB）："
+"Generate a swap file in %s that will be activated on each boot to have more "
+"memory available (empty value to exit)."
+msgstr "生成%s交换文件将被激活，在每次开机有 更多的内存（退出空值）。"
 
-#: tazusb:365
+#: tazusb:379
+msgid "Swap file in MB: "
+msgstr "交换文件大小（MB）："
+
+#: tazusb:382
 msgid "Empty value. Exiting..."
 msgstr "空值。终止"
 
-#: tazusb:385
+#: tazusb:403
 msgid "Clean"
 msgstr "清洁"
 
-#: tazusb:387
-msgid ""
-"Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
-msgstr "删除旧的rootfs.gz.unixtimestamp备份文件以释放磁盘空间。"
+#: tazusb:405
+msgid "Remove old %s backup filesystems to free up disk space."
+msgstr "删除旧的%s备份文件以释放磁盘空间。"
 
-#: tazusb:399
+#: tazusb:410
+#, fuzzy
+msgid "Do you wish to remove: %s (Yes/no/exit)? "
+msgstr "你想删除 区域设置/键盘映射设置 吗？"
+
+#: tazusb:418
 msgid "No filesystems selected, exiting..."
 msgstr "没有文件系统选择. 终止"
 
-#: tazusb:419
+#: tazusb:438
 msgid "Write filesystem"
 msgstr "写文件系统"
 
-#: tazusb:422
+#: tazusb:440
 msgid ""
-"The command writefs will write all the current filesystem into a suitable\n"
-"cpio archive (rootfs.gz) usable on a bootable LiveUSB media."
+"The command writefs will write all the current filesystem into a suitable "
+"cpio archive (%s) usable on a bootable LiveUSB media."
 msgstr ""
-"命令writefs会写的所有文件系统到一个 合适的\n"
-"  cpio存档（rootfs.gz），使用一个可引导LiveUSB媒体。"
+"命令writefs会写的所有文件系统到一个 合适的 cpio存档（%s），使用一个可引导"
+"LiveUSB媒体。"
 
-#: tazusb:432
-msgid "Do you wish to remove the sound card and screen configs ? "
+#: tazusb:444
+msgid "Archive compression: %s"
+msgstr ""
+
+#: tazusb:450
+msgid "Do you wish to remove the sound card and screen configs?"
 msgstr "你想删除的声卡和屏幕配置吗？"
 
-#: tazusb:433 tazusb:450
+#: tazusb:451 tazusb:469
 msgid "Press ENTER to keep or answer (No|yes|exit): "
 msgstr "按回车键继续或选择选项 ：没有|是|推出 (输入：No|yes|exit): "
 
-#: tazusb:439
+#: tazusb:457
 msgid "Removing current sound card and screen configurations..."
 msgstr "删除当前的声卡和屏幕配置…"
 
-#: tazusb:444
+#: tazusb:462
 msgid "Keeping current sound card and screen configurations..."
 msgstr "保持目前的声卡和屏幕配置…"
 
-#: tazusb:449
-msgid "Do you wish to remove local/keymap settings ? "
+#: tazusb:468
+msgid "Do you wish to remove local/keymap settings?"
 msgstr "你想删除 区域设置/键盘映射设置 吗？"
 
-#: tazusb:456
+#: tazusb:475
 msgid "Removing current locale/keymap settings..."
 msgstr "删除当前 区域设置/键盘映射设置…"
 
-#: tazusb:460
+#: tazusb:479
 msgid "Keeping current locale/keymap settings..."
 msgstr "保持当前 区域设置/键盘映射设置…"
 
-#: tazusb:478
-msgid "Creating rootfs.gz with lzma compression... "
-msgstr "创建压缩（lzma）rootfs.gz…"
-
-#: tazusb:482
-msgid "Creating rootfs.gz with gzip compression... "
-msgstr "创建压缩（gzip ）rootfs.gz…"
-
-#: tazusb:486
-msgid "Creating rootfs.gz without compression... "
-msgstr "创建rootfs.gz（无压缩）中…"
-
-#: tazusb:495
-msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
-msgstr "移动rootfs.gz到LiveUSB媒体。请记住取消延迟写入！"
-
-#: tazusb:505
-msgid "rootfs.gz is located in /"
-msgstr "rootfs.gz位于 /"
-
 #: tazusb:512
+msgid "Creating %s with lzma compression... "
+msgstr "创建压缩（lzma）%s…"
+
+#: tazusb:516
+msgid "Creating %s with gzip compression... "
+msgstr "创建压缩（gzip ）%s…"
+
+#: tazusb:520
+msgid "Creating %s without compression... "
+msgstr "创建%s（无压缩）中…"
+
+#: tazusb:531
+msgid "Moving %s to media. Remember to unmount for delayed writes!"
+msgstr "移动%s到LiveUSB媒体。请记住取消延迟写入！"
+
+#: tazusb:541
+msgid "%s is located in /"
+msgstr "%s位于 /"
+
+#: tazusb:545
+#, fuzzy
+msgid "Root filesystem size: %s"
+msgstr "写文件系统"
+
+#: tazusb:547
 msgid "ENTER to continue..."
 msgstr "回车继续…"
 
-#: tazusb:518
+#: tazusb:555
 msgid "Format a device"
 msgstr "格式化一个装置"
 
-#: tazusb:542
+#: tazusb:564
+#, fuzzy
+msgid "Device: %s"
+msgstr "设备的使用："
+
+#: tazusb:572
+msgid "Device %s is ready to use as LiveUSB and/or /home partition."
+msgstr ""
+
+#: tazusb:580
 msgid "Gen a LiveUSB media"
 msgstr "制作（可能指： # tazusb gen-liveusb 命令）一个LiveUSB设备"
 
-#: tazusb:568
+#: tazusb:611
 msgid "Please specify a valid filename on the command line."
 msgstr "请在命令行中指定一个有效的文件名。"
 
-#: tazusb:572
+#: tazusb:615
 msgid "Copy ISO file to SliTaz LiveUSB media"
 msgstr "复制ISO文件到 SliTaz LiveUSB 设备"

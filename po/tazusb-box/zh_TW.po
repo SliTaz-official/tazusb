@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-05 15:07+0800\n"
+"POT-Creation-Date: 2015-08-01 16:41+0300\n"
 "PO-Revision-Date: 2014-06-05 15:07+0800\n"
 "Last-Translator: lunglungyu <lunglungyu2004@gmail.com>\n"
 "Language-Team: Traditional Chinese\n"
@@ -16,23 +16,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tazusb-box:30
-msgid ""
-"<b>Generate SliTaz LiveUSB media and boot in RAM!</b> Insert a LiveCD into "
-"the cdrom drive or use a local ISO image, select the correct device and "
-"press OK."
-msgstr ""
-"<b>生成SliTaz LiveUSB 媒介,在記憶體啟動slitaz!</b> 插入LiveCD 到"
-"光碟機或使用本地ISO映像,選擇正確設備,再輸入 OK ."
+#: tazusb-box:37
+msgid "Generate SliTaz LiveUSB media and boot in RAM!"
+msgstr "生成SliTaz LiveUSB 媒介,在記憶體啟動SliTaz!"
 
-#: tazusb-box:50
+#: tazusb-box:38
+msgid ""
+"Insert a LiveCD into the CD-ROM drive or use a local ISO image, select the "
+"correct device and press OK."
+msgstr "插入LiveCD 到光碟機或使用本地ISO映像,選擇正確設備,再輸入 OK ."
+
+#: tazusb-box:51
+msgid "Reboot"
+msgstr ""
+
+#: tazusb-box:60
 msgid "No USB media found"
 msgstr "找不到USB媒介"
 
-#: tazusb-box:58
+#: tazusb-box:70
 msgid "ISO Image:"
 msgstr "ISO 映像:"
 
-#: tazusb-box:59
+#: tazusb-box:71
 msgid "USB Media:"
 msgstr "USB 媒介"
+
+#: tazusb-box:91
+msgid "No device: exit"
+msgstr ""
+
+#: tazusb-box:109
+msgid "Usage:"
+msgstr ""

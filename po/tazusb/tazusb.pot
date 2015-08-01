@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: TazUSB 4.2.2\n"
+"Project-Id-Version: TazUSB 4.2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-15 08:56+0100\n"
+"POT-Creation-Date: 2015-08-01 22:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tazusb:35
-msgid "SliTaz Live USB - Version:"
+#: tazusb:34
+msgid "SliTaz Live USB - Version: %s"
 msgstr ""
 
 #: tazusb:36
-msgid "Usage: "
+msgid "Usage:"
 msgstr ""
 
 #: tazusb:37
-msgid "Commands:"
+msgid "%s [command] [compression|device]"
 msgstr ""
 
 #: tazusb:38
-msgid "Print this short usage."
+msgid "Commands:"
 msgstr ""
 
-#: tazusb:39
-msgid ""
-"Write the current filesystem to rootfs.gz.\n"
-"  \t\tSupported compression: lzma. gzip, none."
+#: tazusb:40
+msgid "Print this short usage."
 msgstr ""
 
 #: tazusb:41
 msgid ""
-"Format and label device with ext3, ext2 or fat32 filesystem \n"
-"                (for LiveUSB or /home). Default is ext3."
+"Write the current filesystem to rootfs.gz. Supported compression: lzma, "
+"gzip, none."
+msgstr ""
+
+#: tazusb:42
+msgid ""
+"Format and label device with ext3, ext2 or fat32 filesystem (for LiveUSB or /"
+"home). Default is ext3."
 msgstr ""
 
 #: tazusb:43
@@ -61,168 +65,240 @@ msgstr ""
 msgid "Remove old backup filesystems to free disk space."
 msgstr ""
 
-#: tazusb:67
+#: tazusb:64
+msgid ""
+"Please specify the target USB device to %s. You can type 'list' to get a "
+"list of devices, type 'exit' or give an empty value to exit."
+msgstr ""
+
+#: tazusb:68 tazusb:72
 msgid "Device to use: "
 msgstr ""
 
-#: tazusb:71
+#: tazusb:77
 msgid "No specified device or exit."
 msgstr ""
 
-#: tazusb:101 tazusb:117
+#: tazusb:91
+msgid "Unable to find device %s"
+msgstr ""
+
+#: tazusb:108 tazusb:123
 msgid "Please specify a label for the partition (TazUSB): "
 msgstr ""
 
-#: tazusb:127
+#: tazusb:113 tazusb:164 tazusb:172
+msgid "Label: %s"
+msgstr ""
+
+#: tazusb:132
 msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
 msgstr ""
 
-#: tazusb:159 tazusb:167
+#: tazusb:141
+msgid "Please specify the filesystem type to %s."
+msgstr ""
+
+#: tazusb:142
+msgid "Available formats are ext3(default), ext2 or fat32."
+msgstr ""
+
+#: tazusb:143
+msgid "Press enter to keep the default value."
+msgstr ""
+
+#: tazusb:145
+msgid "File system type: "
+msgstr ""
+
+#: tazusb:163 tazusb:171
 msgid "Processing..."
 msgstr ""
 
-#: tazusb:173
-msgid ""
-"Can't find mkdosfs tool.\\nWould you like to install dosfstools from "
-"repository [y/N] ? "
+#: tazusb:177
+msgid "Can't find %s tool."
 msgstr ""
 
-#: tazusb:198
-msgid "Unmounting USB target device..."
+#: tazusb:178
+msgid "Would you like to install %s from repository [y/N]? "
+msgstr ""
+
+#: tazusb:189
+msgid "Sorry. Filesystem %s is not supported."
 msgstr ""
 
 #: tazusb:206
+msgid "Unmounting USB target device..."
+msgstr ""
+
+#: tazusb:215
 msgid "Mounting USB target device..."
 msgstr ""
 
-#: tazusb:214
-msgid "Mounting cdrom device..."
+#: tazusb:224
+msgid "Mounting CD-ROM device..."
 msgstr ""
 
-#: tazusb:225
-msgid "Unable to mount cdrom or to find a filesystem on it (rootfs.gz)."
+#: tazusb:236
+msgid "Unable to mount CD-ROM or to find a filesystem on it (%s)."
 msgstr ""
 
-#: tazusb:246
-msgid "Mounting "
+#: tazusb:258
+msgid "Mounting %s..."
 msgstr ""
 
-#: tazusb:252
-msgid "Unable to mount iso or to find a filesystem on it (rootfs.gz)."
+#: tazusb:263
+msgid "Unable to mount ISO or to find a filesystem on it (%s)."
 msgstr ""
 
-#: tazusb:260
-msgid "Copying needed files from cdrom..."
+#: tazusb:272
+msgid "Copying needed files from CD-ROM..."
 msgstr ""
 
-#: tazusb:322
-msgid "Do you want to exit Tazusb or reboot system (Exit/reboot) ? "
+#: tazusb:286
+msgid "Installing a new MBR to %s"
 msgstr ""
 
-#: tazusb:357
+#: tazusb:291
+msgid "No new MBR installed to %s"
+msgstr ""
+
+#: tazusb:310
+msgid "Installing bootloader: %s"
+msgstr ""
+
+#: tazusb:338
+msgid "Do you want to exit Tazusb or reboot system (Exit/reboot)? "
+msgstr ""
+
+#: tazusb:358
+msgid "Setting %s as bootable..."
+msgstr ""
+
+#: tazusb:374
 msgid "Gen swap"
 msgstr ""
 
-#: tazusb:359
+#: tazusb:376
 msgid ""
-"Generate a swap file in /home/swap that will be activated on each boot to "
-"have\n"
-"more memory available (Empty value to exit).\n"
-"\n"
-"Swap file in Mb : "
+"Generate a swap file in %s that will be activated on each boot to have more "
+"memory available (empty value to exit)."
 msgstr ""
 
-#: tazusb:365
+#: tazusb:379
+msgid "Swap file in MB: "
+msgstr ""
+
+#: tazusb:382
 msgid "Empty value. Exiting..."
 msgstr ""
 
-#: tazusb:385
+#: tazusb:403
 msgid "Clean"
 msgstr ""
 
-#: tazusb:387
-msgid ""
-"Remove old rootfs.gz.unixtimestamp backup filesystems to free up disk space."
+#: tazusb:405
+msgid "Remove old %s backup filesystems to free up disk space."
 msgstr ""
 
-#: tazusb:399
+#: tazusb:410
+msgid "Do you wish to remove: %s (Yes/no/exit)? "
+msgstr ""
+
+#: tazusb:418
 msgid "No filesystems selected, exiting..."
 msgstr ""
 
-#: tazusb:419
+#: tazusb:438
 msgid "Write filesystem"
 msgstr ""
 
-#: tazusb:422
+#: tazusb:440
 msgid ""
-"The command writefs will write all the current filesystem into a suitable\n"
-"cpio archive (rootfs.gz) usable on a bootable LiveUSB media."
-msgstr ""
-
-#: tazusb:432
-msgid "Do you wish to remove the sound card and screen configs ? "
-msgstr ""
-
-#: tazusb:433 tazusb:450
-msgid "Press ENTER to keep or answer (No|yes|exit): "
-msgstr ""
-
-#: tazusb:439
-msgid "Removing current sound card and screen configurations..."
+"The command writefs will write all the current filesystem into a suitable "
+"cpio archive (%s) usable on a bootable LiveUSB media."
 msgstr ""
 
 #: tazusb:444
+msgid "Archive compression: %s"
+msgstr ""
+
+#: tazusb:450
+msgid "Do you wish to remove the sound card and screen configs?"
+msgstr ""
+
+#: tazusb:451 tazusb:469
+msgid "Press ENTER to keep or answer (No|yes|exit): "
+msgstr ""
+
+#: tazusb:457
+msgid "Removing current sound card and screen configurations..."
+msgstr ""
+
+#: tazusb:462
 msgid "Keeping current sound card and screen configurations..."
 msgstr ""
 
-#: tazusb:449
-msgid "Do you wish to remove local/keymap settings ? "
+#: tazusb:468
+msgid "Do you wish to remove local/keymap settings?"
 msgstr ""
 
-#: tazusb:456
+#: tazusb:475
 msgid "Removing current locale/keymap settings..."
 msgstr ""
 
-#: tazusb:460
+#: tazusb:479
 msgid "Keeping current locale/keymap settings..."
 msgstr ""
 
-#: tazusb:478
-msgid "Creating rootfs.gz with lzma compression... "
-msgstr ""
-
-#: tazusb:482
-msgid "Creating rootfs.gz with gzip compression... "
-msgstr ""
-
-#: tazusb:486
-msgid "Creating rootfs.gz without compression... "
-msgstr ""
-
-#: tazusb:495
-msgid "Moving rootfs.gz to media. Remember to unmount for delayed writes!"
-msgstr ""
-
-#: tazusb:505
-msgid "rootfs.gz is located in /"
-msgstr ""
-
 #: tazusb:512
+msgid "Creating %s with lzma compression... "
+msgstr ""
+
+#: tazusb:516
+msgid "Creating %s with gzip compression... "
+msgstr ""
+
+#: tazusb:520
+msgid "Creating %s without compression... "
+msgstr ""
+
+#: tazusb:531
+msgid "Moving %s to media. Remember to unmount for delayed writes!"
+msgstr ""
+
+#: tazusb:541
+msgid "%s is located in /"
+msgstr ""
+
+#: tazusb:545
+msgid "Root filesystem size: %s"
+msgstr ""
+
+#: tazusb:547
 msgid "ENTER to continue..."
 msgstr ""
 
-#: tazusb:518
+#: tazusb:555
 msgid "Format a device"
 msgstr ""
 
-#: tazusb:542
-msgid "Gen a LiveUSB media"
-msgstr ""
-
-#: tazusb:568
-msgid "Please specify a valid filename on the command line."
+#: tazusb:564
+msgid "Device: %s"
 msgstr ""
 
 #: tazusb:572
+msgid "Device %s is ready to use as LiveUSB and/or /home partition."
+msgstr ""
+
+#: tazusb:580
+msgid "Gen a LiveUSB media"
+msgstr ""
+
+#: tazusb:611
+msgid "Please specify a valid filename on the command line."
+msgstr ""
+
+#: tazusb:615
 msgid "Copy ISO file to SliTaz LiveUSB media"
 msgstr ""

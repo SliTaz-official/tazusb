@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazUSB 3.0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-01 12:51+0200\n"
+"POT-Creation-Date: 2015-08-01 16:41+0300\n"
 "PO-Revision-Date: 2012-05-01 12:53+0100\n"
 "Last-Translator: Christophe Lincoln <pankso@slitaz.org>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -17,19 +17,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: tazusb-box:30
-msgid "<b>Generate SliTaz LiveUSB media and boot in RAM!</b> Insert a LiveCD into the cdrom drive or use a local ISO image, select the correct device and press OK."
-msgstr "<b>Générer un LiveUSB de SliTaz et démarrer!</b> Insérer un LiveCD dans le lecteur de cdrom ou utiliser une image ISO, séléctionner le media et appuyer sur OK."
+#: tazusb-box:37
+msgid "Generate SliTaz LiveUSB media and boot in RAM!"
+msgstr "Générer un LiveUSB de SliTaz et démarrer!"
 
-#: tazusb-box:50
+#: tazusb-box:38
+msgid ""
+"Insert a LiveCD into the CD-ROM drive or use a local ISO image, select the "
+"correct device and press OK."
+msgstr ""
+"Insérer un LiveCD dans le lecteur de CD-ROM ou utiliser une image ISO, "
+"séléctionner le media et appuyer sur OK."
+
+#: tazusb-box:51
+msgid "Reboot"
+msgstr ""
+
+#: tazusb-box:60
 msgid "No USB media found"
 msgstr "Pas de média USB trouvé"
 
-#: tazusb-box:58
+#: tazusb-box:70
 msgid "ISO Image:"
 msgstr "Image ISO:"
 
-#: tazusb-box:59
+#: tazusb-box:71
 msgid "USB Media:"
 msgstr "Média USB:"
 
+#: tazusb-box:91
+msgid "No device: exit"
+msgstr ""
+
+#: tazusb-box:109
+msgid "Usage:"
+msgstr ""

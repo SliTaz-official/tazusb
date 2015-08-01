@@ -1,0 +1,55 @@
+# Russian translations for tazusb-box.
+# Copyright (C) 2015 SliTaz
+# This file is distributed under the same license as the tazusb package.
+# Aleksej Bobylev <al.bobylev@gmail.com>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-01 16:57+0300\n"
+"PO-Revision-Date: 2015-08-01 21:59+0300\n"
+"Last-Translator: Aleksej Bobylev <al.bobylev@gmail.com>\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: tazusb-box:37
+msgid "Generate SliTaz LiveUSB media and boot in RAM!"
+msgstr "Создайте LiveUSB носитель SliTaz и загрузитесь в ОЗУ!"
+
+#: tazusb-box:38
+msgid ""
+"Insert a LiveCD into the CD-ROM drive or use a local ISO image, select the "
+"correct device and press OK."
+msgstr ""
+"Вставьте LiveCD в привод CD-ROM или используйте файл образа ISO, выберите "
+"соответствующее устройство и нажмите OK."
+
+#: tazusb-box:51
+msgid "Reboot"
+msgstr "Перезагрузка"
+
+#: tazusb-box:60
+msgid "No USB media found"
+msgstr "Носители USB не обнаружены"
+
+#: tazusb-box:70
+msgid "ISO Image:"
+msgstr "Образ ISO:"
+
+#: tazusb-box:71
+msgid "USB Media:"
+msgstr "Носитель USB:"
+
+#: tazusb-box:91
+msgid "No device: exit"
+msgstr "Устройство не указано: выход"
+
+#: tazusb-box:109
+msgid "Usage:"
+msgstr "Использование:"

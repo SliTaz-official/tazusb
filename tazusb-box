@@ -6,61 +6,75 @@
 #
 # Authors : Christophe Lincoln <pankso@slitaz.org>
 #
+
 . /lib/libtaz.sh
 
+
 # TazUSBbox is only for root.
-if test $(id -u) != 0 ; then
+
+if [ $(id -u) -ne 0 ]; then
 	exec tazbox su tazusb-box
 	exit 0
 fi
 
+
 # We can specify an ISO on cmdline: tazusb-box --iso=/path/to/image.iso
+
 [ "$iso" ] || iso=" "
 
-title="TazUSB Box"
-icon="/usr/share/pixmaps/slitaz-icon.png"
+title='TazUSB Box'
+icon='/usr/share/pixmaps/slitaz-icon.png'
 opts="--window-icon=$icon --height=220 --width=520 --center --on-top"
 
+
 # I18n
-. /usr/bin/gettext.sh
-TEXTDOMAIN='tazusb-box'
-export TEXTDOMAIN
+
+export TEXTDOMAIN='tazusb-box'
+
 
 # Main text information
-info="$(gettext "<b>Generate SliTaz LiveUSB media and boot in RAM!</b> \
-Insert a LiveCD into the cdrom drive or use a local ISO image, select \
+
+info="<b>$(_ 'Generate SliTaz LiveUSB media and boot in RAM!')</b>\n\n \
+$(_ "Insert a LiveCD into the CD-ROM drive or use a local ISO image, select \
 the correct device and press OK.")
 "
+
 
 #
 # Functions
 #
 
 # Nice GTK output for commands.
+
 output() {
 	yad --text-info $opts --title="$title" --tail --margins=4 \
-		--button="Reboot:reboot" --button="gtk-close:0"
+		--button="$(_n 'Reboot'):reboot" --button="gtk-close:0"
 }
+
 
 list_devices() {
 	if [ -d /proc/scsi/usb-storage ]; then
-		dev="$(blkid | cut -d ":" -f 1)"
+		dev="$(blkid | cut -d":" -f1)"
 		echo $dev | sed s'/ /!/'g
 	else
-		gettext "No USB media found"
+		_ 'No USB media found'
 	fi
 }
 
+
 # Main GUI box function with pure Yad spec
+
 usbbox_main() {
 	yad --form $opts --title="$title" --text="$info" \
 		--image=usb-creator --image-on-top \
-		--field="$(gettext "ISO Image:")":FL \
-		--field="$(gettext "USB Media:")":CB \
+		--field="$(_n 'ISO Image:')":FL \
+		--field="$(_n 'USB Media:')":CB \
 		"$iso" "$(list_devices)"
 }
 
+
 # Handler
+
 usbbox() {
 	# Store box results
 	main=$(usbbox_main)
@@ -72,25 +86,27 @@ usbbox() {
 	esac
 
 	# Deal with $main values. Exit if any device.
-	dev=$(echo $main | cut -d "|" -f 2)
+	dev=$(echo $main | cut -d"|" -f2)
 	if ! echo $dev | grep -q /dev; then
-		echo "No device: exit" && exit 0
+		_ 'No device: exit'
+		exit 0
 	fi
 	if echo "$main" | grep -q ".iso|"; then
 		iso=$(echo $main | cut -d "|" -f 1)
-		yes "" | tazusb gen-iso2usb $iso $dev --output=raw | output
+		yes '' | tazusb gen-iso2usb $iso $dev --output=raw | output
 	else
-		yes "" | tazusb gen-liveusb $dev --output=raw | output
+		yes '' | tazusb gen-liveusb $dev --output=raw | output
 	fi
 }
+
 
 #
 # Script commands
 #
 
 case "$1" in
-	usage)
-		echo "Usage: $(basename $0) [list]" ;;
+	usage|--help|-h)
+		echo "$(_ 'Usage:') $(basename $0) [list]" ;;
 	list)
 		list_devices ;;
 	*)

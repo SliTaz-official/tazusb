@@ -4,7 +4,7 @@
 PREFIX?=/usr
 DOCDIR?=/usr/share/doc
 DESTDIR?=
-LINGUAS?=el fr pl pt_BR zh_CN zh_TW
+LINGUAS?=el fr pl pt_BR ru zh_CN zh_TW
 
 PACKAGE	=	tazusb
 VERSION	:=	$(shell grep ^VERSION ${PACKAGE} | cut -d '=' -f 2)
@@ -18,9 +18,11 @@ pot:
 	xgettext -o po/tazusb-box/tazusb-box.pot -L Shell \
 		--package-name="TazUSB" \
 		--package-version="$(VERSION)" \
+		-kaction -ktitle -k_ -k_n -k_p:1,2 \
 		./tazusb-box
 	xgettext -o po/tazusb/tazusb.pot -L Shell \
 		--package-name="TazUSB" \
+		-kaction -ktitle -k_ -k_n -k_p:1,2 \
 		--package-version="$(VERSION)" \
 		./tazusb
 
