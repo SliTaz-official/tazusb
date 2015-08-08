@@ -300,8 +300,8 @@ msgstr ""
 "για τις καθυστερημένες εγγραφές!"
 
 #: tazusb:541
-msgid "%s is located in /"
-msgstr "Το %s τοποθετήθηκε στο /"
+msgid "%s is located in %s"
+msgstr "Το %s τοποθετήθηκε στο %s"
 
 #: tazusb:545
 #, fuzzy

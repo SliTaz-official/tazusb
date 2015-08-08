@@ -278,8 +278,8 @@ msgid "Moving %s to media. Remember to unmount for delayed writes!"
 msgstr "Movendo %s para a mídia. Lembre-se de desmontar o dispositivo!"
 
 #: tazusb:541
-msgid "%s is located in /"
-msgstr "%s localizado em /"
+msgid "%s is located in %s"
+msgstr "%s localizado em %s"
 
 #: tazusb:545
 #, fuzzy

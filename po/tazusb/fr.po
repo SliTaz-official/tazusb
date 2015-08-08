@@ -286,8 +286,8 @@ msgstr ""
 "les écritures différées."
 
 #: tazusb:541
-msgid "%s is located in /"
-msgstr "Le fichier %s est dans /"
+msgid "%s is located in %s"
+msgstr "Le fichier %s est dans %s"
 
 #: tazusb:545
 #, fuzzy

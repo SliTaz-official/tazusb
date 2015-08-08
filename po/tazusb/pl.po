@@ -289,8 +289,8 @@ msgstr ""
 "proszę pamiętać aby odmontować urządzenie przed odłączeniem od komputera!"
 
 #: tazusb:541
-msgid "%s is located in /"
-msgstr "%s jest zlokalizowany w /"
+msgid "%s is located in %s"
+msgstr "%s jest zlokalizowany w %s"
 
 #: tazusb:545
 msgid "Root filesystem size: %s"

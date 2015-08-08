@@ -268,7 +268,7 @@ msgid "Moving %s to media. Remember to unmount for delayed writes!"
 msgstr ""
 
 #: tazusb:541
-msgid "%s is located in /"
+msgid "%s is located in %s"
 msgstr ""
 
 #: tazusb:545

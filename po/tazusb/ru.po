@@ -287,8 +287,8 @@ msgstr ""
 "записи!"
 
 #: tazusb:541
-msgid "%s is located in /"
-msgstr "Файл %s расположен в /"
+msgid "%s is located in %s"
+msgstr "Файл %s расположен в %s"
 
 #: tazusb:545
 msgid "Root filesystem size: %s"

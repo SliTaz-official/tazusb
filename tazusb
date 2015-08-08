@@ -13,7 +13,7 @@ VERSION=4.2.6
 
 . /lib/libtaz.sh
 
-# Export package name for gettext.
+# i18n
 export TEXTDOMAIN='tazusb'
 
 COMMAND="$1"
@@ -102,27 +102,24 @@ get_part_info() {
 }
 
 
-# Format target device and label partition.
-
-mkfs_ext3() {
-	_n 'Please specify a label for the partition (TazUSB): '
-	read label
-
-	[ -z "$label" ] && label='TazUSB'
-
-	_ 'Label: %s' "$label"
-	echo "Mkfs: mkfs.ext3 -L \"$label\" $DEVICE"
-	newline; sleep 2
-	mkfs.ext3 -L "$label" $DEVICE
-}
-
-
 # Get label for device
 
 get_label() {
 	_n 'Please specify a label for the partition (TazUSB): '
 	read label
 	[ -z "$label" ] && label='TazUSB'
+}
+
+
+# Format target device and label partition.
+
+mkfs_ext3() {
+	get_label
+
+	_ 'Label: %s' "$label"
+	echo "Mkfs: mkfs.ext3 -L \"$label\" $DEVICE"
+	newline; sleep 2
+	mkfs.ext3 -L "$label" $DEVICE
 }
 
 
@@ -370,9 +367,8 @@ EOF
 # will activate it, useful for low memory systems
 
 gen_swap_file() {
-	newline
-	boldify "$(_n 'Gen swap')"
-	separator
+	title "$(_n 'Gen swap')"
+
 	longline "$(_ "Generate a swap file in %s that will be activated on each \
 boot to have more memory available (empty value to exit)." '/home/swap')"
 	newline
@@ -399,9 +395,8 @@ boot to have more memory available (empty value to exit)." '/home/swap')"
 # Clean out old backups to save disk space
 
 clean_usb() {
-	newline
-	boldify "$(_n 'Clean')"
-	separator
+	title "$(_n 'Clean')"
+
 	longline "$(_n 'Remove old %s backup filesystems to free up disk space.' \
 'rootfs.gz.unixtimestamp')"
 	newline
@@ -429,19 +424,22 @@ case $COMMAND in
 	writefs)
 		# Writefs to rootfs.gz
 		check_root
-		if [ -z "$2" ]; then
-			COMPRESSION='none'
-		else
-			COMPRESSION="$2"
-		fi
+		# Compression type (optional): lzma, gzip, none. Default is none
+		COMPRESSION="${2:-none}"
+		# Full path to rootfs.gz (optional). Default is /rootfs.gz
+		ROOTFS_PATH="${3:-/rootfs.gz}"
+		# File name
+		ROOTFS="$(basename "$ROOTFS_PATH")"
+
 		# Start info
 		title 'Write filesystem'
 
 		longline "$(_ "The command writefs will write all the current \
 filesystem into a suitable cpio archive (%s) usable on a bootable \
-LiveUSB media." 'rootfs.gz')"
+LiveUSB media." "$ROOTFS")"
 		newline
 		_ 'Archive compression: %s' "$(colorize 36 "$COMPRESSION")"
+		newline
 
 		# Clear out tazpkg cache
 		rm /var/lib/tazpkg/*.bak /var/cache/tazpkg/* -r -f
@@ -449,8 +447,8 @@ LiveUSB media." 'rootfs.gz')"
 		# Optionally remove sound card selection and screen resolution.
 		_ 'Do you wish to remove the sound card and screen configs?'
 		_n 'Press ENTER to keep or answer (No|yes|exit): '
-		read anser
-		case $anser in
+		read answer
+		case $answer in
 			e|E|"exit"|Exit)
 				exit 0 ;;
 			y|Y|yes|Yes)
@@ -467,8 +465,8 @@ LiveUSB media." 'rootfs.gz')"
 		# Optionally remove i18n settings
 		_ 'Do you wish to remove local/keymap settings?'
 		_n 'Press ENTER to keep or answer (No|yes|exit): '
-		read anser
-		case $anser in
+		read answer
+		case $answer in
 			e|E|"exit"|Exit)
 				exit 0 ;;
 			y|Y|yes|Yes)
@@ -481,6 +479,7 @@ LiveUSB media." 'rootfs.gz')"
 				sed  -i  's/^INCLUDE i18n.cfg/# &/' /home/boot/*linux/*linux.c* ;;
 		esac
 		status
+		newline
 
 		# Clean-up files by default
 		mv -f /var/log/wtmp /tmp/tazusb-wtmp
@@ -508,37 +507,40 @@ LiveUSB media." 'rootfs.gz')"
 		done
 
 		# Generate initramfs with specified compression
-		if [ "$COMPRESSION" == 'lzma' ]; then
-			_n 'Creating %s with lzma compression... ' 'rootfs.gz'
-			cpio -o -H newc | lzma e -si -so > /rootfs.gz
-
-		elif [ "$COMPRESSION" == 'gzip' ]; then
-			_n 'Creating %s with gzip compression... ' 'rootfs.gz'
-			cpio -o -H newc | gzip -9 > /rootfs.gz
-
-		else
-			_n 'Creating %s without compression... ' 'rootfs.gz'
-			cpio -o -H newc > /rootfs.gz
-		fi < /tmp/list
+		case "$COMPRESSION" in
+			lzma)
+				_n 'Creating %s with lzma compression... ' "$ROOTFS"
+				cpio -o -H newc | lzma e -si -so > "$ROOTFS_PATH"
+				;;
+			gzip)
+				_n 'Creating %s with gzip compression... ' "$ROOTFS"
+				cpio -o -H newc | gzip -9 > "$ROOTFS_PATH"
+				;;
+			*)
+				_n 'Creating %s without compression... ' "$ROOTFS"
+				cpio -o -H newc > "$ROOTFS_PATH"
+				;;
+		esac < /tmp/list
 
 		mv -f /tmp/tazusb-wtmp /var/log/wtmp
 
 		# Get initramfs size
-		size=$(du -sh /rootfs.gz | cut -f1)
+		size=$(du -sh "$ROOTFS_PATH" | cut -f1)
 
 		# If the bootable medium is where it should be, copy across
-		if (test -e /home/boot/bzImage); then
-			longline "$(_ 'Moving %s to media. Remember to unmount for delayed writes!' 'rootfs.gz')"
+		if [ -e /home/boot/bzImage ]; then
+			longline "$(_ 'Moving %s to media. Remember to unmount for delayed writes!' "$ROOTFS")"
 
 			# Move the old filesystem with the unix timestamp for reference
-			if (test -e /home/boot/previous.gz); then
+			if [ -e /home/boot/previous.gz ]; then
 				mv /home/boot/previous.gz /home/boot/rootfs.gz.$(date +%s)
 			fi
 			
 			mv /home/boot/rootfs.gz /home/boot/previous.gz
-			mv /rootfs.gz /home/boot/.
+			mv "$ROOTFS_PATH" /home/boot/rootfs.gz
+			_ '%s is located in %s' 'rootfs.gz' '/home/boot'
 		else
-			_ '%s is located in /' 'rootfs.gz'
+			_ '%s is located in %s' "$ROOTFS" "$(dirname "$ROOTFS_PATH")"
 		fi
 
 		separator

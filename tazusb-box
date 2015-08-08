@@ -27,7 +27,7 @@ icon='/usr/share/pixmaps/slitaz-icon.png'
 opts="--window-icon=$icon --height=220 --width=520 --center --on-top"
 
 
-# I18n
+# i18n
 
 export TEXTDOMAIN='tazusb-box'
 
@@ -54,7 +54,7 @@ output() {
 
 list_devices() {
 	if [ -d /proc/scsi/usb-storage ]; then
-		dev="$(blkid | cut -d":" -f1)"
+		dev="$(blkid | cut -d: -f1)"
 		echo $dev | sed s'/ /!/'g
 	else
 		_ 'No USB media found'
@@ -92,7 +92,7 @@ usbbox() {
 		exit 0
 	fi
 	if echo "$main" | grep -q ".iso|"; then
-		iso=$(echo $main | cut -d "|" -f 1)
+		iso=$(echo $main | cut -d "|" -f1)
 		yes '' | tazusb gen-iso2usb $iso $dev --output=raw | output
 	else
 		yes '' | tazusb gen-liveusb $dev --output=raw | output
