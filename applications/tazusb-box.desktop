@@ -7,5 +7,5 @@ Name[pt]=Criação de LiveUSB
 Name[pt_BR]=Criação de LiveUSB
 Name[ru]=Создать LiveUSB
 Exec=tazbox su tazusb-box
-Icon=usb-creator
+Icon=drive-harddisk-usb
 Categories=System;FileSystem;
