@@ -44,10 +44,10 @@ msgstr ""
 
 #: tazusb:42
 msgid ""
-"Format and label device with ext3, ext2 or fat32 filesystem (for LiveUSB or /"
+"Format and label device with ext4, ext3, ext2 or fat32 filesystem (for LiveUSB or /"
 "home). Default is ext3."
 msgstr ""
-"Formater et nommer un périphérique en ext3, ext2 ou fat32 (pour LiveUSB ou /"
+"Formater et nommer un périphérique en ext4, ext3, ext2 ou fat32 (pour LiveUSB ou /"
 "home). ext3 Par défault."
 
 #: tazusb:43
@@ -94,16 +94,16 @@ msgid "Label: %s"
 msgstr ""
 
 #: tazusb:132
-msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
-msgstr "Donnez le type de système de fichiers ext2, ext3 ou fat32 (ext3): "
+msgid "Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): "
+msgstr "Donnez le type de système de fichiers ext2, ext3, ext4 ou fat32 (ext3): "
 
 #: tazusb:141
 #, fuzzy
 msgid "Please specify the filesystem type to %s."
-msgstr "Donnez le type de système de fichiers ext2, ext3 ou fat32 (ext3): "
+msgstr "Donnez le type de système de fichiers ext2, ext3, ext4 ou fat32 (ext3): "
 
 #: tazusb:142
-msgid "Available formats are ext3(default), ext2 or fat32."
+msgid "Available formats are ext4, ext3(default), ext2 or fat32."
 msgstr ""
 
 #: tazusb:143

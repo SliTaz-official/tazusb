@@ -95,15 +95,15 @@ msgid "Label: %s"
 msgstr ""
 
 #: tazusb:132
-msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
-msgstr "请指定一个文件系统类型的ext2，ext3或FAT32（ext3）："
+msgid "Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): "
+msgstr "请指定一个文件系统类型的ext2，ext3，ext4或FAT32（ext3）："
 
 #: tazusb:141
 msgid "Please specify the filesystem type to %s."
 msgstr ""
 
 #: tazusb:142
-msgid "Available formats are ext3(default), ext2 or fat32."
+msgid "Available formats are ext4, ext3(default), ext2 or fat32."
 msgstr ""
 
 #: tazusb:143

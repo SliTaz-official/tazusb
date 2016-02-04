@@ -48,10 +48,10 @@ msgstr ""
 
 #: tazusb:42
 msgid ""
-"Format and label device with ext3, ext2 or fat32 filesystem (for LiveUSB or "
+"Format and label device with ext4, ext3, ext2 or fat32 filesystem (for LiveUSB or "
 "/home). Default is ext3."
 msgstr ""
-"Форматировать устройство в файловую систему ext3, ext2 или fat32 и присвоить "
+"Форматировать устройство в файловую систему ext4, ext3, ext2 или fat32 и присвоить "
 "метку диску (для LiveUSB или /home). По умолчанию ext3."
 
 #: tazusb:43
@@ -101,17 +101,17 @@ msgid "Label: %s"
 msgstr "Метка: %s"
 
 #: tazusb:132
-msgid "Please specify a filesystem type ext2, ext3 or fat32 (ext3): "
+msgid "Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): "
 msgstr ""
-"Пожалуйста, укажите тип файловой системы: ext2, ext3 или fat32 (ext3): "
+"Пожалуйста, укажите тип файловой системы: ext2, ext3, ext4 или fat32 (ext3): "
 
 #: tazusb:141
 msgid "Please specify the filesystem type to %s."
 msgstr "Пожалуйста, укажите тип файловой системы для команды «%s»."
 
 #: tazusb:142
-msgid "Available formats are ext3(default), ext2 or fat32."
-msgstr "Доступные форматы: ext3 (по умолчанию), ext2 или fat32."
+msgid "Available formats are ext4, ext3(default), ext2 or fat32."
+msgstr "Доступные форматы: ext4, ext3 (по умолчанию), ext2 или fat32."
 
 #: tazusb:143
 msgid "Press enter to keep the default value."
