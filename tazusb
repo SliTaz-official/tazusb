@@ -342,8 +342,9 @@ set_bootable() {
 		umount $TARGET_ROOT 2>/dev/null
 		_n 'Setting %s as bootable...' "$DEVICE"
 		fdisk $DISK >/dev/null << EOF
+$(fdisk -l $DISK | grep $DISK  | sed "/\\*/!ds#$DISK##;s# .*##;s#.*#&\na#")
 a
-1
+${DEVICE#$DISK}
 w
 EOF
 		status
