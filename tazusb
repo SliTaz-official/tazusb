@@ -9,7 +9,7 @@
 # Authors: see AUTHORS file
 #
 
-VERSION=182
+VERSION=4.2.6
 
 . /lib/libtaz.sh
 
@@ -39,7 +39,7 @@ usage () {
 	optlist "\
 usage		$(_ 'Print this short usage.')
 writefs		$(_ 'Write the current filesystem to rootfs.gz. Supported compression: lzma, gzip, none.')
-format		$(_ 'Format and label device with ext3, ext2 or fat32 filesystem (for LiveUSB or /home). Default is ext3.')
+format		$(_ 'Format and label device with ext4, ext3, ext2 or fat32 filesystem (for LiveUSB or /home). Default is ext3.')
 gen-liveusb	$(_ 'Generate a bootable LiveUSB using files from the LiveCD.')
 gen-swap	$(_ 'Create or recreate and activate additional swap memory.')
 gen-iso2usb	$(_ 'Generate a bootable LiveUSB using files from ISO file.')
@@ -111,22 +111,10 @@ get_label() {
 }
 
 
-# Format target device and label partition.
-
-mkfs_ext3() {
-	get_label
-
-	_ 'Label: %s' "$label"
-	echo "Mkfs: mkfs.ext3 -L \"$label\" $DEVICE"
-	newline; sleep 2
-	mkfs.ext3 -L "$label" $DEVICE
-}
-
-
 # Get fs type. Supported fs are ext3, ext2, fat32
 
 get_fs_type() {
-	_n 'Please specify a filesystem type ext2, ext3 or fat32 (ext3): '
+	_n 'Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): '
 	read fs_type
 	[ -z "$fs_type" ] && fs_type='ext3'
 }
@@ -136,7 +124,7 @@ get_fs_type() {
 
 ask_for_fs_type() {
 	_ 'Please specify the filesystem type to %s.' "$COMMAND"
-	_ 'Available formats are ext3(default), ext2 or fat32.'
+	_ 'Available formats are ext4, ext3(default), ext2 or fat32.'
 	_ 'Press enter to keep the default value.'
 	newline
 	_n 'File system type: '; read answer
@@ -148,15 +136,15 @@ ask_for_fs_type() {
 }
 
 
-# Format target device in ext3, ext2 or fat32.
-# Usage: make_fs ext2|fat32|ext3 (default)
+# Format target device in ext4, ext3, ext2 or fat32.
+# Usage: make_fs ext2|ext4|fat32|ext3 (default)
 
 make_fs() {
 	local answer
 
 	FS=$(echo $fs_type | tr '[A-Z]' '[a-z]')
 	case "$FS" in
-		ext3|ext2)
+		ext4|ext3|ext2)
 			newline; _ 'Processing...'
 			_ 'Label: %s' "$label"
 			echo "Mkfs: mkfs.$FS -L \"$label\" $DEVICE"
@@ -318,10 +306,10 @@ install_boot() {
 	sed -i -e "s/\(root=.*\)/\1 home=$UUID/" $(grep -l append $TARGET_ROOT/boot/$ST/*)
 
 	# Splash screen and help files.
-	cp /media/cdrom/boot/isolinux/splash.* $TARGET_ROOT/boot/$ST
-	cp /media/cdrom/boot/isolinux/*.cfg    $TARGET_ROOT/boot/$ST
-	cp /media/cdrom/boot/isolinux/*.kbd    $TARGET_ROOT/boot/$ST
-	cp /media/cdrom/boot/isolinux/*.c32    $TARGET_ROOT/boot/$ST
+	cp /media/cdrom/boot/isolinux/splash.*	$TARGET_ROOT/boot/$ST
+	cp /media/cdrom/boot/isolinux/*.cfg	$TARGET_ROOT/boot/$ST
+	cp /media/cdrom/boot/isolinux/*.kbd	$TARGET_ROOT/boot/$ST
+	cp /media/cdrom/boot/isolinux/*.c32	$TARGET_ROOT/boot/$ST
 	sed -i -e s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ \
 		-e "s/isolinux/$ST/" $TARGET_ROOT/boot/$ST/$ST.$STE
 }
@@ -354,8 +342,9 @@ set_bootable() {
 		umount $TARGET_ROOT 2>/dev/null
 		_n 'Setting %s as bootable...' "$DEVICE"
 		fdisk $DISK >/dev/null << EOF
+$(fdisk -l $DISK | grep $DISK  | sed "/\\*/!ds#$DISK##;s# .*##;s#.*#&\na#")
 a
-1
+${DEVICE#$DISK}
 w
 EOF
 		status
@@ -573,7 +562,6 @@ LiveUSB media." "$ROOTFS")"
 		get_label
 		unmount_target_usb
 		make_fs "$fs_type"
-		# mkfs_ext3
 		separator
 		longline "$(_ 'Device %s is ready to use as LiveUSB and/or /home partition.' "$label ($DEVICE)")"
 		;;
