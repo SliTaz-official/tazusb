@@ -1,5 +1,5 @@
 # TazUSB Portuguese Translation.
-# Copyright (C) 2012 www.slitaz.org 
+# Copyright (C) 2012 www.slitaz.org
 # This file is distributed under the same license as the TazUSB package.
 # Claudinei Pereira <claudinei@slitaz.org>, 2012.
 #
@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: TazUSB 4.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-01 16:41+0300\n"
-"PO-Revision-Date: 2014-03-07 23:20-0300\n"
-"Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
+"PO-Revision-Date: 2016-03-28 04:41-0300\n"
+"Last-Translator: Leonardo Laporte <hackdorte@sapo.pt>\n"
 "Language-Team: Portuguese <i18n@slitaz.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: tazusb:34
 msgid "SliTaz Live USB - Version: %s"
@@ -27,7 +28,7 @@ msgstr "Uso:"
 
 #: tazusb:37
 msgid "%s [command] [compression|device]"
-msgstr ""
+msgstr "%s [comando] [compressão|dispositivo]"
 
 #: tazusb:38
 msgid "Commands:"
@@ -39,11 +40,10 @@ msgstr "Mostra esta utilização."
 
 #: tazusb:41
 msgid ""
-"Write the current filesystem to rootfs.gz. Supported compression: lzma, "
-"gzip, none."
+"Write the current filesystem to rootfs.gz. Supported compression: lzma, gzip, none."
 msgstr ""
-"Escreve o sistema de arquivos atual para rootfs.gz. Compressões suportadas: "
-"lzma, gzip, none (nenhuma)."
+"Escreve o sistema de arquivos atual para rootfs.gz. Compressões suportadas: lzma, "
+"gzip, none (nenhuma)."
 
 #: tazusb:42
 msgid ""
@@ -71,13 +71,16 @@ msgstr "Remove arquivos de sistema antigo para liberar espaço."
 
 #: tazusb:64
 msgid ""
-"Please specify the target USB device to %s. You can type 'list' to get a "
-"list of devices, type 'exit' or give an empty value to exit."
+"Please specify the target USB device to %s. You can type 'list' to get a list of "
+"devices, type 'exit' or give an empty value to exit."
 msgstr ""
+"Por favor, especifique o dispositivo alvo USB para %s. Você pode digitar 'list' "
+"para obter uma lista de dispositivos, digite 'exit' ou deixar um valor vazio para "
+"sair."
 
 #: tazusb:68 tazusb:72
 msgid "Device to use: "
-msgstr "Dispositivo a ser utilizado: "
+msgstr "Dispositivo para usar: "
 
 #: tazusb:77
 msgid "No specified device or exit."
@@ -85,7 +88,7 @@ msgstr "Nenhum dispositivo especificado ou sair."
 
 #: tazusb:91
 msgid "Unable to find device %s"
-msgstr ""
+msgstr "Impossível localizar dispositivo %s"
 
 #: tazusb:108 tazusb:123
 msgid "Please specify a label for the partition (TazUSB): "
@@ -93,28 +96,27 @@ msgstr "Por favor especifique um rótulo para a partição (TazUSB): "
 
 #: tazusb:113 tazusb:164 tazusb:172
 msgid "Label: %s"
-msgstr ""
+msgstr "Rótulo: %s"
 
 #: tazusb:132
 msgid "Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): "
 msgstr "Por favor escolha ext2, ext3, ext4 ou fat32 para formatação (ext3): "
 
 #: tazusb:141
-#, fuzzy
 msgid "Please specify the filesystem type to %s."
-msgstr "Por favor escolha ext2, ext3, ext4 ou fat32 para formatação (ext3): "
+msgstr "Escolha ext2, ext3, ext4 ou fat32 para formatação (ext3): "
 
 #: tazusb:142
 msgid "Available formats are ext4, ext3(default), ext2 or fat32."
-msgstr ""
+msgstr "Formatos disponíveis são: ext4, ext3(padrão), ext2 ou fat32."
 
 #: tazusb:143
 msgid "Press enter to keep the default value."
-msgstr ""
+msgstr "Pressione ENTER para manter o valor padrão."
 
 #: tazusb:145
 msgid "File system type: "
-msgstr ""
+msgstr "Tipo do sistema de arquivos: "
 
 #: tazusb:163 tazusb:171
 msgid "Processing..."
@@ -130,7 +132,7 @@ msgstr "Instalar o aplicativo %s a partir do repositório [y/N]? "
 
 #: tazusb:189
 msgid "Sorry. Filesystem %s is not supported."
-msgstr ""
+msgstr "Desculpe. Sistema de arquivos %s não suportado."
 
 #: tazusb:206
 msgid "Unmounting USB target device..."
@@ -162,15 +164,15 @@ msgstr "Copiando arquivos requeridos do CD-ROM..."
 
 #: tazusb:286
 msgid "Installing a new MBR to %s"
-msgstr ""
+msgstr "Instalando nova MBR em %s"
 
 #: tazusb:291
 msgid "No new MBR installed to %s"
-msgstr ""
+msgstr "Nenhum setor MBR instalado em %s"
 
 #: tazusb:310
 msgid "Installing bootloader: %s"
-msgstr ""
+msgstr "Instalando gerenciador de boot: %s"
 
 #: tazusb:338
 msgid "Do you want to exit Tazusb or reboot system (Exit/reboot)? "
@@ -178,7 +180,7 @@ msgstr "Sair (Exit) do TazUSB ou reiniciar (reboot) o sistema? "
 
 #: tazusb:358
 msgid "Setting %s as bootable..."
-msgstr ""
+msgstr "Configurando %s para ser inicializável..."
 
 #: tazusb:374
 msgid "Gen swap"
@@ -186,8 +188,8 @@ msgstr "Gerando swap"
 
 #: tazusb:376
 msgid ""
-"Generate a swap file in %s that will be activated on each boot to have more "
-"memory available (empty value to exit)."
+"Generate a swap file in %s that will be activated on each boot to have more memory "
+"available (empty value to exit)."
 msgstr ""
 "Gera arquivo swap em %s a ser ativado durante o boot para obter mais memória "
 "disponível (enter para ignorar)."
@@ -209,9 +211,8 @@ msgid "Remove old %s backup filesystems to free up disk space."
 msgstr "Remove arquivos %s antigos para salvar espaço em disco."
 
 #: tazusb:410
-#, fuzzy
 msgid "Do you wish to remove: %s (Yes/no/exit)? "
-msgstr "Gostaria de remover a seleção de locale e keymap?"
+msgstr "Deseja remover: %s (Yes/no/exit)? "
 
 #: tazusb:418
 msgid "No filesystems selected, exiting..."
@@ -223,15 +224,15 @@ msgstr "Escrever sistema de arquivo"
 
 #: tazusb:440
 msgid ""
-"The command writefs will write all the current filesystem into a suitable "
-"cpio archive (%s) usable on a bootable LiveUSB media."
+"The command writefs will write all the current filesystem into a suitable cpio "
+"archive (%s) usable on a bootable LiveUSB media."
 msgstr ""
-"O comando writefs gravará o sistema de arquivos atual em um arquivo cpio "
-"válido (%s) para ser utilizado numa mídia LiveUSB."
+"O comando writefs gravará o sistema de arquivos atual em um arquivo cpio válido "
+"(%s) para ser utilizado numa mídia LiveUSB."
 
 #: tazusb:444
 msgid "Archive compression: %s"
-msgstr ""
+msgstr "Compressão de arquivo: %s"
 
 #: tazusb:450
 msgid "Do you wish to remove the sound card and screen configs?"
@@ -282,9 +283,8 @@ msgid "%s is located in %s"
 msgstr "%s localizado em %s"
 
 #: tazusb:545
-#, fuzzy
 msgid "Root filesystem size: %s"
-msgstr "Escrever sistema de arquivo"
+msgstr "Tamanho do sistema root: %s"
 
 #: tazusb:547
 msgid "ENTER to continue..."
@@ -295,13 +295,13 @@ msgid "Format a device"
 msgstr "Formatar o dispositivo"
 
 #: tazusb:564
-#, fuzzy
 msgid "Device: %s"
-msgstr "Dispositivo a ser utilizado: "
+msgstr "Dispositivo: %s"
 
 #: tazusb:572
 msgid "Device %s is ready to use as LiveUSB and/or /home partition."
 msgstr ""
+"Dispositivo %s está pronto uso como Live USB ou apenas como partição (/home)."
 
 #: tazusb:580
 msgid "Gen a LiveUSB media"
