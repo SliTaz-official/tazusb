@@ -18,15 +18,15 @@ msgstr ""
 
 #: tazusb:34
 msgid "SliTaz Live USB - Version: %s"
-msgstr "SliTaz Live USB - Version: %s"
+msgstr "SliTaz Live USB - Version : %s"
 
 #: tazusb:36
 msgid "Usage:"
-msgstr "Syntaxe:"
+msgstr "Syntaxe :"
 
 #: tazusb:37
 msgid "%s [command] [compression|device]"
-msgstr ""
+msgstr "%s [commande] [compression|média]"
 
 #: tazusb:38
 msgid "Commands:"
@@ -34,20 +34,22 @@ msgstr "Commandes :"
 
 #: tazusb:40
 msgid "Print this short usage."
-msgstr "Affiche cette aide."
+msgstr "Affiche cette aide succinte."
 
 #: tazusb:41
 msgid ""
 "Write the current filesystem to rootfs.gz. Supported compression: lzma, "
 "gzip, none."
 msgstr ""
+"Ecrit le système de fichier dans rootfs.gz. Compressions possibles : lzma, "
+"gzip, none."
 
 #: tazusb:42
 msgid ""
 "Format and label device with ext4, ext3, ext2 or fat32 filesystem (for LiveUSB or /"
 "home). Default is ext3."
 msgstr ""
-"Formater et nommer un périphérique en ext4, ext3, ext2 ou fat32 (pour LiveUSB ou /"
+"Formater et étiqueter un périphérique en ext4, ext3, ext2 ou fat32 (pour LiveUSB ou /"
 "home). ext3 Par défault."
 
 #: tazusb:43
@@ -60,7 +62,7 @@ msgstr "Créer ou recréer et activer un fichier d'échange supplémentaire."
 
 #: tazusb:45
 msgid "Generate a bootable LiveUSB using files from ISO file."
-msgstr "Générer un clé USB amorçable à partir d'une image ISO."
+msgstr "Générer une clé USB amorçable à partir d'une image ISO."
 
 #: tazusb:46
 msgid "Remove old backup filesystems to free disk space."
@@ -71,6 +73,8 @@ msgid ""
 "Please specify the target USB device to %s. You can type 'list' to get a "
 "list of devices, type 'exit' or give an empty value to exit."
 msgstr ""
+"Précisez le media USB cible à %s. Vous pouvez entrer 'list' pour avoir "
+"la liste des medium, 'exit' ou le laisser vide pour sortir."
 
 #: tazusb:68 tazusb:72
 msgid "Device to use: "
@@ -78,10 +82,9 @@ msgstr "Périphérique cible:"
 
 #: tazusb:77
 msgid "No specified device or exit."
-msgstr "Pas de périphérique spécifié ou quitter."
+msgstr "Pas de périphérique précisé ou quitter."
 
 #: tazusb:91
-#, fuzzy
 msgid "Unable to find device %s"
 msgstr "Impossible de trouver le périphérique: %s"
 
@@ -91,28 +94,27 @@ msgstr "Entrez un nom de volume (TazUSB): "
 
 #: tazusb:113 tazusb:164 tazusb:172
 msgid "Label: %s"
-msgstr ""
+msgstr "Label : %s"
 
 #: tazusb:132
 msgid "Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): "
 msgstr "Donnez le type de système de fichiers ext2, ext3, ext4 ou fat32 (ext3): "
 
 #: tazusb:141
-#, fuzzy
 msgid "Please specify the filesystem type to %s."
-msgstr "Donnez le type de système de fichiers ext2, ext3, ext4 ou fat32 (ext3): "
+msgstr "Donnez le type de système de fichiers pour %s."
 
 #: tazusb:142
 msgid "Available formats are ext4, ext3(default), ext2 or fat32."
-msgstr ""
+msgstr "Les formats disponibles sont ext4, ext3(defaut), ext2 ou fat32."
 
 #: tazusb:143
 msgid "Press enter to keep the default value."
-msgstr ""
+msgstr "Appuyez sur Entrée pour conserver la valeur par défaut."
 
 #: tazusb:145
 msgid "File system type: "
-msgstr ""
+msgstr "Type de système de fichiers : "
 
 #: tazusb:163 tazusb:171
 msgid "Processing..."
@@ -162,24 +164,23 @@ msgstr "Copie des fichiers depuis le CD-ROM..."
 
 #: tazusb:286
 msgid "Installing a new MBR to %s"
-msgstr "Installation du MBR sur: %s"
+msgstr "Installation du MBR sur : %s"
 
 #: tazusb:291
 msgid "No new MBR installed to %s"
-msgstr "Pas de nouveau MBR installé sur: %s"
+msgstr "Pas de nouveau MBR installé sur : %s"
 
 #: tazusb:310
 msgid "Installing bootloader: %s"
-msgstr "Installation du bootloader: %s"
+msgstr "Installation du bootloader : %s"
 
 #: tazusb:338
 msgid "Do you want to exit Tazusb or reboot system (Exit/reboot)? "
 msgstr "Voulez-vous quitter Tazusb ou redémarrer le système (Exit/reboot) ? "
 
 #: tazusb:358
-#, fuzzy
 msgid "Setting %s as bootable..."
-msgstr "Paramètre le périphérique comme amorçable..."
+msgstr "Rend %s amorçable..."
 
 #: tazusb:374
 msgid "Gen swap"
@@ -199,7 +200,7 @@ msgstr "Taille du fichier d'échange en Mo : "
 
 #: tazusb:382
 msgid "Empty value. Exiting..."
-msgstr "Aucune valeur. Quitter..."
+msgstr "Aucune valeur. Quitte..."
 
 #: tazusb:403
 msgid "Clean"
@@ -213,59 +214,56 @@ msgstr ""
 
 #: tazusb:410
 msgid "Do you wish to remove: %s (Yes/no/exit)? "
-msgstr "Désirez-vous supprimer: %s (Yes/no/exit) ? "
+msgstr "Désirez-vous supprimer : %s (Yes/no/exit) ? "
 
 #: tazusb:418
 msgid "No filesystems selected, exiting..."
-msgstr "Pas de système de fichier choisi, quitter..."
+msgstr "Pas de système de fichier choisi, quitte..."
 
 #: tazusb:438
 msgid "Write filesystem"
-msgstr "Création du système de fichier"
+msgstr "Ecriture du système de fichier"
 
 #: tazusb:440
 msgid ""
 "The command writefs will write all the current filesystem into a suitable "
 "cpio archive (%s) usable on a bootable LiveUSB media."
 msgstr ""
+"La commande writefs va placer tout le système de fichier dans une archive "
+"cpio (%s) utilisable sur un media LiveUSB amorçable."
 
 #: tazusb:444
 msgid "Archive compression: %s"
-msgstr ""
+msgstr "Compression de 'archive : %s"
 
 #: tazusb:450
-#, fuzzy
 msgid "Do you wish to remove the sound card and screen configs?"
-msgstr "Souhaîtez-vous supprimer the sound card selection (No/yes/exit) ?"
+msgstr ""
+"Souhaîtez-vous retirer les configurations de la carte sound et de l'écran ?"
 
 #: tazusb:451 tazusb:469
 msgid "Press ENTER to keep or answer (No|yes|exit): "
-msgstr ""
+msgstr "Appuyez sur ENTREE pour ne rien changer ou répondez (No|yes|exit) : "
 
 #: tazusb:457
-#, fuzzy
 msgid "Removing current sound card and screen configurations..."
-msgstr "Suppression des informations sur la carte son sélèctionnée..."
+msgstr "Suppression des configurations de la carte sound et de l'écran..."
 
 #: tazusb:462
-#, fuzzy
 msgid "Keeping current sound card and screen configurations..."
-msgstr "Garder la sélection courante de la carte son..."
+msgstr "Conservation des configurations de la carte sound et de l'écran..."
 
 #: tazusb:468
-#, fuzzy
 msgid "Do you wish to remove local/keymap settings?"
-msgstr "Souhaîtez-vous supprimer the sound card selection (No/yes/exit) ?"
+msgstr "Souhaîtez-vous retirer les configurations du clavier et la langue ?"
 
 #: tazusb:475
-#, fuzzy
 msgid "Removing current locale/keymap settings..."
-msgstr "Supprimer la résolution d'écran actuelle..."
+msgstr "Suppression des configurations du clavier et la langue ?"
 
 #: tazusb:479
-#, fuzzy
 msgid "Keeping current locale/keymap settings..."
-msgstr "Garder la résolution d'écran actuelle..."
+msgstr "Conservation des configurations du clavier et la langue ?"
 
 #: tazusb:512
 msgid "Creating %s with lzma compression... "
@@ -277,39 +275,37 @@ msgstr "Création du fichier %s avec compression gzip... "
 
 #: tazusb:520
 msgid "Creating %s without compression... "
-msgstr "Création de %s sans compression... "
+msgstr "Création du fichier %s sans compression... "
 
 #: tazusb:531
 msgid "Moving %s to media. Remember to unmount for delayed writes!"
 msgstr ""
-"Déplacement de %s vers le média. N'oubliez de démonter le périphérique pour "
-"les écritures différées."
+"Envoi de %s vers le média. N'oubliez de démonter le périphérique a "
+"cause des écritures différées !"
 
 #: tazusb:541
 msgid "%s is located in %s"
 msgstr "Le fichier %s est dans %s"
 
 #: tazusb:545
-#, fuzzy
 msgid "Root filesystem size: %s"
-msgstr "Taille du système de fichier racine: %s"
+msgstr "Taille du système de fichier racine : %s"
 
 #: tazusb:547
 msgid "ENTER to continue..."
-msgstr "appuyer sur Entrer pour continuer"
+msgstr "appuyer sur Entrer pour continuer..."
 
 #: tazusb:555
 msgid "Format a device"
 msgstr "Formatage d'un périphérique"
 
 #: tazusb:564
-#, fuzzy
 msgid "Device: %s"
-msgstr "Périphérique cible:"
+msgstr "Périphérique: %s"
 
 #: tazusb:572
 msgid "Device %s is ready to use as LiveUSB and/or /home partition."
-msgstr ""
+msgstr "Le media est prêt à servir de LiveUSB et/ou de partition /home."
 
 #: tazusb:580
 msgid "Gen a LiveUSB media"
@@ -339,7 +335,7 @@ msgstr "Copie du fichier ISO vers SliTaz LiveUSB"
 #~ msgstr "Ce programme nécessite d'être exécuté en tant que root."
 
 #~ msgid "Label  : $label"
-#~ msgstr "Nom de volume"
+#~ msgstr "Etiquette : $label"
 
 #~ msgid "Mkfs   : mkfs.ext3 -L \"$label\" $DEVICE"
 #~ msgstr "Mkfs   : mkfs.ext3 -L \"$label\" $DEVICE"

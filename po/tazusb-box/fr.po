@@ -19,19 +19,19 @@ msgstr ""
 
 #: tazusb-box:37
 msgid "Generate SliTaz LiveUSB media and boot in RAM!"
-msgstr "Générer un LiveUSB de SliTaz et démarrer!"
+msgstr "Générer un LiveUSB de SliTaz et démarrer en RAM !"
 
 #: tazusb-box:38
 msgid ""
 "Insert a LiveCD into the CD-ROM drive or use a local ISO image, select the "
 "correct device and press OK."
 msgstr ""
-"Insérer un LiveCD dans le lecteur de CD-ROM ou utiliser une image ISO, "
+"Insérer un LiveCD dans le lecteur ou utiliser une image ISO, "
 "séléctionner le media et appuyer sur OK."
 
 #: tazusb-box:51
 msgid "Reboot"
-msgstr ""
+msgstr "Redémarre"
 
 #: tazusb-box:60
 msgid "No USB media found"
@@ -39,16 +39,16 @@ msgstr "Pas de média USB trouvé"
 
 #: tazusb-box:70
 msgid "ISO Image:"
-msgstr "Image ISO:"
+msgstr "Image ISO :"
 
 #: tazusb-box:71
 msgid "USB Media:"
-msgstr "Média USB:"
+msgstr "Média USB :"
 
 #: tazusb-box:91
 msgid "No device: exit"
-msgstr ""
+msgstr "Aucun media : abandon"
 
 #: tazusb-box:109
 msgid "Usage:"
-msgstr ""
+msgstr "Usage :"
