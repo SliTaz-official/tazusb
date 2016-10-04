@@ -1,0 +1,313 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-01 22:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt;\n"
+"Language-Team: LANGUAGE &lt;LL@li.org&gt;\n"
+"Language: Vietnam\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tazusb:34
+msgid "SliTaz Live USB - Version: %s"
+msgstr "SliTaz Live USB - Phiên bản: %s"
+
+#: tazusb:36
+msgid "Usage:"
+msgstr "Sử dụng:"
+
+#: tazusb:37
+msgid "%s [command] [compression|device]"
+msgstr ""
+
+#: tazusb:38
+msgid "Commands:"
+msgstr "Lệnh:"
+
+#: tazusb:40
+msgid "Print this short usage."
+msgstr "In sử dụng ngắn."
+
+#: tazusb:41
+msgid ""
+"Write the current filesystem to rootfs.gz. Supported compression: lzma, "
+"gzip, none."
+msgstr ""
+"Viết các hệ thống tập tin hiện tại vào rootfs.gz. Kiểu nén được hỗ trợ: lzma, "
+"gzip, không."
+
+#: tazusb:42
+msgid ""
+"Format and label device with ext4, ext3, ext2 or fat32 filesystem (for LiveUSB or /"
+"home). Default is ext3."
+msgstr ""
+"Định dạng và nhãn thiết bị với hệ thống tập tin ext4, ext3, ext2 hoặc fat32 (cho LiveUSB hoặc /"
+"home). Mặc định là ext3."
+
+#: tazusb:43
+msgid "Generate a bootable LiveUSB using files from the LiveCD."
+msgstr "Tạo một LiveUSB có thể khởi động sử dụng các file từ đĩa CD."
+
+#: tazusb:44
+msgid "Create or recreate and activate additional swap memory."
+msgstr "Tạo hoặc tái tạo và kích hoạt bộ nhớ trao đổi thêm (swap)."
+
+#: tazusb:45
+msgid "Generate a bootable LiveUSB using files from ISO file."
+msgstr "Tạo một LiveUSB có thể khởi động sử dụng các tập tin từ tập tin ISO."
+
+#: tazusb:46
+msgid "Remove old backup filesystems to free disk space."
+msgstr "Di chuyển hệ thống tập tin sao lưu cũ đến không gian đĩa còn trống."
+
+#: tazusb:64
+msgid ""
+"Please specify the target USB device to %s. You can type 'list' to get a "
+"list of devices, type 'exit' or give an empty value to exit."
+msgstr ""
+"Hãy xác định các thiết bị USB để %s. Bạn có thể gõ "list" để có được "
+"danh sách thiết bị, gõ 'exit' hoặc không để thoát."
+
+#: tazusb:68 tazusb:72
+msgid "Device to use: "
+msgstr "Thiết bị sử dụng: "
+
+#: tazusb:77
+msgid "No specified device or exit."
+msgstr "Không có thiết bị hoặc thoát."
+
+#: tazusb:91
+msgid "Unable to find device %s"
+msgstr "Không thể tìm thấy thiết bị %s"
+
+#: tazusb:108 tazusb:123
+msgid "Please specify a label for the partition (TazUSB): "
+msgstr "Hãy xác định một nhãn cho phân vùng (TazUSB): "
+
+#: tazusb:113 tazusb:164 tazusb:172
+msgid "Label: %s"
+msgstr "Nhãn: %s"
+
+#: tazusb:132
+msgid "Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): "
+msgstr "Xin xác định một hệ thống tập tin ext2, ext3, ext4 hoặc fat32 (ext3): "
+
+#: tazusb:141
+msgid "Please specify the filesystem type to %s."
+msgstr "Xin xác định một hệ thống tập tin cho %s."
+
+#: tazusb:142
+msgid "Available formats are ext4, ext3(default), ext2 or fat32."
+msgstr "Định dạng sẵn có ext4, ext3(mặc định), ext2 hoặc fat32."
+
+#: tazusb:143
+msgid "Press enter to keep the default value."
+msgstr "Nhấn Enter để giữ giá trị mặc định."
+
+#: tazusb:145
+msgid "File system type: "
+msgstr "Loại hệ thống tập tin: "
+
+#: tazusb:163 tazusb:171
+msgid "Processing..."
+msgstr "Đang thực hiện..."
+
+#: tazusb:177
+msgid "Can't find %s tool."
+msgstr "Không thể tìm thấy công cụ %s."
+
+#: tazusb:178
+msgid "Would you like to install %s from repository [y/N]? "
+msgstr "Bạn có muốn cài đặt %s từ kho lưu trữ [y/N]? "
+
+#: tazusb:189
+msgid "Sorry. Filesystem %s is not supported."
+msgstr "Tiếc. Hệ thống tập tin %s không được hỗ trợ."
+
+#: tazusb:206
+msgid "Unmounting USB target device..."
+msgstr "Ngắt kết nối USB..."
+
+#: tazusb:215
+msgid "Mounting USB target device..."
+msgstr "Đang kết nối USB..."
+
+#: tazusb:224
+msgid "Mounting CD-ROM device..."
+msgstr "Đang kết nối CD-ROM..."
+
+#: tazusb:236
+msgid "Unable to mount CD-ROM or to find a filesystem on it (%s)."
+msgstr "Không thể kết nối CD-ROM hoặc tìm một hệ thống tập tin trên đó (%s)."
+
+#: tazusb:258
+msgid "Mounting %s..."
+msgstr "Đang kết nối %s..."
+
+#: tazusb:263
+msgid "Unable to mount ISO or to find a filesystem on it (%s)."
+msgstr "Không thể gắn kết ISO hoặc để tìm một hệ thống tập tin trên đó (%s)."
+
+#: tazusb:272
+msgid "Copying needed files from CD-ROM..."
+msgstr "Sao chép tập tin từ cần thiết từ CD-ROM..."
+
+#: tazusb:286
+msgid "Installing a new MBR to %s"
+msgstr "Cài đặt một MBR mới cho %s"
+
+#: tazusb:291
+msgid "No new MBR installed to %s"
+msgstr "Không có MBR mới để cài đặt cho %s"
+
+#: tazusb:310
+msgid "Installing bootloader: %s"
+msgstr "Đang cài đặt bootloader: %s"
+
+#: tazusb:338
+msgid "Do you want to exit Tazusb or reboot system (Exit/reboot)? "
+msgstr "Bạn có muốn thoát Tazusb hoặc khởi động lại hệ thống (Thoát/khởi động lại)? "
+
+#: tazusb:358
+msgid "Setting %s as bootable..."
+msgstr "Cài đặt %s có thể khởi động..."
+
+#: tazusb:374
+msgid "Gen swap"
+msgstr "Tạo swap"
+
+#: tazusb:376
+msgid ""
+"Generate a swap file in %s that will be activated on each boot to have more "
+"memory available (empty value to exit)."
+msgstr ""
+"Tạo một tập tin trao đổi (swap) trong %s sẽ kích hoạt mỗi khi khởi động để có thêm "
+"bộ nhớ có sẵn (giá trị trống để thoát)."
+
+#: tazusb:379
+msgid "Swap file in MB: "
+msgstr "Tập tin trao đổi (swap) cỡ MB: "
+
+#: tazusb:382
+msgid "Empty value. Exiting..."
+msgstr "Giá trị trống. Đang thoát..."
+
+#: tazusb:403
+msgid "Clean"
+msgstr "Xóa"
+
+#: tazusb:405
+msgid "Remove old %s backup filesystems to free up disk space."
+msgstr "Di chuyển hệ thống tập tin sao lưu cũ %s để giải phóng không gian đĩa."
+
+#: tazusb:410
+msgid "Do you wish to remove: %s (Yes/no/exit)? "
+msgstr "Bạn có muốn loại bỏ: %s (Có/không/thoát)? "
+
+#: tazusb:418
+msgid "No filesystems selected, exiting..."
+msgstr "Không có hệ thống tập tin được lựa chọn, đang thoát..."
+
+#: tazusb:438
+msgid "Write filesystem"
+msgstr "Viết hệ thống tập tin"
+
+#: tazusb:440
+msgid ""
+"The command writefs will write all the current filesystem into a suitable "
+"cpio archive (%s) usable on a bootable LiveUSB media."
+msgstr ""
+"Các writefs lệnh sẽ viết tất cả các hệ thống tập tin hiện tại vào một kho lưu trữ" "cpio phù hợp (%s) để sử dụng trên một phương tiện LiveUSB có thể khởi động."
+
+#: tazusb:444
+msgid "Archive compression: %s"
+msgstr "Nén lưu Trữ: %s"
+
+#: tazusb:450
+msgid "Do you wish to remove the sound card and screen configs?"
+msgstr "Bạn có muốn loại bỏ các card âm thanh và cài đặt màn hình?"
+
+#: tazusb:451 tazusb:469
+msgid "Press ENTER to keep or answer (No|yes|exit): "
+msgstr "Nhấn ENTER để giữ hay trả lời (Không|Có|Thoát): "
+
+#: tazusb:457
+msgid "Removing current sound card and screen configurations..."
+msgstr "Loại bỏ các cấu hình card âm thanh và màn hình hiện tại..."
+
+#: tazusb:462
+msgid "Keeping current sound card and screen configurations..."
+msgstr "Giữ cấu hình card âm thanh và màn hình hiện tại..."
+
+#: tazusb:468
+msgid "Do you wish to remove local/keymap settings?"
+msgstr "Bạn có muốn loại bỏ cài đặt kiểu bố trí bàn phím?"
+
+#: tazusb:475
+msgid "Removing current locale/keymap settings..."
+msgstr "Đang loại bỏ cài đặt kiểu bố trí bàn phím..."
+
+#: tazusb:479
+msgid "Keeping current locale/keymap settings..."
+msgstr "Cài đặt kiểu bố trí bàn phím..."
+
+#: tazusb:512
+msgid "Creating %s with lzma compression... "
+msgstr "Đang tạo %s kiểu nén lzma... "
+
+#: tazusb:516
+msgid "Creating %s with gzip compression... "
+msgstr "Đang tạo %s kiểu nén gzip... "
+
+#: tazusb:520
+msgid "Creating %s without compression... "
+msgstr "Đang tạo %s kiểu không nén... "
+
+#: tazusb:531
+msgid "Moving %s to media. Remember to unmount for delayed writes!"
+msgstr "Đang chuyển %s tới. Hãy nhớ tháo kết nối cho ghi chậm!"
+
+#: tazusb:541
+msgid "%s is located in %s"
+msgstr "%s nằm trong %s"
+
+#: tazusb:545
+msgid "Root filesystem size: %s"
+msgstr "Kích thước gốc hệ thống tập tin: %s"
+
+#: tazusb:547
+msgid "ENTER to continue..."
+msgstr "ENTER để tiếp tục..."
+
+#: tazusb:555
+msgid "Format a device"
+msgstr "Định dạng một thiết bị"
+
+#: tazusb:564
+msgid "Device: %s"
+msgstr "Thiết bị: %s"
+
+#: tazusb:572
+msgid "Device %s is ready to use as LiveUSB and/or /home partition."
+msgstr "Thiết bị %s sẵn sàng dùng như LiveUSB và/hoặc vùng /home."
+
+#: tazusb:580
+msgid "Gen a LiveUSB media"
+msgstr "Tạo một LiveUSB"
+
+#: tazusb:611
+msgid "Please specify a valid filename on the command line."
+msgstr "Hãy xác định một tên tập tin hợp lệ trên dòng lệnh."
+
+#: tazusb:615
+msgid "Copy ISO file to SliTaz LiveUSB media"
+msgstr "Sao chép tập tin ISO ra SliTaz LiveUSB"
