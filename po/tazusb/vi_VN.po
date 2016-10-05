@@ -74,7 +74,7 @@ msgid ""
 "Please specify the target USB device to %s. You can type 'list' to get a "
 "list of devices, type 'exit' or give an empty value to exit."
 msgstr ""
-"Hãy xác định các thiết bị USB để %s. Bạn có thể gõ "list" để có được "
+"Hãy xác định các thiết bị USB để %s. Bạn có thể gõ 'list' để có được "
 "danh sách thiết bị, gõ 'exit' hoặc không để thoát."
 
 #: tazusb:68 tazusb:72
