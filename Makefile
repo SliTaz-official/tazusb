@@ -4,7 +4,7 @@
 PREFIX?=/usr
 DOCDIR?=/usr/share/doc
 DESTDIR?=
-LINGUAS?=el fr pl pt_BR ru vi_VN zh_CN zh_TW
+LINGUAS?=el fr ja pl pt_BR ru vi_VN zh_CN zh_TW
 
 PACKAGE	=	tazusb
 VERSION	:=	$(shell grep ^VERSION ${PACKAGE} | cut -d '=' -f 2)

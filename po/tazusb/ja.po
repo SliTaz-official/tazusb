@@ -1,0 +1,328 @@
+# Japanese translations for the tazusb package.
+# Copyright (C) 2017 SliTaz
+# This file is distributed under the same license as the tazusb package.
+# BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <balloonakafusen AT gmail DOT com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-02 19:07+0900\n"
+"PO-Revision-Date: 2017-01-06 19:17+0900\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <balloonakafusen　"
+"AT gmail DOT com>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ja_JP\n"
+
+#: tazusb:34
+msgid "SliTaz Live USB - Version: %s"
+msgstr "SliTaz Live USB - バージョン: %s"
+
+#: tazusb:36
+msgid "Usage:"
+msgstr "用途:"
+
+#: tazusb:37
+msgid "%s [command] [compression|device]"
+msgstr "%s [コマンド] [compression|デバイス]"
+
+#: tazusb:38
+msgid "Commands:"
+msgstr "コマンド:"
+
+#: tazusb:40
+msgid "Print this short usage."
+msgstr "短い使用法を出力します。"
+
+#: tazusb:41
+msgid ""
+"Write the current filesystem to rootfs.gz. Supported compression: lzma, "
+"gzip, none."
+msgstr ""
+"現在のファイルシステムを rootfs.gz に書き出します。 対応圧縮: lzma、gzip、"
+"none"
+
+#: tazusb:42
+msgid ""
+"Format and label device with ext4, ext3, ext2 or fat32 filesystem (for "
+"LiveUSB or /home). Default is ext3."
+msgstr ""
+"ext4、ext3、ext2、fat32 いずれかのファイルシステム（LiveUSB または /home の"
+"場合）を使用してデバイスをフォーマットし、ラベルを付けます。デフォルト ext3"
+
+#: tazusb:43
+msgid "Generate a bootable LiveUSB using files from the LiveCD."
+msgstr "LiveCD のファイルを使用して起動可能な LiveUSB を生成します。"
+
+#: tazusb:44
+msgid "Create or recreate and activate additional swap memory."
+msgstr "追加のスワップメモリを作成または再作成して有効にします。"
+
+#: tazusb:45
+msgid "Generate a bootable LiveUSB using files from ISO file."
+msgstr "ISO ファイルのファイルを使用して起動可能な LiveUSB を生成します。"
+
+#: tazusb:46
+msgid "Remove old backup filesystems to free disk space."
+msgstr "古いバックアップファイルシステムを削除してディスク領域を解放します。"
+
+#: tazusb:64
+msgid ""
+"Please specify the target USB device to %s. You can type 'list' to get a "
+"list of devices, type 'exit' or give an empty value to exit."
+msgstr ""
+"対象のUSBデバイスを %s に指定して下さい。 'list' と入力するとデバイスの一覧"
+"を表示し、 'exit' または空の値を入力して終了します。"
+
+#: tazusb:68 tazusb:72
+msgid "Device to use: "
+msgstr "使用デバイス:"
+
+#: tazusb:77
+msgid "No specified device or exit."
+msgstr "指定デバイスがないかまたは終了しています。"
+
+#: tazusb:91
+msgid "Unable to find device %s"
+msgstr "デバイス %s が見つかりません。"
+
+#: tazusb:108
+msgid "Please specify a label for the partition (TazUSB): "
+msgstr "パーティションのラベルを指定して下さい (TazUSB): "
+
+#: tazusb:117
+msgid "Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): "
+msgstr ""
+"ファイルシステムの種類 ext2、ext3、ext4、fat32 を指定して下さい (ext3)："
+
+#: tazusb:126
+msgid "Please specify the filesystem type to %s."
+msgstr "ファイルシステムの種類を %s へ指定して下さい。"
+
+#: tazusb:127
+msgid "Available formats are ext4, ext3(default), ext2 or fat32."
+msgstr "使用可能なフォーマットは ext4、ext3 (デフォルト)、ext2、fat32 です。"
+
+#: tazusb:128
+msgid "Press enter to keep the default value."
+msgstr "デフォルト値を保持するには、Enter キーを押します。"
+
+#: tazusb:130
+msgid "File system type: "
+msgstr "ファイルシステムの種類:"
+
+#: tazusb:148 tazusb:156
+msgid "Processing..."
+msgstr "処理中..."
+
+#: tazusb:149 tazusb:157
+msgid "Label: %s"
+msgstr ""
+"ラベル\n"
+": %s"
+
+#: tazusb:162
+msgid "Can't find %s tool."
+msgstr "%s ツールが見つかりません。"
+
+#: tazusb:163
+msgid "Would you like to install %s from repository [y/N]? "
+msgstr "リポジトリから %s をインストールしますか [y/N] ？"
+
+#: tazusb:174
+msgid "Sorry. Filesystem %s is not supported."
+msgstr "ごめんなさい。 ファイルシステム %s は対応していません。"
+
+#: tazusb:191
+msgid "Unmounting USB target device..."
+msgstr "対象 USB デバイスのマウントを解除中..."
+
+#: tazusb:200
+msgid "Mounting USB target device..."
+msgstr "対象 USB デバイスのマウント中..."
+
+#: tazusb:209
+msgid "Mounting CD-ROM device..."
+msgstr "CD-ROM デバイスをマウント中..."
+
+#: tazusb:221
+msgid "Unable to mount CD-ROM or to find a filesystem on it (%s)."
+msgstr ""
+"CD-ROM をマウントできないか、ファイルシステムを見つけることができません。"
+"(%s)"
+
+#: tazusb:243
+msgid "Mounting %s..."
+msgstr "%s をマウント中..."
+
+#: tazusb:248
+msgid "Unable to mount ISO or to find a filesystem on it (%s)."
+msgstr ""
+"ISO をマウントできないか、またはファイルシステムを見つけることができません。"
+"(%s)"
+
+#: tazusb:257
+msgid "Copying needed files from CD-ROM..."
+msgstr "CD-ROM から必要なファイルをコピーしています..."
+
+#: tazusb:271
+msgid "Installing a new MBR to %s"
+msgstr "新たな MBR を %s へインストール中"
+
+#: tazusb:276
+msgid "No new MBR installed to %s"
+msgstr "新たな MBR を %s へインストールできませんでした"
+
+#: tazusb:295
+msgid "Installing bootloader: %s"
+msgstr "ブートローダーのインストール中: %s"
+
+#: tazusb:323
+msgid "Do you want to exit Tazusb or reboot system (Exit/reboot)? "
+msgstr "Tazusb を終了するか、システムを再起動しますか (終了/再起動) ？"
+
+#: tazusb:343
+msgid "Setting %s as bootable..."
+msgstr "起動可能な %s を設定しています..."
+
+#: tazusb:359
+msgid "Gen swap"
+msgstr "Gen swap"
+
+#: tazusb:361
+msgid ""
+"Generate a swap file in %s that will be activated on each boot to have more "
+"memory available (empty value to exit)."
+msgstr ""
+"%s にスワップファイルを生成します。スワップファイルは各起動時有効になり、使"
+"用可能なメモリが増えます。(空の値で終了します)"
+
+#: tazusb:364
+msgid "Swap file in MB: "
+msgstr "Swap ファイル (MB):"
+
+#: tazusb:367
+msgid "Empty value. Exiting..."
+msgstr "値が空です。終了します..."
+
+#: tazusb:387
+msgid "Clean"
+msgstr "クリーン"
+
+#: tazusb:389
+msgid "Remove old %s backup filesystems to free up disk space."
+msgstr ""
+"古い &s バックアップファイルシステムを削除して、ディスク領域を解放できます。"
+
+#: tazusb:394
+msgid "Do you wish to remove: %s (Yes/no/exit)? "
+msgstr "%s を削除しますか？ (Yes/no/exit) "
+
+#: tazusb:402
+msgid "No filesystems selected, exiting..."
+msgstr "ファイルシステムが選択されていません。終了します..."
+
+#: tazusb:424
+msgid "Write filesystem"
+msgstr "ファイルシステムの書き込み"
+
+#: tazusb:426
+msgid ""
+"The command writefs will write all the current filesystem into a suitable "
+"cpio archive (%s) usable on a bootable LiveUSB media."
+msgstr ""
+"writefs コマンドは、現在あるすべてのファイルシステムを、起動可能な LiveUSB "
+"メディアで使用可能な適切な cpio アーカイブ (％s) に書き込みます。"
+
+#: tazusb:430
+msgid "Archive compression: %s"
+msgstr "アーカイブ圧縮: %s"
+
+#: tazusb:437
+msgid "Do you wish to remove the sound card and screen configs?"
+msgstr "サウンドカードと画面構成を削除しますか？"
+
+#: tazusb:438 tazusb:456
+msgid "Press ENTER to keep or answer (No|yes|exit): "
+msgstr "ENTER で維持または回答 (No|yes|exit): "
+
+#: tazusb:444
+msgid "Removing current sound card and screen configurations..."
+msgstr "現在のサウンドカードと画面構成を削除中..."
+
+#: tazusb:449
+msgid "Keeping current sound card and screen configurations..."
+msgstr "現在のサウンドカードと画面構成を維持中..."
+
+#: tazusb:455
+msgid "Do you wish to remove local/keymap settings?"
+msgstr "言語・キーボード設定を削除しますか？"
+
+#: tazusb:462
+msgid "Removing current locale/keymap settings..."
+msgstr "現在の言語・キーボード設定を削除中..."
+
+#: tazusb:466
+msgid "Keeping current locale/keymap settings..."
+msgstr "現在の言語・キーボード設定を維持中..."
+
+#: tazusb:504
+msgid "Creating %s with lzma compression... "
+msgstr "lzma 圧縮で %s を生成中..."
+
+#: tazusb:508
+msgid "Creating %s with gzip compression... "
+msgstr "gzip 圧縮で %s を生成中..."
+
+#: tazusb:513
+msgid "Creating %s without compression... "
+msgstr "圧縮しない %s を生成中..."
+
+#: tazusb:525
+msgid "Moving %s to media. Remember to unmount for delayed writes!"
+msgstr ""
+"%s をメディアに移動してください。 遅延書き込みをアンマウントすることを忘れな"
+"いでください！"
+
+#: tazusb:534 tazusb:536
+msgid "%s is located in %s"
+msgstr "%s は %s にあります"
+
+#: tazusb:540
+msgid "Root filesystem size: %s"
+msgstr "Root ファイルシステムサイズ: %s"
+
+#: tazusb:542
+msgid "ENTER to continue..."
+msgstr "ENTER で続けます..."
+
+#: tazusb:550
+msgid "Format a device"
+msgstr "デバイスをフォーマットする"
+
+#: tazusb:559
+msgid "Device: %s"
+msgstr "デバイス: %s"
+
+#: tazusb:566
+msgid "Device %s is ready to use as LiveUSB and/or /home partition."
+msgstr ""
+"デバイス %s は、LiveUSB、/、/home パーティションとして使用する準備ができてい"
+"ます。"
+
+#: tazusb:574
+msgid "Gen a LiveUSB media"
+msgstr "LiveUSB　メディアの作成"
+
+#: tazusb:605
+msgid "Please specify a valid filename on the command line."
+msgstr "コマンドラインで有効なファイル名を指定して下さい。"
+
+#: tazusb:609
+msgid "Copy ISO file to SliTaz LiveUSB media"
+msgstr "ISO　ファイルを SliTaz LiveUSB メディアにコピーする"

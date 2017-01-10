@@ -1,0 +1,56 @@
+# Japanese translations for the tazusb package.
+# Copyright (C) 2017 SliTaz
+# This file is distributed under the same license as the tazusb package.
+# BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <balloonakafusen AT gmail DOT com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-02 19:08+0900\n"
+"PO-Revision-Date: 2017-01-05 22:46+0900\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <balloonakafusen　"
+"AT gmail DOT com>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ja_JP\n"
+
+#: tazusb-box:37
+msgid "Generate SliTaz LiveUSB media and boot in RAM!"
+msgstr "SliTaz LiveUSB メディアを生成し、RAM 起動してください！"
+
+#: tazusb-box:38
+msgid ""
+"Insert a LiveCD into the CD-ROM drive or use a local ISO image, select the "
+"correct device and press OK."
+msgstr ""
+"Live CD を CD-ROM ドライブに挿入するか、ローカル ISO イメージを使用して正し"
+"いデバイスを選択し、OK を押して下さい。"
+
+#: tazusb-box:51
+msgid "Reboot"
+msgstr "再起動"
+
+#: tazusb-box:60
+msgid "No USB media found"
+msgstr "USB メディアが見つかりません"
+
+#: tazusb-box:70
+msgid "ISO Image:"
+msgstr "ISO イメージ:"
+
+#: tazusb-box:71
+msgid "USB Media:"
+msgstr "USB メディア:"
+
+#: tazusb-box:91
+msgid "No device: exit"
+msgstr "デバイスなし: 終了します"
+
+#: tazusb-box:109
+msgid "Usage:"
+msgstr "用途:"
