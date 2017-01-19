@@ -1,0 +1,55 @@
+# Vietnamese translations for the TazUsb package.
+# Copyright (C) 2017 SliTaz
+# This file is distributed under the same license as the TazUsb package.
+# Anh Bình <tuananh88c25@gmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-19 14:56+0700\n"
+"PO-Revision-Date: 2017-01-19 14:58+0700\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: Anh Bình <tuananh88c25@gmail.com>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: vi\n"
+
+#: tazusb-box:37
+msgid "Generate SliTaz LiveUSB media and boot in RAM!"
+msgstr "Tạo SliTaz Trực tiếp trên USB và khởi động trên RAM!"
+
+#: tazusb-box:38
+msgid ""
+"Insert a LiveCD into the CD-ROM drive or use a local ISO image, select the "
+"correct device and press OK."
+msgstr ""
+"Chèn một đĩa CD vào ổ đĩa CD-ROM hoặc sử dụng một ảnh ISO, chọn thiết bị "
+"và nhấn OK."
+
+#: tazusb-box:51
+msgid "Reboot"
+msgstr "Khởi động lại"
+
+#: tazusb-box:60
+msgid "No USB media found"
+msgstr "Không thấy thiết bị USB"
+
+#: tazusb-box:70
+msgid "ISO Image:"
+msgstr "Tệp ISO:"
+
+#: tazusb-box:71
+msgid "USB Media:"
+msgstr "Thiết bị USB:"
+
+#: tazusb-box:91
+msgid "No device: exit"
+msgstr "Không có thiết bị: thoát"
+
+#: tazusb-box:109
+msgid "Usage:"
+msgstr "Sử dụng:"
