@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+	<title>TazUSB-Handbuch</title>
+	<meta charset="utf-8" />
+	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+
+<!-- Header -->
+<div id="header">
+	<h1>TazUSB-Handbuch</h1>
+</div>
+
+<!-- Start content -->
+<div id="content">
+
+<h2>NAME</h2>
+<p>
+TazUSB - SliTaz Direktstart-USB-Datenträger erstellen
+</p>
+
+<h2>SYNTAX</h2>
+<pre>
+tazusb [command] [compression|device|file]
+</pre>
+
+<h2>BESCHREIBUNG</h2>
+<p>
+	TazUSB ist eine Kommandoprozedur zu Installation von SliTaz auf einem USB-Datenträger.
+	Anders als bei der Installation auf Platte wird das Dateisystem als komprimierte Datei
+	<tt>rootfs.gz</tt> gehalten. 
+	Das Dateisystem wird beim Systemladen vollständig in den Arbeitsspeicher gebracht. Damit
+	werden die Antwortzeiten verkürzt, das Dateisystem gegen zufällige Verfälschungen
+	geschützt und Ein-Ausgaben auf das USB-Gerät verringert. Mithilfe von TazUSB kann auch
+	das Wurzeldateisystem mit allen Änderungen nach dem Systemladen auf den USB-Datenträger
+	zurückgeschrieben werden, womit die gleichen Vorteile wie bei einer Installation auf
+	Platte gegeben sind.
+</p>
+<p>
+	TazUSB unterstützt USB-Datenträger, die Dateisysteme im Format FAT32, EXT3 oder EXT2
+	enthalten und verwendet SYSLINUX bzw. EXTLINUX. Das Verzeichnis 
+	<tt>/home</tt> wird bei der Systemeinleitung unter Verwendung der UUID des USB-Datenträgers
+	eingehängt. Anders als ein Gerätename hat die UUID den Vorteil, dass sie sich nie
+	ändert, egal an welchem Rechner das Gerät angeschlossen ist.
+</p>
+
+<h2>KOMMANDOS</h2>
+<a name="usage"></a>
+<h3>usage</h3>
+<p>
+	Mit dem Kommando <tt>usage</tt> wird eine kurze Beschreibung aller verfügbaren Kommandos ausgegeben.
+</p>
+<pre>
+ # tazusb usage
+</pre>
+
+<a name="writefs"></a>
+<h3>writefs</h3>
+<p>
+	Mit dem Kommando <tt>writefs</tt> wird das aktuell im Arbeitsspeicher befindliche Dateisystem in 
+	eine Datei <tt>rootfs.gz</tt> gepackt. Wenn der USB-Datenträger unter <tt>/home</tt> eingehängt
+	ist (wie es sein sollte), wird das neue Dateisystem dorthin kopiert,
+	ansonsten in das Wurzeldateisystem des USB-Datenträgers (/). Das vorherige Dateisystem
+	wird in "previous.gz" umbenannt und kann bei der Eingabeaufforderung <tt>boot:</tt> während
+	der Systemeinleitung durch Eingabe von <tt>previous</tt> ausgewählt werden. Alle älteren
+	Dateisysteme werden in <tt>rootfs.gz.unixtimestamp</tt> umbenannt. Da diese nicht automatisch
+	gelöscht werden, sollten Sie diese von Zeit zu Zeit manuell löschen, um Speicherplatz zu sparen.
+</p>
+<p>
+	Für die Komprimierung des Dateisystems kann gewählt werden zwischen <tt>lzma</tt>, <tt>gzip</tt>
+	oder <tt>none</tt>. 
+	Keine Komprimierung zu verwenden ist sehr schnell (unter 5 Sekunden) und dann nützlich, 
+	wenn Sie mit vielen Änderungen herumprobieren. Im Vergleich dazu braucht Komprimierung mit
+	lzma oder gzip einige Minuten, reduziert aber drastisch die Größe der erzeugten Datei.
+	Daher wird Komprimierung empfohlen, wenn permanente Änderungen am Dateisystem gespeichert
+	werden sollen.
+</p>
+<pre>
+# tazusb writefs <em>compression</em>
+</pre>
+<p>Beispiel:</p>
+<pre>
+# tazusb writefs lzma
+</pre>
+
+<a name="format"></a>
+<h3>format</h3>
+<p>
+	Mit dem Kommando <tt>format</tt> kann ein USB-Datenträger für die Verwendung als
+	Direkstart-USB-Datenträger eingerichtet werden. Zur Zeit können Dateisysteme im Format
+	EXT2, EXT3 und FAT32 erstellt werden.
+</p>
+<pre>
+# tazusb format <em>/dev/name</em>
+</pre>
+<p>Beispiel:</p>
+<pre>
+# tazusb format /dev/sda1
+</pre>
+
+<a name="gen-liveusb"></a>
+<h3>gen-liveusb</h3>
+<p>
+	Mit dem Kommando <tt>gen-liveusb</tt> wird ein Urlader (syslinux oder extlinux, abhängig vom
+	Dateisystem) installiert und die Partition ladefähig gemacht. Dann wird der SliTaz-Kern
+	und das Dateisystem von dem optischen Datenträger auf den USB-Datenträger kopiert, so
+	dass schließlich SliTaz von dem USB-Datenträger geladen werden kann. 
+</p>
+<pre>
+# tazusb gen-liveusb <em>/dev/name</em>
+</pre>
+<p>Beispiel:</p>
+<pre>
+# tazusb gen-liveusb /dev/sda1
+</pre>
+
+<a name="gen-swap"></a>
+<h3>gen-swap</h3>
+<p>
+	Mit dem Kommando </tt>gen-swap</tt>  wird eine virtuelle swap-Datei in dem Verzeichnis 
+	<tt>/home</tt> erstellt, die bei jeder Systemeinleitung aktiviert werden kann. Dies ist für
+	alte Rechner mit kleinem Arbeitsspeicher nützlich.
+</p>
+<pre>
+# tazusb gen-swap
+</pre>
+
+<a name="gen-iso2usb"></a>
+<h3>gen-iso2usb</h3>
+<p>
+	Das Kommando <tt>gen-iso2usb</tt> hat dieselbe Funktion wie <tt>gen-liveusb</tt>, nur
+	dass nicht von optischem Datenträger kopiert wird sondern von einem ISO-Abbild.
+</p>
+<pre>
+# tazusb gen-iso2usb <em>/path/to/iso</em>
+</pre>
+<p>Beispiel:</p>
+<pre>
+# tazusb gen-iso2usb /home/tux/slitaz.iso
+</pre>
+
+<a name="clean"></a>
+<h3>clean</h3>
+<p>
+	Mit dem Kommando <tt>clean</tt> werden alte Dateisysteme <tt>rootfs.gz.unixtimestamp</tt> gelöscht um
+	Speicherplatz zu sparen (siehe writefs).
+</p>
+<pre>
+# tazusb clean
+</pre>
+
+<h2>BETREUER</h2>
+<p>
+	Eric Joseph-Alexandre &lt;erjo at slitaz.org&gt;
+</p>
+
+<!-- End content -->
+</div>
+
+</body>
+</html>
