@@ -1,0 +1,54 @@
+# German translations for TazUSB package.
+# Copyright (C) 2017 SliTaz
+# This file is distributed under the same license as the TazUSB package.
+# Hans-Günter Theisgen, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-20 00:13+0200\n"
+"PO-Revision-Date: 2017-02-01 17:37+0100\n"
+"Last-Translator: Hans-Günter Theisgen\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: tazusb-box:37
+msgid "Generate SliTaz LiveUSB media and boot in RAM!"
+msgstr "Direktstart-USB-Datenträger erstellen"
+
+#: tazusb-box:38
+msgid ""
+"Insert a LiveCD into the CD-ROM drive or use a local ISO image, select the "
+"correct device and press OK."
+msgstr ""
+"Einen Direktstart-Datenträger in das optische Laufwerk einlegen oder ein "
+"ISO-Abbild verwenden, das richtige Gerät auswählen und OK drücken."
+
+#: tazusb-box:51
+msgid "Reboot"
+msgstr "Neu laden"
+
+#: tazusb-box:60
+msgid "No USB media found"
+msgstr "Kein USB-Datenträger gefunden"
+
+#: tazusb-box:70
+msgid "ISO Image:"
+msgstr "ISO-Abbild:"
+
+#: tazusb-box:71
+msgid "USB Media:"
+msgstr "USB-Datenträger:"
+
+#: tazusb-box:91
+msgid "No device: exit"
+msgstr "Kein Gerät: Abbruch"
+
+#: tazusb-box:109
+msgid "Usage:"
+msgstr "Anwendung:"

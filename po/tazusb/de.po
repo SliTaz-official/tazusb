@@ -1,0 +1,333 @@
+# German translations for TazUSB package.
+# Copyright (C) 2017 SliTaz
+# This file is distributed under the same license as the TazUSB package.
+# Hans-Günter Theisgen, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazUSB 4.2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-20 00:13+0200\n"
+"PO-Revision-Date: 2017-02-03 17:05+0100\n"
+"Last-Translator: Hans-Günter Theisgen\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: tazusb:34
+msgid "SliTaz Live USB - Version: %s"
+msgstr "SliTaz Live USB - Version: %s"
+
+#: tazusb:36
+msgid "Usage:"
+msgstr "Anwendung:"
+
+#: tazusb:37
+msgid "%s [command] [compression|device]"
+msgstr "%s [command] [compression|device]"
+
+#: tazusb:38
+msgid "Commands:"
+msgstr "Kommandos:"
+
+#: tazusb:40
+msgid "Print this short usage."
+msgstr "Diese Kurzanleitung ausgeben."
+
+#: tazusb:41
+msgid ""
+"Write the current filesystem to rootfs.gz. Supported compression: lzma, "
+"gzip, none."
+msgstr ""
+"Das aktuelle Dateisystem in rootfs.gz speichern. Unterstützte "
+"Komprimierungsmethoden: lzma, gzip oder 'none'"
+
+#: tazusb:42
+msgid ""
+"Format and label device with ext4, ext3, ext2 or fat32 filesystem (for "
+"LiveUSB or /home). Default is ext3."
+msgstr ""
+"Datenträger mit einem Dateisystem vom Typ ext4, ext3, ext2 oder fat32 "
+"formatieren und Kennsatz schreiben. Standardwert ist ext3."
+
+#: tazusb:43
+msgid "Generate a bootable LiveUSB using files from the LiveCD."
+msgstr ""
+"Einen urladefähigen Direktstart-USB-Datenträger unter Verwendung der "
+"Dateien eines optischen Direktstart-Datenträgers erstellen."
+
+#: tazusb:44
+msgid "Create or recreate and activate additional swap memory."
+msgstr "(Wieder)-Erstellen und aktivieren von zusätzlichem Seitenwechselbereich."
+
+#: tazusb:45
+msgid "Generate a bootable LiveUSB using files from ISO file."
+msgstr ""
+"Einen urladefähigen Direktstart-USB-Datenträger unter Verwendung der "
+"Dateien eines ISO-Abbilds erstellen."
+
+#: tazusb:46
+msgid "Remove old backup filesystems to free disk space."
+msgstr "Alte gespeicherte Dateisysteme löschen, um Speicherplatz freizugeben."
+
+#: tazusb:64
+msgid ""
+"Please specify the target USB device to %s. You can type 'list' to get a "
+"list of devices, type 'exit' or give an empty value to exit."
+msgstr ""
+"Bitte das Ziel-USB-Gerät für %s angeben. Mit 'list' wird eine Liste von "
+"Geräten angezeigt. Bei leerer Eingabe oder Eingabe von 'exit' wird die "
+"Prozedur abgebrochen."
+
+#: tazusb:68 tazusb:72
+msgid "Device to use: "
+msgstr "Zu verwendendes Gerät: "
+
+#: tazusb:77
+msgid "No specified device or exit."
+msgstr "Kein Gerät oder 'exit' eingegeben."
+
+#: tazusb:91
+msgid "Unable to find device %s"
+msgstr "Gerät %s nicht gefunden"
+
+#: tazusb:108
+msgid "Please specify a label for the partition (TazUSB): "
+msgstr "Bitte ein Kennzeichen für die Partition angeben (TazUSB): "
+
+#: tazusb:117
+msgid "Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): "
+msgstr "Bitte einen Dateisystemtyp aus ext2, ext3, ext4 oder fat32 angeben (ext3): "
+
+#: tazusb:126
+msgid "Please specify the filesystem type to %s."
+msgstr "Bitte den Dateisystemtyp für %s angeben."
+
+#: tazusb:127
+msgid "Available formats are ext4, ext3(default), ext2 or fat32."
+msgstr "Mögliche Typen sind ext4, ext3(standard), ext2 oder fat32."
+
+#: tazusb:128
+msgid "Press enter to keep the default value."
+msgstr "Für den Standardwert die ENTER-Taste drücken."
+
+#: tazusb:130
+msgid "File system type: "
+msgstr "Dateisystemtyp: "
+
+#: tazusb:148 tazusb:156
+msgid "Processing..."
+msgstr "Wird ausgeführt..."
+
+#: tazusb:149 tazusb:157
+msgid "Label: %s"
+msgstr "Kennzeichen: %s"
+
+#: tazusb:162
+msgid "Can't find %s tool."
+msgstr "Das Programm %s wurde nicht gefunden."
+
+#: tazusb:163
+# 2017-02-03 HGT: j für ja nicht möglich!
+msgid "Would you like to install %s from repository [y/N]? "
+msgstr "Soll %s installiert werden [y/N]? "
+
+#: tazusb:174
+msgid "Sorry. Filesystem %s is not supported."
+msgstr "Dateisysteme vom Typ %s werden nicht unterstützt."
+
+#: tazusb:191
+msgid "Unmounting USB target device..."
+msgstr "Der Ziel-USB-Datenträger wird ausgehängt..."
+
+#: tazusb:200
+msgid "Mounting USB target device..."
+msgstr "Der Ziel-USB-Datenträger wird eingehängt..."
+
+#: tazusb:209
+msgid "Mounting CD-ROM device..."
+msgstr "Der optische Datenträger wird eingehängt..."
+
+#: tazusb:221
+msgid "Unable to mount CD-ROM or to find a filesystem on it (%s)."
+msgstr ""
+"Der optische Datenträger kann nicht eingehängt werden oder "
+"es befindet sich kein Dateisystem (%s) darauf."
+
+#: tazusb:243
+msgid "Mounting %s..."
+msgstr "%s wird eingehängt..."
+
+#: tazusb:248
+msgid "Unable to mount ISO or to find a filesystem on it (%s)."
+msgstr ""
+"Das ISO-Abbild kann nicht eingehängt werden oder "
+"es befindet sich kein Dateisystem (%s) darin."
+
+#: tazusb:257
+msgid "Copying needed files from CD-ROM..."
+msgstr ""
+"Die benötigten Dateien werden von dem optischen Datenträger kopiert..."
+
+#: tazusb:271
+msgid "Installing a new MBR to %s"
+msgstr "Auf %s wird ein neuer MBR geschrieben"
+
+#: tazusb:276
+msgid "No new MBR installed to %s"
+msgstr "Auf %s wird kein neuer MBR geschrieben"
+
+#: tazusb:295
+msgid "Installing bootloader: %s"
+msgstr "Installation des Urladers: %s"
+
+#: tazusb:323
+msgid "Do you want to exit Tazusb or reboot system (Exit/reboot)? "
+msgstr "Soll Tazusb nur beendet werden oder das System neu geladen werden (Exit/reboot)? "
+
+#: tazusb:343
+msgid "Setting %s as bootable..."
+msgstr "%s wird als urladefähig markiert..."
+
+#: tazusb:359
+msgid "Gen swap"
+msgstr "Seitenwechselbereich erstellen"
+
+#: tazusb:361
+msgid ""
+"Generate a swap file in %s that will be activated on each boot to have more "
+"memory available (empty value to exit)."
+msgstr ""
+"Eine Seitenwechseldatei auf %s erstellen, die bei jedem Systemladen aktiviert "
+"wird, um den Arbeitsspeicher besser nutzen zu können (leere Eingabe zum Abbrechen)."
+
+#: tazusb:364
+# 2017-02-03 HGT: Da 1M im Kommando dd 1024*1024 bezeichnet, ist die Angabe in MiB und nicht MB
+msgid "Swap file in MB: "
+msgstr "Größe der Seitenwechseldatei in MiB: "
+
+#: tazusb:367
+msgid "Empty value. Exiting..."
+msgstr "Leere Eingabe. Abbruch..."
+
+#: tazusb:387
+msgid "Clean"
+msgstr "Aufräumen"
+
+#: tazusb:389
+msgid "Remove old %s backup filesystems to free up disk space."
+msgstr "Alte Dateisysteme %s löschen, um Plattenplatz freizugeben."
+
+#: tazusb:394
+# 2017-02-03 HGT: j für ja nicht möglich!
+msgid "Do you wish to remove: %s (Yes/no/exit)? "
+msgstr "Soll %s gelöscht werden (Yes/no/exit)? "
+
+#: tazusb:402
+msgid "No filesystems selected, exiting..."
+msgstr "Abbruch, da kein Dateisystem ausgewählt wurde..."
+
+#: tazusb:424
+msgid "Write filesystem"
+msgstr "Dateisystem in Archiv speichern"
+
+#: tazusb:426
+msgid ""
+"The command writefs will write all the current filesystem into a suitable "
+"cpio archive (%s) usable on a bootable LiveUSB media."
+msgstr ""
+"Mit 'writefs' werden alle Dateien des aktuellen Dateisystems in ein "
+"cpio-Archiv (%s) aufgenommen, das für einen urladefähigen "
+"Direktstart-USB-Datenträger verwendet werden kann."
+
+#: tazusb:430
+msgid "Archive compression: %s"
+msgstr "Komprimierung des Archivs: %s"
+
+#: tazusb:437
+msgid "Do you wish to remove the sound card and screen configs?"
+msgstr "Sollen die Audio- und Bildschirmkonfigurationsdateien gelöscht werden?"
+
+#: tazusb:438 tazusb:456
+# 2017-02-03 HGT: j für ja nicht möglich!
+msgid "Press ENTER to keep or answer (No|yes|exit): "
+msgstr "Zum Beibehalten ENTER drücken oder (No|yes|exit) eingeben: "
+
+#: tazusb:444
+msgid "Removing current sound card and screen configurations..."
+msgstr "Die aktuellen Audio- und Bildschirmkonfigurationsdateien werden gelöscht..."
+
+#: tazusb:449
+msgid "Keeping current sound card and screen configurations..."
+msgstr "Die aktuellen Audio- und Bildschirmkonfigurationsdateien werden belassen..."
+
+#: tazusb:455
+msgid "Do you wish to remove local/keymap settings?"
+msgstr "Sollen die Lokalisierungs- und Tastatureinstellungen gelöscht werden?"
+
+#: tazusb:462
+msgid "Removing current locale/keymap settings..."
+msgstr "Die aktuellen Lokalisierungs- und Tastatureinstellungen werden gelöscht..."
+
+#: tazusb:466
+msgid "Keeping current locale/keymap settings..."
+msgstr "Die aktuellen Lokalisierungs- und Tastatureinstellungen werden belassen..."
+
+#: tazusb:504
+msgid "Creating %s with lzma compression... "
+msgstr "%s wird mit dem Kompressionsprogramm lzma erstellt... "
+
+#: tazusb:508
+msgid "Creating %s with gzip compression... "
+msgstr "%s wird mit dem Kompressionsprogramm gzip erstellt... "
+
+#: tazusb:513
+msgid "Creating %s without compression... "
+msgstr "%s wird ohne Komprimierung erstellt... "
+
+#: tazusb:525
+msgid "Moving %s to media. Remember to unmount for delayed writes!"
+msgstr ""
+"%s wird auf den Datenträger verschoben. "
+"Anschließend Datenträger aushängen (wegen Schreibpufferung)!"
+
+#: tazusb:534 tazusb:536
+msgid "%s is located in %s"
+msgstr "%s befindet sich im Verzeichnis %s"
+
+#: tazusb:540
+msgid "Root filesystem size: %s"
+msgstr "Größe des Wurzeldateisystems: %s"
+
+#: tazusb:542
+msgid "ENTER to continue..."
+msgstr "Fortsetzen mit ENTER..."
+
+#: tazusb:550
+msgid "Format a device"
+msgstr "Einen Datenträger formatieren"
+
+#: tazusb:559
+msgid "Device: %s"
+msgstr "Gerät: %s"
+
+#: tazusb:566
+msgid "Device %s is ready to use as LiveUSB and/or /home partition."
+msgstr ""
+"%s kann jetzt als Direkstart-USB-Datenträger oder Partition /home "
+"verwendet werden."
+
+#: tazusb:574
+msgid "Gen a LiveUSB media"
+msgstr "Direkstart-USB-Datenträger erstellen"
+
+#: tazusb:605
+msgid "Please specify a valid filename on the command line."
+msgstr "Bitte einen gültigen Dateinamen angeben."
+
+#: tazusb:609
+msgid "Copy ISO file to SliTaz LiveUSB media"
+msgstr "ISO-Abbild auf SliTaz Direkstart-USB-Datenträger kopieren"
