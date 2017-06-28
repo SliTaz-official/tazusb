@@ -308,7 +308,7 @@ install_boot() {
 	# Splash screen and help files.
 	cp /media/cdrom/boot/isolinux/splash.*	$TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.cfg	$TARGET_ROOT/boot/$ST
-	cp /media/cdrom/boot/isolinux/kbd	$TARGET_ROOT/boot/$ST
+	cp /media/cdrom/boot/isolinux/*kbd	$TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.c32	$TARGET_ROOT/boot/$ST
 	sed -i -e s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ \
 		-e "s/isolinux/$ST/" $TARGET_ROOT/boot/$ST/$ST.$STE
