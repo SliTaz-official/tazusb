@@ -521,7 +521,7 @@ LiveUSB media." "$ROOTFS")"
 		size=$(du -sh "$ROOTFS_PATH" | cut -f1)
 
 		# If the bootable medium is where it should be, copy across
-		if [ -e /home/boot/bzImage ]; then
+		if [ -e /home/boot/bzImage* ]; then
 			longline "$(_ 'Moving %s to media. Remember to unmount for delayed writes!' "$ROOTFS")"
 
 			# Move the old filesystem with the unix timestamp for reference
