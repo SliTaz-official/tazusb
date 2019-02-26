@@ -67,12 +67,12 @@ ask_for_device() {
 	newline
 	_n 'Device to use: '; read answer
 
-	while [ "$answer" == 'list' ]; do
+	while [ "$answer" = 'list' ]; do
 		fdisk_list
 		_n 'Device to use: '; read answer
 	done
 
-	if [ -z "$answer" -o "$answer" == 'exit' ]; then
+	if [ -z "$answer" -o "$answer" = 'exit' ]; then
 		newline
 		_ 'No specified device or exit.'
 		exit 0
@@ -282,7 +282,7 @@ install_mbr() {
 
 install_boot() {
 	# Decide if we're installing syslinux or extlinux
-	if [ "$FSTYPE" == 'vfat' ]; then
+	if [ "$FSTYPE" = 'vfat' ]; then
 		ST='syslinux'
 		STC="syslinux --install -d /boot/syslinux/ $DEVICE"
 		STE='cfg'
@@ -322,7 +322,7 @@ exit_or_reboot() {
 	newline
 	longline "$(_n 'Do you want to exit Tazusb or reboot system (Exit/reboot)? ')"
 	read answer
-	if [ "$answer" == 'reboot' ]; then
+	if [ "$answer" = 'reboot' ]; then
 		unmount_target_usb
 		reboot || reboot -f
 	else
