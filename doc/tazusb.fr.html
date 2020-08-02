@@ -3,8 +3,8 @@
 <head>
 	<title>Manuel de TazUSB (fr)</title>
 	<meta charset="utf-8" />
-	<link rel="shortcut icon" href="favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="../slitaz-doc.css" />
+	<script type="text/javascript" src="../slitaz-doc.js"></script>
 </head>
 <body>
 
@@ -28,7 +28,7 @@ tazusb [command] [compression|device|file]
 <p>
 TazUSB est un utilitaires conçu pour installer SliTaz sur un média USB.
 A la différence d'une installation classique, le système de fichier demeure
-dans un fichier compressé "rootgs.gz". Le système de fichier est entièrement
+dans un fichier compressé "rootfs.gz". Le système de fichier est entièrement
 chargé en mémoire au démarrage. Ceci augmente la réactivité, protège le
 système de fichier contre une corruption accidentelle et réduit la
 lecture/écrite sur le média USB. Cet utilitaire peut aussi ré-écrire 
@@ -60,7 +60,7 @@ dans un fichier "rootfs.gz". Si votre lecteur flash est monté en tant que
 dessus pour vous, sinon il sera placé à la racine du système. Votre précédent
 système de fichier sera renommé "previous.gz" et sera accessible au démarrage
 en entrant "previous" à l'écran "boot:". Tous les système de fichiers précédents
-sont renommés en rootfs.gf.unixtimestamp. Ils ne sont pas supprimés automatiquement,
+sont renommés en rootfs.gz.unixtimestamp. Ils ne sont pas supprimés automatiquement,
 donc vous devrez les retirer périodiquement pour conserver de l'espace-disque.
 </p>
 <p>
@@ -95,7 +95,7 @@ Exemple:
 <a name="gen-liveusb"></a>
 <h3>gen-liveusb</h3>
 <p>
-'gen-liveusb' installe une nouvelle MBR, rend votre partition bootable (démarrable)
+'gen-liveusb' installe un nouveau MBR, rend votre partition bootable (démarrable)
 et installe syslinux/extlinux selon le système de fichier détecté. Ensuite,
 il copie le noyau et le système de fichier depuis le lecteur CD-ROM, et les place
 dans le média USB cible. Le résultat est une copie de SliTaz bootable sur média USB.

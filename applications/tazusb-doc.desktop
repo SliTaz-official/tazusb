@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=TazUSB Documentation
+Name[fr]=Documentation de TazUSB
+Exec=browser file:///usr/share/doc/tazusb/tazusb.html
+Icon=slitaz-doc
+Categories=Documentation;
