@@ -321,7 +321,8 @@ install_boot() {
 	sed -i "s/LABEL=packages-[^,]*/UUID=$UUID/g" $(grep -il append $TARGET_ROOT/boot/$ST/*)
 
 	# Add home=$UUID to kernel line in extlinux or syslinux.cfg
-	sed -i -e "s/\(root=.*\)/\1 home=$UUID/" $(grep -il append $TARGET_ROOT/boot/$ST/*)
+	sed -i -e "s/\(root=.*\)/\1 home=$UUID/" -e '/LABEL md5sum/,/append md5sum/d' \
+		$(grep -il append $TARGET_ROOT/boot/$ST/*)
 
 	# Splash screen and help files.
 	cp /media/cdrom/boot/isolinux/splash.*	$TARGET_ROOT/boot/$ST
@@ -541,15 +542,24 @@ LiveUSB media." "$ROOTFS")"
 		size=$(du -sh "$ROOTFS_PATH" | cut -f1)
 
 		# If the bootable medium is where it should be, copy across
-		if [ -e /home/boot/bzImage* ]; then
+		if [ "$(ls /home/boot/bzImage*)" ]; then
 			longline "$(_ 'Moving %s to media. Remember to unmount for delayed writes!' "$ROOTFS")"
 
-			# Move the old filesystem with the unix timestamp for reference
-			if [ -e /home/boot/previous.gz ]; then
-				mv /home/boot/previous.gz /home/boot/rootfs.gz.$(date -r /home/boot/previous.gz +%s)
-			fi
+			CONFIG=$(ls /home/boot/*linux/*linux.c*)
+			if grep -qs 'gz,' $CONFIG; then
+
+				# Disable loram & many-in-1
+				[ -s /home/boot/rootfs.gz ] && mv /home/boot/rootfs.gz /home/boot/rootfs.gz.loram
+				cp $CONFIG $CONFIG.org
+				sed -i 's|rootfs.*\.gz|rootfs.gz|' $CONFIG
+			else
+				# Move the old filesystem with the unix timestamp for reference
+				if [ -e /home/boot/previous.gz ]; then
+					mv /home/boot/previous.gz /home/boot/rootfs.gz.$(date -r /home/boot/previous.gz +%s)
+				fi
 			
-			mv /home/boot/rootfs.gz /home/boot/previous.gz
+				mv /home/boot/rootfs.gz /home/boot/previous.gz
+			fi
 			mv "$ROOTFS_PATH" /home/boot/rootfs.gz
 			_ '%s is located in %s' 'rootfs.gz' '/home/boot'
 		else
