@@ -85,8 +85,7 @@ ask_for_device() {
 # Verify a device exists before format or install
 
 check_for_device() {
-	IFDEV="$(fdisk -l | grep $DEVICE)"
-	if [ -z "$IFDEV" ]; then
+	if [ -z "$(blkid | grep "^$DEVICE:")" ]; then
 		newline
 		_ 'Unable to find device %s' "$DEVICE"
 		exit 0
@@ -97,8 +96,8 @@ check_for_device() {
 # gets the UUID and filesystem type
 
 get_part_info() {
-	UUID="$(blkid -s UUID -o value $DEVICE)"
-	FSTYPE="$(blkid -s TYPE -o value $DEVICE)"
+	UUID="$(blkid $DEVICE | sed 's|.* UUID="||;s|".*||')"
+	FSTYPE="$(blkid $DEVICE | sed 's|.* TYPE="||;s|".*||')"
 }
 
 
@@ -111,12 +110,15 @@ get_label() {
 }
 
 
-# Get fs type. Supported fs are ext3, ext2, fat32
+# Get fs type. Supported fs are ext4, ext3, ext2, fat32
 
 get_fs_type() {
 	_n 'Please specify a filesystem type ext2, ext3, ext4 or fat32 (ext3): '
 	read fs_type
-	[ -z "$fs_type" ] && fs_type='ext3'
+	case "$fs_type" in
+	ext2|ext4|fat32);;
+	*) fs_type='ext3'
+	esac
 }
 
 
@@ -127,12 +129,11 @@ ask_for_fs_type() {
 	_ 'Available formats are ext4, ext3(default), ext2 or fat32.'
 	_ 'Press enter to keep the default value.'
 	newline
-	_n 'File system type: '; read answer
-	if [ -z "$answer" ]; then
-		FS_TYPE='ext3'
-	else
-		FS_TYPE="$answer"
-	fi
+	_n 'File system type: '; read FS_TYPE
+	case "$FS_TYPE" in
+	ext2|ext4|fat32);;
+	*) FS_TYPE='ext3'
+	esac
 }
 
 
@@ -258,8 +259,8 @@ copy_cdrom_files() {
 	mkdir -p                         $TARGET_ROOT/boot
 	cp /media/cdrom/boot/bzImage*    $TARGET_ROOT/boot
 	cp /media/cdrom/boot/rootfs*.gz* $TARGET_ROOT/boot
-	cp /media/cdrom/boot/memtest     $TARGET_ROOT/boot 2>/dev/null
-	cp /media/cdrom/boot/*pxe        $TARGET_ROOT/boot 2>/dev/null
+	cp /media/cdrom/boot/memtest*    $TARGET_ROOT/boot 2>/dev/null
+	cp /media/cdrom/boot/*pxe*       $TARGET_ROOT/boot 2>/dev/null
 	status
 }
 
@@ -310,6 +311,8 @@ install_boot() {
 	cp /media/cdrom/boot/isolinux/*.cfg	$TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*kbd	$TARGET_ROOT/boot/$ST
 	cp /media/cdrom/boot/isolinux/*.c32	$TARGET_ROOT/boot/$ST
+	cp /media/cdrom/boot/isolinux/opts.*	$TARGET_ROOT/boot/$ST
+	cp /media/cdrom/boot/isolinux/help.*	$TARGET_ROOT/boot/$ST
 	sed -i -e s/'SliTaz GNU\/Linux'/'SliTaz GNU\/Linux LiveUSB'/ \
 		-e "s/isolinux/$ST/" $TARGET_ROOT/boot/$ST/$ST.$STE
 }
@@ -526,7 +529,7 @@ LiveUSB media." "$ROOTFS")"
 
 			# Move the old filesystem with the unix timestamp for reference
 			if [ -e /home/boot/previous.gz ]; then
-				mv /home/boot/previous.gz /home/boot/rootfs.gz.$(date +%s)
+				mv /home/boot/previous.gz /home/boot/rootfs.gz.$(date -r /home/boot/previous.gz +%s)
 			fi
 			
 			mv /home/boot/rootfs.gz /home/boot/previous.gz
