@@ -137,6 +137,21 @@ ask_for_fs_type() {
 }
 
 
+check_partition_table() {
+	DISK=${DEVICE%[1-99]}
+	fdisk -l $DISK | grep -q ^$DEVICE: || fdisk $DISK <<EOT
+n
+p
+1
+
+
+t
+$1
+w
+EOT
+}
+
+ 
 # Format target device in ext4, ext3, ext2 or fat32.
 # Usage: make_fs ext2|ext4|fat32|ext3 (default)
 
@@ -146,6 +161,7 @@ make_fs() {
 	FS=$(echo $fs_type | tr '[A-Z]' '[a-z]')
 	case "$FS" in
 		ext4|ext3|ext2)
+			check_partition_table 83
 			newline; _ 'Processing...'
 			_ 'Label: %s' "$label"
 			echo "Mkfs: mkfs.$FS -L \"$label\" $DEVICE"
@@ -154,6 +170,7 @@ make_fs() {
 			;;
 		fat32)
 			if [ -x '/sbin/mkdosfs' ];then
+				check_partition_table C
 				newline; _ 'Processing...'
 				_ 'Label: %s' "$label"
 				echo "Mkfs: mkdosfs -F 32 -n \"$label\" $DEVICE"
@@ -260,7 +277,7 @@ copy_cdrom_files() {
 	cp /media/cdrom/boot/bzImage*    $TARGET_ROOT/boot
 	cp /media/cdrom/boot/rootfs*.gz* $TARGET_ROOT/boot
 	cp /media/cdrom/boot/memtest*    $TARGET_ROOT/boot 2>/dev/null
-	cp /media/cdrom/boot/*pxe*       $TARGET_ROOT/boot 2>/dev/null
+	cp /media/cdrom/boot/*xe*        $TARGET_ROOT/boot 2>/dev/null
 	status
 }
 
@@ -301,10 +318,10 @@ install_boot() {
 	cp /media/cdrom/boot/isolinux/isolinux.cfg $TARGET_ROOT/boot/$ST/$ST.$STE
 
 	# Update DVD autoinstall
-	sed -i "s/LABEL=packages-[^,]*/UUID=$UUID/g" $(grep -l append $TARGET_ROOT/boot/$ST/*)
+	sed -i "s/LABEL=packages-[^,]*/UUID=$UUID/g" $(grep -il append $TARGET_ROOT/boot/$ST/*)
 
 	# Add home=$UUID to kernel line in extlinux or syslinux.cfg
-	sed -i -e "s/\(root=.*\)/\1 home=$UUID/" $(grep -l append $TARGET_ROOT/boot/$ST/*)
+	sed -i -e "s/\(root=.*\)/\1 home=$UUID/" $(grep -il append $TARGET_ROOT/boot/$ST/*)
 
 	# Splash screen and help files.
 	cp /media/cdrom/boot/isolinux/splash.*	$TARGET_ROOT/boot/$ST
