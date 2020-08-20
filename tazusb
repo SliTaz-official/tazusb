@@ -485,8 +485,8 @@ LiveUSB media." "$ROOTFS")"
 				echo > /etc/keymap.conf ;;
 			*)
 				_n 'Keeping current locale/keymap settings...'
-				grep -qs '^INCLUDE i18n.cfg'        /home/boot/*linux/*linux.c* &&
-				sed  -i  's/^INCLUDE i18n.cfg/# &/' /home/boot/*linux/*linux.c* ;;
+				grep -qs '^INCLUDE i18n.cfg'        /home/boot/*linux/[se]*linux.c* &&
+				sed  -i  's/^INCLUDE i18n.cfg/# &/' /home/boot/*linux/[se]*linux.c* ;;
 		esac
 		status
 		newline
@@ -545,7 +545,7 @@ LiveUSB media." "$ROOTFS")"
 		if [ "$(ls /home/boot/bzImage*)" ]; then
 			longline "$(_ 'Moving %s to media. Remember to unmount for delayed writes!' "$ROOTFS")"
 
-			CONFIG=$(ls /home/boot/*linux/*linux.c*)
+			CONFIG=$(ls /home/boot/*linux/[se]*linux.c*)
 			if grep -qs 'gz,' $CONFIG; then
 
 				# Disable loram & many-in-1
